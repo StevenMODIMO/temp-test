@@ -1,13 +1,5 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Home",
-  description: "zbekiston musulmonlar idorasi fatvo markazi",
-};
-
 import Banner from "@/components/Banner";
 import RegionSelection from "@/components/RegionSelection";
-import LatestArticles from "@/components/LatestArticles";
 import HotTopics from "@/components/HotTopics";
 import LatestAnswers from "@/components/LatestAnswers";
 import PinnedHadith from "@/components/PinnedHadith";
@@ -22,7 +14,7 @@ export default function Home() {
     <div>
       <Banner />
       <RegionSelection />
-      <main className="bg-gray-200">
+      <main className="bg-gray-200 lg:grid grid-cols-2 lg:gap-6">
         <section>
           {/* <LatestArticles /> */}
           <LatestAnswers />
@@ -34,11 +26,11 @@ export default function Home() {
           <PinnedBooks />
         </section>
       </main>
-        <MediaBlock />
-        <section>
-          <BookSales />
-          <FreeBooks />
-        </section>
+      <MediaBlock />
+      <section>
+        <BookSales />
+        <FreeBooks />
+      </section>
     </div>
   );
 }

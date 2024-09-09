@@ -10,7 +10,7 @@ export default function FreeBooks() {
         const response = await fetch(
           "https://backfatvo.salyam.uz/api_v1/books/free/"
         );
-        const json = await response.json();
+        const json = await response.json()
         setPinnedBooks(json.results);
       } catch (error) {
         console.log(error);

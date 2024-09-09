@@ -22,7 +22,7 @@ export default function HotTopics() {
     getTopics();
   }, []);
   return (
-    <main className="mt-3 ml-4 w-[90%] lg:w-[50%] md:ml-6">
+    <main className="mt-3 ml-4 w-[90%] lg:w-[70%] md:ml-6">
       <header className="border-b border-[#1f9065]">
         <h1 className="font-bold text-lg text-gray-800 p-2">Lots of topics</h1>
       </header>
@@ -47,6 +47,12 @@ export default function HotTopics() {
           );
         })}
       </main>
+      <Link
+        href="/question-details"
+        className="border-2 border-[#1f9065] p-3 mt-3 rounded-xl flex items-center gap-1 justify-center"
+      >
+        All questions <MdOutlineArrowOutward className="text-[#1f9065]" />
+      </Link>
     </main>
   );
 }

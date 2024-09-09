@@ -27,13 +27,16 @@ export default function LatestAnswers() {
   };
 
   return (
-    <main className="ml-4 w-[90%] lg:w-[50%] md:ml-6">
+    <main className="mt-3 ml-4 rounded-md w-[90%] lg:w-[95%] md:ml-6">
       <header className="border-b-2 border-[#1f9065]">
         <h1 className="font-bold text-lg text-gray-800 p-2">Last answers</h1>
       </header>
       <main className="flex flex-col gap-2 mt-1">
         {answers.map(({ id, title, truncated_answer }) => (
-          <div key={id} className="rounded-t-md bg-gray-100 border-b-2 border-[#1f9065]">
+          <div
+            key={id}
+            className="rounded-t-md bg-gray-100 border-b-2 border-[#1f9065]"
+          >
             <button
               onClick={() => toggleExpand(id)}
               className="w-full flex justify-between items-center p-3 lg:text-lg"

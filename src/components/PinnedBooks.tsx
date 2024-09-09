@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+
 export default function PinnedBooks() {
   const [pinnedBooks, setPinnedBooks] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,7 +35,7 @@ export default function PinnedBooks() {
   };
 
   return (
-    <main className="mt-3 ml-4 rounded-md w-[90%] lg:w-[50%] md:ml-6 bg-[#1f9065]">
+    <main className="mt-3 ml-4 rounded-md w-[90%] lg:w-[70%] md:ml-6 bg-[#1f9065]">
       <header className="border-b border-[#1f9065]">
         <h1 className="font-bold text-lg text-white p-2 lg:text-2xl">
           Book recommendation

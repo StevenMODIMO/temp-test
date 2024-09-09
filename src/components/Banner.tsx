@@ -21,7 +21,7 @@ export default function Banner() {
           <h1 className="text-3xl font-bold mb-2 w-64 sm:w-72 sm:mt-2 md:w-96 md:text-4xl lg:w-[600px] lg:text-5xl">
             Fatwa center of the Office of Muslims of Uzbekistan
           </h1>
-          <div className="w-8 h-8 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
+          {/* <div className="w-8 h-8 border-4 border-t-transparent border-white rounded-full animate-spin"></div> */}
         </div>
         <div className="flex flex-col gap-4 p-1">
           <Link

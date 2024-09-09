@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import NotFound from "./NotFound";
 
 // Define the structure of the hadith object
 interface Hadith {
@@ -26,7 +27,7 @@ export default function PinnedHadith() {
   }, []);
 
   return (
-    <main className="mt-3 ml-4 rounded-md w-[90%] lg:w-[50%] md:ml-6 bg-white">
+    <main className="mt-3 ml-4 rounded-md w-[90%] lg:w-[70%] md:ml-6 bg-white">
       <header className="border-b border-[#1f9065]">
         <h1 className="font-bold text-lg text-gray-800 p-2">Kun hadith</h1>
       </header>

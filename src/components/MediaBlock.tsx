@@ -5,6 +5,7 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 import { IoEyeOutline } from "react-icons/io5";
 import VideoModal from "./VideoModal";
 
+
 export default function MediaBlock() {
   const [media, setMedia] = useState([]);
   const [modal, setModal] = useState(false);
