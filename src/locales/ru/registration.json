@@ -1,0 +1,21 @@
+{
+  "emailRegistrationTitle": "Регистрация электронной почты",
+  "requiredEmail": "Введите email!",
+  "invalidEmail": "Неверный формат электронной почты",
+  "next": "Продолжить",
+  "enterVerifyCode": "Введите код подтверждения!",
+  "verifyCodeTitle": "Подтвердить код",
+  "verify": "Подтвердить",
+  "enterFirstName": "Введите ваше имя!",
+  "enterLastName": "Введите вашу фамилию!",
+  "enterEmail": "Введите email!",
+  "enterPassword": "Введите пароль!",
+  "registrationTitle": "Регистрация в системе",
+  "registerContract": " Регистрируясь, вы выражаете согласие с Условиями использования",
+  "haveAnAccount": "У вас уже есть аккаунт? ",
+  "signIn": "Войти",
+  "registration": "Зарегистрироваться",
+  "loader": "Загружается",
+  "modalFooterLeft": "Условия использования",
+  "modalFooterRight": " Ташкент 2024"
+}

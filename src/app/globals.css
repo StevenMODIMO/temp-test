@@ -18,3 +18,20 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+.container {
+  max-width: 95%;
+}
+
+@keyframes custom-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.slow-spin {
+  animation: custom-spin 5s linear infinite;
+}

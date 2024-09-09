@@ -1,0 +1,18 @@
+{
+  "title": "Глубокий поиск",
+  "searchBase": "База поиска: ",
+  "searchType": "Тип поиска: ",
+  "search": "Поиск: ",
+  "inSite": "Внутри сайта",
+  "inGoogle": "В Google",
+  "exactPhrase": "Точная фраза",
+  "optionalWord": "Необязательное слово",
+  "allWords": "Все слова",
+  "searchTitle": "Заголовок",
+  "question": "Вопрос",
+  "answer": "Ответ",
+  "button": "Поиск",
+  "loader": "Загружается",
+  "modalFooterLeft": "Условия использования",
+  "modalFooterRight": " Ташкент 2024"
+}

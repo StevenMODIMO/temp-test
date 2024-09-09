@@ -1,0 +1,21 @@
+{
+  "haveAnAccount": "Do you have an account?",
+  "signIn": "Sign In",
+  "signUp": "Sign Up",
+  "redirectSignUpStart": "You must first ",
+  "redirectSignUpEnd": " to submit a question.",
+  "title": "Submit a Question",
+  "first_name": "Enter your first name",
+  "question": "Enter the text of the question...",
+  "submitTitle": "Submit Question",
+  "requiredName": "Please enter your name!",
+  "requiredQuestion": "Please enter a question!",
+  "successTitle": "Question Submitted!",
+  "subSuccessTitleStart": "You can check the answer through",
+  "subSuccessTitleEnd": ". Responses typically take 5-10 days.",
+  "redirectProfile": "your personal profile",
+  "loader": "Loading",
+  "attachedFile": "File attachment",
+  "modalFooterLeft": "User Terms",
+  "modalFooterRight": " Tashkent 2024"
+}

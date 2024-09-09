@@ -37,7 +37,7 @@ export default function BookSales() {
   };
 
   return (
-    <main className="w-[95%] mx-auto bg-gray-100 rounded-md p-4 mt-3">
+    <main className="bg-gray-100 rounded-md p-4 mt-3">
       <header className="border-b border-[#1f9065]">
         <h1 className="font-bold text-lg text-gray-800 p-2">Books on Sale</h1>
       </header>
@@ -45,14 +45,14 @@ export default function BookSales() {
         <div className="flex overflow-hidden">
           {books
             .slice(currentIndex, currentIndex + booksPerSlide)
-            .map(({ id, title, author, price, image }) => (
+            .map(({ id, title, author, price, images }) => (
               <div
                 key={id}
                 className="flex-shrink-0 w-1/3 p-4 transition-transform duration-300 ease-in-out"
               >
                 <div className="bg-white rounded-lg shadow-lg p-4 h-full flex flex-col items-center text-center">
                   <img
-                    src={image}
+                    src={images[0]}
                     alt={title}
                     className="h-40 w-auto object-cover rounded-md mb-4"
                   />
@@ -60,7 +60,7 @@ export default function BookSales() {
                     {title}
                   </h2>
                   <p className="text-gray-600 mb-2">By: {author}</p>
-                  <p className="text-[#1f9065] font-bold">${price}</p>
+                  <p className="text-[#1f9065] font-bold">{price}</p>
                 </div>
               </div>
             ))}

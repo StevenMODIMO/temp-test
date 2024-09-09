@@ -1,0 +1,13 @@
+{
+  "questionNotFound": "Вопросы отсутствуют!",
+  "welcome": "Добро пожаловать ",
+  "myQuestion": "Мои вопросы",
+  "answered": "Ответ дан",
+  "beingConsidered": "На рассмотрении",
+  "status": "Статус",
+  "question": "Вопрос",
+  "answer": "Ответ",
+  "less": "Уменьшить",
+  "more": "Подробнее",
+  "reload": "Перезагрузить"
+}

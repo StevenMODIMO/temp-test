@@ -1,0 +1,18 @@
+{
+  "title": "Чуқурроқ излаш",
+  "searchBase": "Қидирув базаси: ",
+  "searchType": "Қидирув тури: ",
+  "search": "Қидирув: ",
+  "inSite": "Сайт ичидан",
+  "inGoogle": "Гуглдан",
+  "exactPhrase": "Аниқ ибора",
+  "optionalWord": "Изтиёрий сўз",
+  "allWords": "Барча сўзлар",
+  "searchTitle": "Сарлавҳа",
+  "question": "Савол",
+  "answer": "Жавоб",
+  "button": "Қидирув",
+  "loader": "Юкланмоқда",
+  "modalFooterLeft": "Фойдаланувчи шартлари",
+  "modalFooterRight": " Тошкент 2024"
+}

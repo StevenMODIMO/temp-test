@@ -1,0 +1,21 @@
+{
+  "emailRegistrationTitle": "Email Registration",
+  "requiredEmail": "Enter email!",
+  "invalidEmail": "Invalid email format",
+  "next": "Next",
+  "enterVerifyCode": "Enter verification code!",
+  "verifyCodeTitle": "Verify Code",
+  "verify": "Verify",
+  "enterFirstName": "Enter your first name!",
+  "enterLastName": "Enter your last name!",
+  "enterEmail": "Enter email!",
+  "enterPassword": "Enter password!",
+  "registrationTitle": "Register in the system",
+  "registerContract": "By registering, you agree to the Terms of Use",
+  "haveAnAccount": "Have an account? ",
+  "signIn": "Sign In",
+  "registration": "Registration",
+  "loader": "Loading",
+  "modalFooterLeft": "User Terms",
+  "modalFooterRight": " Tashkent 2024"
+}

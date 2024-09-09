@@ -1,0 +1,14 @@
+{
+  "availableForSale": "Доступно для продажи",
+  "availableForSaleNotFound": "Информация о доступности для продажи не найдена!",
+  "library": "Библиотека",
+  "libraryNotFound": "Информация о библиотеке не найдена!",
+  "more": "Подробнее",
+  "reload": "Перезагрузить",
+  "cover": "Обложка:",
+  "publisher": "Издательство:",
+  "purchase": "Приобрести",
+  "loader": "Загрузка",
+  "modalFooterLeft": "Условия использования",
+  "modalFooterRight": " Ташкент 2024"
+}

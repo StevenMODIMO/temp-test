@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaRegStar } from "react-icons/fa";
+import Link from "next/link";
 
 export default function LatestAnswers() {
   const [answers, setAnswers] = useState([]);
@@ -27,27 +28,32 @@ export default function LatestAnswers() {
   };
 
   return (
-    <main className="mt-3 ml-4 rounded-md w-[90%] lg:w-[95%] md:ml-6">
-      <header className="border-b-2 border-[#1f9065]">
+    <main className="my-3 lg:my-5">
+      <header className="border-b-4 border-[#1f9065]">
         <h1 className="font-bold text-lg text-gray-800 p-2">Last answers</h1>
       </header>
-      <main className="flex flex-col gap-2 mt-1">
+      <main className="flex flex-col gap-2 mt-6">
         {answers.map(({ id, title, truncated_answer }) => (
           <div
             key={id}
-            className="rounded-t-md bg-gray-100 border-b-2 border-[#1f9065]"
+            className="rounded-lg bg-gray-100 border-b-4 border-[#1f9065]"
           >
             <button
               onClick={() => toggleExpand(id)}
               className="w-full flex justify-between items-center p-3 lg:text-lg"
             >
               <div className="flex gap-1 items-center">
-                <FaRegStar />
+                <FaRegStar className="text-[#1f9065] font-bold" />
                 <h2>{title}</h2>
               </div>
               <IoIosArrowDown />
             </button>
-            {expandedId === id && <div className="p-2">{truncated_answer}</div>}
+            {expandedId === id && (
+              <div className="p-2">
+                {truncated_answer}{" "}
+                <Link href={`/question-details/${id}`} className='text-[#1f9065]'>more</Link>
+              </div>
+            )}
           </div>
         ))}
       </main>

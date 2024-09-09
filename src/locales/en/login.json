@@ -1,0 +1,16 @@
+{
+  "title": "Sign In",
+  "requiredEmail": "Enter email!",
+  "requiredPassword": "Enter password!",
+  "facebook": "Facebook",
+  "google": "Google",
+  "signIn": "Sign In",
+  "loader": "Loading",
+  "haveAnAccount": "Don’t have an account?",
+  "register": "Register",
+  "forgotPassword": "Forgot password?",
+  "remember": "Remember",
+  "withEmail": "With email",
+  "modalFooterLeft": "User Terms",
+  "modalFooterRight": " Tashkent 2024"
+}

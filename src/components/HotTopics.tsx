@@ -22,26 +22,26 @@ export default function HotTopics() {
     getTopics();
   }, []);
   return (
-    <main className="mt-3 ml-4 w-[90%] lg:w-[70%] md:ml-6">
-      <header className="border-b border-[#1f9065]">
+    <main className="my-3 lg:my-5">
+      <header className="border-b-4 border-[#1f9065]">
         <h1 className="font-bold text-lg text-gray-800 p-2">Lots of topics</h1>
       </header>
-      <main className="flex flex-col gap-2 mt-1">
+      <main className="rounded-lg flex flex-col gap-2 mt-6">
         {topics.map(({ slug, title }) => {
           return (
             <main
               key={slug}
-              className="rounded-t-md bg-gray-100 border-b-2 border-[#1f9065]"
+              className="rounded-lg bg-gray-100 border-b-4 border-[#1f9065]"
             >
               <Link
                 href={`/question-details/${slug}`}
                 className="flex justify-between p-3"
               >
                 <div className="flex items-center gap-1">
-                  <IoClipboardOutline className="text-[#1f9065]" />
+                  <IoClipboardOutline className="text-[#1f9065] font-bold" />
                   <p>{title}</p>
                 </div>
-                <MdOutlineArrowOutward className="text-[#1f9065]" />
+                <MdOutlineArrowOutward className="text-[#1f9065] font-bold" />
               </Link>
             </main>
           );
@@ -49,7 +49,7 @@ export default function HotTopics() {
       </main>
       <Link
         href="/question-details"
-        className="border-2 border-[#1f9065] p-3 mt-3 rounded-xl flex items-center gap-1 justify-center"
+        className="w-fit border border-[#1f9065] p-2 mt-3 rounded-full flex items-center gap-1"
       >
         All questions <MdOutlineArrowOutward className="text-[#1f9065]" />
       </Link>

@@ -1,0 +1,16 @@
+{
+  "title": "Тизимга кириш",
+  "requiredEmail": "Emailни киритинг!",
+  "requiredPassword": "Паролни киритинг!",
+  "facebook": "Facebook",
+  "google": "Google",
+  "signIn": "Кириш",
+  "loader": "Юкланмоқда",
+  "haveAnAccount": "Аккаунтингиз йўқми?",
+  "register": "Рўйхатдан ўтиш",
+  "forgotPassword": "Паролни унутдингизми?",
+  "remember": "Эслаб қолиш",
+  "withEmail": "Электрон почта орқали",
+  "modalFooterLeft": "Фойдаланувчи шартлари",
+  "modalFooterRight": " Тошкент 2024"
+}

@@ -1,0 +1,21 @@
+{
+  "haveAnAccount": "Akkountingiz bormi?",
+  "signIn": "Kirish",
+  "signUp": "Ro’yxatdan o’tgan",
+  "redirectSignUpStart": "Savol yo’llash uchun avval ",
+  "redirectSignUpEnd": "bo’lishingiz kerak.",
+  "title": "Savol yo'llash",
+  "first_name": "Ismingizni kiriting",
+  "question": "Savol matnini kiriting...",
+  "submitTitle": "Savolni yuborish",
+  "requiredName": "Ismingizni kiriting!",
+  "requiredQuestion": "Savolni kiriting!",
+  "successTitle": "Savol yuborildi!",
+  "subSuccessTitleStart": "Javobni",
+  "subSuccessTitleEnd": "orqali tekshirshingiz mumkin. Javob berish o’rtacha 5-10 ish kuni ichida amalga oshiriladi",
+  "redirectProfile": "shaxsiy kabinetingiz",
+  "loader": "Yuklanmoqda",
+  "attachedFile": "Fayl biriktirish",
+  "modalFooterLeft": "Foydalanuvchi shartlari",
+  "modalFooterRight": " Toshkent 2024"
+}

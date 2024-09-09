@@ -1,0 +1,18 @@
+{
+  "title": "Chuqurroq izlash",
+  "searchBase": "Qidiruv bazasi: ",
+  "searchType": "Qidiruv turi: ",
+  "search": "Qidiruv: ",
+  "inSite": "Sayt ichidan",
+  "inGoogle": "Googledan",
+  "exactPhrase": "Aniq ibora",
+  "optionalWord": "Iztiyoriy so'z",
+  "allWords": "Barcha so'zlar",
+  "searchTitle": "Sarlavha",
+  "question": "Savol",
+  "answer": "Javob",
+  "button": "Qidiruv",
+  "loader": "Yuklanmoqda",
+  "modalFooterLeft": "Foydalanuvchi shartlari",
+  "modalFooterRight": " Toshkent 2024"
+}

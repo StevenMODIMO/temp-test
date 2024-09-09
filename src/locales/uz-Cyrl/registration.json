@@ -1,0 +1,21 @@
+{
+  "emailRegistrationTitle": "Электрон почтани рўйхатдан ўтказиш",
+  "requiredEmail": "Email киритинг!",
+  "invalidEmail": "Электрон почта формати нотўғри",
+  "next": "Давом этиш",
+  "enterVerifyCode": "Тасдиқлаш кодини киритинг!",
+  "verifyCodeTitle": "Кодни тасдиқлаш",
+  "verify": "Тасдиқлаш",
+  "enterFirstName": "Исмингизни киритинг!",
+  "enterLastName": "Фамилянгизни киритинг!",
+  "enterEmail": "Emailни киритинг!",
+  "enterPassword": "Паролни Киритинг!",
+  "registrationTitle": "Тизимдан рўйхатдан ўтиш",
+  "registerContract": " Рўйхатдан ўтиш орқали Фойдаланиш шарт ва қоидаларига розилик билдирган ҳисобланасиз",
+  "haveAnAccount": "Аккаунтингиз борми? ",
+  "signIn": "Кириш",
+  "registration": "Рўйхатдан ўтиш",
+  "loader": "Юкланмоқда",
+  "modalFooterLeft": "Фойдаланувчи шартлари",
+  "modalFooterRight": " Тошкент 2024"
+}

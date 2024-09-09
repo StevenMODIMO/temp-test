@@ -1,0 +1,16 @@
+{
+  "title": "Tizimga kirish",
+  "requiredEmail": "Emailni kiriting!",
+  "requiredPassword": "Parolni kiriting!",
+  "facebook": "Facebook",
+  "google": "Google",
+  "signIn": "Kirish",
+  "loader": "Yuklanmoqda",
+  "haveAnAccount": "Akkountingiz yo‘qmi?",
+  "register": "Ro‘yxatdan o‘tish",
+  "forgotPassword": "Parolni unutdingizmi?",
+  "remember": "Eslab qolish",
+  "withEmail": "Elektron pochta orqali",
+  "modalFooterLeft": "Foydalanuvchi shartlari",
+  "modalFooterRight": " Toshkent 2024"
+}

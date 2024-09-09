@@ -1,0 +1,21 @@
+{
+  "emailRegistrationTitle": "Elektron po‘chtani ro‘yxatdan o‘tkazish",
+  "requiredEmail": "Email kiriting!",
+  "invalidEmail": "Elektron pochta formati noto‘g‘ri",
+  "next": "Davom etish",
+  "enterVerifyCode": "Tasdiqlash kodini kiriting!",
+  "verifyCodeTitle": "Kodni tasdiqlash",
+  "verify": "Tasdiqlash",
+  "enterFirstName": "Ismingizni kiriting!",
+  "enterLastName": "Familyangizni kiriting!",
+  "enterEmail": "Emailni kiriting!",
+  "enterPassword": "Parolni Kiriting!",
+  "registrationTitle": "Tizimdan ro‘yxatdan o‘tish",
+  "registerContract": " Ro‘yxatan o‘tish orqali Foydalanish shart va qoidalariga rozilik bildirgan hisoblanasiz",
+  "haveAnAccount": "Akkountingiz bormi? ",
+  "signIn": "Kirish",
+  "registration": "Ro‘yxatdan o‘tish",
+  "loader": "Yuklanmoqda",
+  "modalFooterLeft": "Foydalanuvchi shartlari",
+  "modalFooterRight": " Toshkent 2024"
+}

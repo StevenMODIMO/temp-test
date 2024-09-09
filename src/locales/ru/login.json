@@ -1,0 +1,16 @@
+{
+  "title": "Вход в систему",
+  "requiredEmail": "Введите email!",
+  "requiredPassword": "Введите пароль!",
+  "facebook": "Через Facebook",
+  "google": "Через Google",
+  "signIn": "Войти",
+  "loader": "Загружается",
+  "haveAnAccount": "У вас нет аккаунта?",
+  "register": "Зарегистрироваться",
+  "forgotPassword": "Забыли пароль?",
+  "remember": "Запомнить",
+  "withEmail": "Через электронную почту",
+  "modalFooterLeft": "Условия использования",
+  "modalFooterRight": " Ташкент 2024"
+}

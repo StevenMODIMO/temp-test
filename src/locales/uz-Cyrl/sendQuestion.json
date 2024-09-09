@@ -1,0 +1,21 @@
+{
+  "haveAnAccount": "Аккаунтингиз борми?",
+  "signIn": "Кириш",
+  "signUp": "Рўйхатдан ўтган",
+  "redirectSignUpStart": "Савол ёллаш учун аввал ",
+  "redirectSignUpEnd": "бўлишингиз керак.",
+  "title": "Савол ёллаш",
+  "first_name": "Исмингизни киритинг",
+  "question": "Савол матнини киритинг...",
+  "submitTitle": "Саволни юбориш",
+  "requiredName": "Исмингизни киритинг!",
+  "requiredQuestion": "Саволни киритинг!",
+  "successTitle": "Савол юборилди!",
+  "subSuccessTitleStart": "Жавобни",
+  "subSuccessTitleEnd": "орқали текширишингиз мумкин. Жавоб бериш ўртача 5-10 иш куни ичида амалга оширилади",
+  "redirectProfile": "шахсий кабинетингиз",
+  "loader": "Юкланмоқда",
+  "attachedFile": "Файл бириктириш",
+  "modalFooterLeft": "Фойдаланувчи шартлари",
+  "modalFooterRight": " Тошкент 2024"
+}

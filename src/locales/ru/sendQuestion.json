@@ -1,0 +1,21 @@
+{
+  "haveAnAccount": "У вас есть аккаунт?",
+  "signIn": "Войти",
+  "signUp": "Зарегистрироваться",
+  "redirectSignUpStart": "Чтобы отправить вопрос, сначала ",
+  "redirectSignUpEnd": "необходимо зарегистрироваться.",
+  "title": "Отправить вопрос",
+  "first_name": "Введите ваше имя",
+  "question": "Введите текст вопроса...",
+  "submitTitle": "Отправить",
+  "requiredName": "Введите ваше имя!",
+  "requiredQuestion": "Введите вопрос!",
+  "successTitle": "Вопрос отправлен!",
+  "subSuccessTitleStart": "Ответ можно проверить через ",
+  "subSuccessTitleEnd": ". Ответ обычно предоставляется в течение 5-10 рабочих дней",
+  "redirectProfile": "ваш личный кабинет",
+  "loader": "Загружается",
+  "attachedFile": "Файл вложения",
+  "modalFooterLeft": "Условия использования",
+  "modalFooterRight": " Ташкент 2024"
+}

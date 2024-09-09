@@ -14,15 +14,18 @@ interface NavbarProps {}
 export default function Navbar(props: NavbarProps) {
   const [openLinks, setOpenLinks] = useState(false);
   return (
-    <main className="bg-[#1f9065] text-gray-200 p-4 flex justify-between md:p-6">
+    <main className="bg-[#1f9065] text-gray-200 p-4 flex justify-between md:p-4">
       <Link href="/">
         <Image src={logo} alt="logo" width={120} height={120} />
       </Link>
-      <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-24 lg:text-[15px]">
+      <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-24">
         <nav className="hidden md:flex gap-3 lg:gap-6">
           {navLinks.map(({ id, title, route }) => {
             return (
-              <main key={id}>
+              <main
+                key={id}
+                className="font-semibold text-gray-200 hover:text-white"
+              >
                 <Link href={route}>{title}</Link>
               </main>
             );
