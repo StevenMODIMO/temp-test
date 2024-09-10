@@ -8,11 +8,13 @@ import { FiUser } from "react-icons/fi";
 import { useState } from "react";
 import NavLinks from "./NavLinks";
 import { AnimatePresence } from "framer-motion";
+import LoginForm from "./LoginForm";
 
 interface NavbarProps {}
 
 export default function Navbar(props: NavbarProps) {
   const [openLinks, setOpenLinks] = useState(false);
+  const [openForm, setOpenForm] = useState(false);
   return (
     <main className="bg-[#1f9065] text-gray-200 p-4 flex justify-between md:p-4">
       <Link href="/">
@@ -32,13 +34,13 @@ export default function Navbar(props: NavbarProps) {
           })}
         </nav>
         <section className="flex gap-2 items-center">
-          <Link
-            href="/login"
-            className="flex items-center hover:rounded hover:bg-[#40aa81] lg:p-3"
+          <div
+            onClick={() => setOpenForm(true)}
+            className="cursor-pointer flex items-center hover:rounded hover:bg-[#40aa81] lg:p-3"
           >
             <FiUser />
             <div>Introduction</div>
-          </Link>
+          </div>
           <div className="md:hidden" onClick={() => setOpenLinks(!openLinks)}>
             {openLinks ? <FaTimes /> : <FaBars />}
           </div>
@@ -47,6 +49,7 @@ export default function Navbar(props: NavbarProps) {
       <AnimatePresence>
         {openLinks && <NavLinks setOpenLinks={setOpenLinks} />}
       </AnimatePresence>
+      {openForm && <LoginForm setOpenForm={setOpenForm} />}
     </main>
   );
 }

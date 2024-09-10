@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div>
       <Banner />
-      <section className="bg-gray-100">
+      <section className="bg-gray-100 border-t-4 border-[#1f9065]">
         <main className="my-3 mx-5 lg:my-5 lg:mx-12 lg:flex lg:gap-14">
           <div className="lg:w-[60%]">
             <LatestArticles />
