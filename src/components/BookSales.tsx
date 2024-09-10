@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 export default function BookSales() {
   const [books, setBooks] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [booksPerSlide, setBooksPerSlide] = useState(3); // State for books per slide
 
   useEffect(() => {
     const getSalesBooks = async () => {
@@ -20,7 +21,23 @@ export default function BookSales() {
     getSalesBooks();
   }, []);
 
-  const booksPerSlide = 3;
+  useEffect(() => {
+    // Define the media queries
+    const updateBooksPerSlide = () => {
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        setBooksPerSlide(1); // Mobile: 1 slide
+      } else if (window.matchMedia("(max-width: 1024px)").matches) {
+        setBooksPerSlide(2); // Tablet: 2 slides
+      } else {
+        setBooksPerSlide(3); // Desktop: 3 slides
+      }
+    };
+
+    updateBooksPerSlide(); // Initial call
+    window.addEventListener("resize", updateBooksPerSlide); // Listen for resize events
+
+    return () => window.removeEventListener("resize", updateBooksPerSlide); // Cleanup listener
+  }, []);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
@@ -48,7 +65,7 @@ export default function BookSales() {
             .map(({ id, title, author, price, images }) => (
               <div
                 key={id}
-                className="flex-shrink-0 w-1/3 p-4 transition-transform duration-300 ease-in-out"
+                className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4 transition-transform duration-300 ease-in-out"
               >
                 <div className="bg-white rounded-lg shadow-lg p-4 h-full flex flex-col items-center text-center">
                   <img

@@ -10,6 +10,7 @@ import MediaBlock from "@/components/MediaBlock";
 import BookSales from "@/components/BookSales";
 import FreeBooks from "@/components/FreeBooks";
 import NotFound from "@/components/NotFound";
+import TranslationsProvider from "./TranslationsProvider";
 
 export default function Home() {
   return (
