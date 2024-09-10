@@ -9,7 +9,9 @@ import {
 } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
-import { MdOutlineArrowOutward } from "react-icons/md";
+import Link from "next/link";
+import umma from "@/public/download.png";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -47,19 +49,35 @@ export default function Footer() {
           </section>
           <section className="flex items-center gap-2 cursor-pointer hover:text-white">
             <CiInstagram className="text-2xl" />
-            <p>Instagram</p>
+            <Link href="https://www.instagram.com/fatvouz/" target="_blank">
+              Instagram
+            </Link>
           </section>
           <section className="flex items-center gap-2 cursor-pointer hover:text-white">
             <CiYoutube className="text-2xl" />
-            <p>Youtube</p>
+            <Link href="https://www.youtube.com/c/Fatvouzb" target="_blank">
+              Youtube
+            </Link>
           </section>
           <section className="flex items-center gap-2 cursor-pointer hover:text-white">
             <CiFacebook className="text-2xl" />
-            <p>Facebook</p>
+            <Link href="https://www.facebook.com/diniysavollar" target="_blank">
+              Facebook
+            </Link>
           </section>
           <section className="flex items-center gap-2 cursor-pointer hover:text-white">
             <FaTelegramPlane className="text-2xl" />
-            <p>Telegram</p>
+            <Link href="https://t.me/diniysavollar" target="_blank">
+              Telegram
+            </Link>
+          </section>
+          <section className="flex items-center relative gap-2 cursor-pointer hover:text-white">
+            <div className="relative w-6 h-6">
+              <Image src={umma} alt="umma" fill />
+            </div>
+            <Link href="https://ummalife.com/fatvouz" target="_blank">
+              UmmaLife platform
+            </Link>
           </section>
         </div>
       </section>
