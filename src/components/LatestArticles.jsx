@@ -45,7 +45,7 @@ export default function LatestArticles() {
               <img
                 src={articles[current].image}
                 alt={articles[current].title}
-                className="w-80 h-44 object-cover rounded-[32px] transition duration-700 ease-in-out"
+                className="w-80 h-44 object-cover rounded-[32px] transition duration-700 ease-in-out lg:w-full lg:h-72"
               />
               <button
                 className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-1 rounded-full"

@@ -31,11 +31,11 @@ export default function HotTopics() {
           return (
             <main
               key={slug}
-              className="rounded-lg bg-gray-100 border-b-4 border-[#1f9065]"
+              className="rounded-lg bg-white border-b-4 my-1 border-[#1f9065]"
             >
               <Link
                 href={`/question-details/${slug}`}
-                className="flex justify-between p-3"
+                className="flex justify-between p-3 lg:p-5"
               >
                 <div className="flex items-center gap-1">
                   <IoClipboardOutline className="text-[#1f9065] font-bold" />

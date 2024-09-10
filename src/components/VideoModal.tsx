@@ -1,5 +1,6 @@
 "use client";
 import Backdrop from "./Backdrop";
+import { FaTimes } from "react-icons/fa";
 
 interface VideoModalProps {
   url: string;
@@ -22,9 +23,9 @@ export default function VideoModal({ url, onClose }: VideoModalProps) {
         <div className="relative w-full max-w-lg mx-auto bg-white rounded shadow-lg p-4">
           <button
             onClick={onClose}
-            className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+            className="absolute text-2xl text-gray-600 hover:text-gray-900"
           >
-            &times;
+            <FaTimes />
           </button>
           <p className="text-center text-red-500">
             Invalid video URL. Please try again.
@@ -36,17 +37,17 @@ export default function VideoModal({ url, onClose }: VideoModalProps) {
 
   return (
     <Backdrop>
-      <div className="relative w-full max-w-lg mx-auto bg-white rounded shadow-lg p-4">
+      <div className="fixed mx-auto w-[90%] h-[90%] bg-white rounded shadow-lg p-4">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+          className="absolute text-2xl top-4 right-4 text-gray-600 hover:text-gray-900"
         >
-          &times;
+         <FaTimes />
         </button>
         <iframe
           src={`https://www.youtube.com/embed/${videoId}`}
           title="YouTube video player"
-          className="w-full h-64 rounded"
+          className="w-[95%] h-full rounded mx-auto"
           allowFullScreen
         />
       </div>

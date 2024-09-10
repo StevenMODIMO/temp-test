@@ -9,22 +9,27 @@ import PinnedBooks from "@/components/PinnedBooks";
 import MediaBlock from "@/components/MediaBlock";
 import BookSales from "@/components/BookSales";
 import FreeBooks from "@/components/FreeBooks";
+import NotFound from "@/components/NotFound";
 
 export default function Home() {
   return (
     <div>
       <Banner />
-      <section className="my-3 mx-5 lg:my-5">
-        <LatestArticles />
-        <LatestAnswers />
-        <main>
-          <HotTopics />
-          <PinnedHadith />
-          <PinnedQuestion />
-          <PinnedBooks />
+      <section className="bg-gray-100">
+        <main className="my-3 mx-5 lg:my-5 lg:mx-12 lg:flex lg:gap-14">
+          <div className="lg:w-[60%]">
+            <LatestArticles />
+            <LatestAnswers />
+          </div>
+          <div className="lg:w-[30%]">
+            <HotTopics />
+            <PinnedHadith />
+            <PinnedQuestion />
+            <PinnedBooks />
+          </div>
         </main>
         <MediaBlock />
-        <main>
+        <main className="my-3 mx-5 lg:my-5 lg:mx-12 lg:flex items-center gap-16">
           <BookSales />
           <FreeBooks />
         </main>

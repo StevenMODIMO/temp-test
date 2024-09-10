@@ -37,8 +37,8 @@ export default function BookSales() {
   };
 
   return (
-    <main className="bg-gray-100 rounded-md p-4 mt-3">
-      <header className="border-b border-[#1f9065]">
+    <main className="bg-gray-100 rounded-md p-4 mt-3 lg:w-[70%]">
+      <header className="border-b-4 border-[#1f9065]">
         <h1 className="font-bold text-lg text-gray-800 p-2">Books on Sale</h1>
       </header>
       <section className="relative">
@@ -59,7 +59,7 @@ export default function BookSales() {
                   <h2 className="font-semibold text-lg text-gray-800">
                     {title}
                   </h2>
-                  <p className="text-gray-600 mb-2">By: {author}</p>
+                  <p className="text-gray-600 mb-2">Author: {author}</p>
                   <p className="text-[#1f9065] font-bold">{price}</p>
                 </div>
               </div>

@@ -26,7 +26,7 @@ export default function Banner() {
           </div>
         </div>
         <div className="flex flex-col gap-4 p-1 sm:flex-row">
-          <button className="p-2 flex gap-2 items-center border border-[#1f9065] rounded-md">
+          <button className="p-3 flex gap-2 items-center border border-[#1f9065] rounded-[32px]">
             <h4>The question is yes</h4>
             <MdOutlineArrowOutward />
           </button>

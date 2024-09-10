@@ -40,8 +40,8 @@ export default function BannerSearch() {
           htmlFor="search"
           className={
             results.length > 0
-              ? "rounded-t-md p-2 flex items-center justify-between border border-[#1f9065] bg-black/50 sm:w-96"
-              : "rounded-md p-2 flex items-center justify-between border border-[#1f9065] bg-black/50 sm:w-96"
+              ? "rounded-t-md p-3 flex items-center justify-between border border-[#1f9065] bg-black/50 sm:w-96"
+              : "rounded-[32px] p-3 flex items-center justify-between border border-[#1f9065] bg-black/50 sm:w-96"
           }
         >
           <input

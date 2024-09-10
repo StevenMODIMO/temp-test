@@ -31,7 +31,7 @@ export default function FreeBooks() {
     );
   };
   return (
-    <main className="my-3 lg:my-5 bg-[#1f9065] rounded-md p-4 mt-3 cursor-pointer sm:w-[400px]">
+    <main className="my-3 lg:my-5 bg-[#1f9065] rounded-md p-4 mt-3 cursor-pointer lg:h-[30%] lg:p-2 lg:w-[20%] lg:mt-16">
       <header>
         <h1 className="font-bold text-lg text-white p-2">Library</h1>
       </header>
@@ -41,13 +41,9 @@ export default function FreeBooks() {
             <img
               src={freeBooks[current].images[0]}
               alt={freeBooks[current].title}
-              className="w-64 h-36 object-cover rounded-md transition duration-700 ease-in-out mx-auto"
+              className="w-64 h-36 object-cover rounded-md transition duration-700 ease-in-out mx-auto lg:w-52"
             />
             <p className="font-semibold text-xl">{freeBooks[current].title}</p>
-            <p className="text-lg">
-              <span className="font-semibold">Author:</span>{" "}
-              {freeBooks[current].author}
-            </p>
           </>
         )}
         <footer className="flex gap-2 justify-end text-white">

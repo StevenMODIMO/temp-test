@@ -24,7 +24,7 @@ export default function PinnedQuestion() {
     getQuestion();
   });
   return (
-    <main className="my-3 lg:my-5 rounded-md bg-white">
+    <main className="my-3 lg:my-5 rounded-md">
       <header className="border-b-4 border-[#1f9065]">
         <h1 className="font-bold text-lg text-gray-800 p-2">It's a question</h1>
       </header>

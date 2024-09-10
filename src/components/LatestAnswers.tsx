@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { IoIosArrowDown } from "react-icons/io";
+import { LuArrowDownRight } from "react-icons/lu";
 import { FaRegStar } from "react-icons/fa";
 import Link from "next/link";
 
@@ -36,22 +36,22 @@ export default function LatestAnswers() {
         {answers.map(({ id, title, truncated_answer }) => (
           <div
             key={id}
-            className="rounded-lg bg-gray-100 border-b-4 border-[#1f9065]"
+            className="rounded-lg bg-white border-b-4 my-1 border-[#1f9065]"
           >
             <button
               onClick={() => toggleExpand(id)}
-              className="w-full flex justify-between items-center p-3 lg:text-lg"
+              className="w-full flex justify-between items-center mx-3 p-3 lg:text-lg"
             >
-              <div className="flex gap-1 items-center">
-                <FaRegStar className="text-[#1f9065] font-bold" />
+              <div className="flex gap-3 items-center">
+                <FaRegStar className="bg-[#1f9065] text-white rounded-md p-1 text-2xl font-bold" />
                 <h2>{title}</h2>
               </div>
-              <IoIosArrowDown />
+              <LuArrowDownRight className="text-[#1f9065] mr-5" />
             </button>
             {expandedId === id && (
               <div className="p-2">
                 {truncated_answer}{" "}
-                <Link href={`/question-details/${id}`} className='text-[#1f9065]'>more</Link>
+                <Link href={`/question-details/${id}`} className='text-[#1f9065]'>Read more</Link>
               </div>
             )}
           </div>
