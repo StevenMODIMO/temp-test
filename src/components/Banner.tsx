@@ -4,9 +4,14 @@ import banner from "@/public/banner.svg";
 import Link from "next/link";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import BannerSearch from "./BannerSearch";
+import SendQuestion from "./SendQuestion";
+import RedirectModal from "./RedirectModal";
 import fatvo from "@/public/fatvo.png";
+import { useState } from "react";
 
 export default function Banner() {
+  const [open, setOpen] = useState(false);
+
   return (
     <main className="relative w-full h-[400px] text-gray-200">
       <Image
@@ -26,7 +31,10 @@ export default function Banner() {
           </div>
         </div>
         <div className="flex flex-col gap-4 p-1 sm:flex-row">
-          <button className="p-3 flex gap-2 items-center border border-[#1f9065] rounded-[32px]">
+          <button
+            onClick={() => setOpen(true)}
+            className="p-3 flex gap-2 items-center border border-[#1f9065] rounded-[32px]"
+          >
             <h4>The question is yes</h4>
             <MdOutlineArrowOutward />
           </button>

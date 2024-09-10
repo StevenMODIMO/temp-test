@@ -7,13 +7,35 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 
-export default function LoginForm({setOpenForm}) {
+export default function LoginForm({ setOpenForm }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "https://backfatvo.salyam.uz/api_v1/auth/login/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      const json = await response.json();
+
+      if (response.ok) {
+        setEmail("");
+        setPassword("");
+      } else {
+        console.log(json.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

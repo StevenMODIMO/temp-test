@@ -41,11 +41,26 @@ export default function Footer() {
       </section>
       <section className="flex flex-col gap-3">
         <div className="flex flex-col gap-3">
-          <FaXTwitter className="text-2xl" />
-          <CiInstagram className="text-2xl" />
-          <CiYoutube className="text-2xl" />
-          <CiFacebook className="text-2xl" />
-          <FaTelegramPlane className="text-2xl" />
+          <section className="flex items-center gap-2 cursor-pointer hover:text-white">
+            <FaXTwitter className="text-2xl" />
+            <p>Twitter</p>
+          </section>
+          <section className="flex items-center gap-2 cursor-pointer hover:text-white">
+            <CiInstagram className="text-2xl" />
+            <p>Instagram</p>
+          </section>
+          <section className="flex items-center gap-2 cursor-pointer hover:text-white">
+            <CiYoutube className="text-2xl" />
+            <p>Youtube</p>
+          </section>
+          <section className="flex items-center gap-2 cursor-pointer hover:text-white">
+            <CiFacebook className="text-2xl" />
+            <p>Facebook</p>
+          </section>
+          <section className="flex items-center gap-2 cursor-pointer hover:text-white">
+            <FaTelegramPlane className="text-2xl" />
+            <p>Telegram</p>
+          </section>
         </div>
       </section>
     </footer>
