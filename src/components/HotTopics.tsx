@@ -11,7 +11,7 @@ export default function HotTopics() {
     const getTopics = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/questions/trending/?limit=4"
+          "https://backfatvo.salyam.uz/api_v1/questions/latest/"
         );
         const json = await response.json();
         setTopics(json);
@@ -27,14 +27,14 @@ export default function HotTopics() {
         <h1 className="font-bold text-lg text-gray-800 p-2">Lots of topics</h1>
       </header>
       <main className="rounded-lg flex flex-col gap-2 mt-6">
-        {topics.map(({ slug, title }) => {
+        {topics.map(({ id, title }) => {
           return (
             <main
-              key={slug}
+              key={id}
               className="rounded-lg bg-white border-b-4 my-1 border-[#1f9065]"
             >
               <Link
-                href={`/question-details/${slug}`}
+                href={`/question-details/${id}`}
                 className="flex justify-between p-3 lg:p-5"
               >
                 <div className="flex items-center gap-1">
