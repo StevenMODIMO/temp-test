@@ -11,10 +11,13 @@ export default function LoginForm({ setOpenForm }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
     try {
       const response = await fetch(
         "https://backfatvo.salyam.uz/api_v1/auth/login/",
@@ -30,8 +33,13 @@ export default function LoginForm({ setOpenForm }) {
       if (response.ok) {
         setEmail("");
         setPassword("");
+        setLoading(false);
+        setOpenForm(false);
       } else {
-        console.log(json.error);
+        setError(json.error);
+        setLoading(false);
+        setEmail("");
+        setPassword("");
       }
     } catch (error) {
       console.log(error);
@@ -64,12 +72,17 @@ export default function LoginForm({ setOpenForm }) {
         </div>
         <form
           onSubmit={handleSubmit}
+          onFocus={() => setError(null)}
           className="w-full flex flex-col gap-3 my-2 px-3 md:w-fit md:mx-auto"
         >
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="p-2 rounded-xl outline-gray-100 border border-gray-200"
+            className={
+              error
+                ? "p-2 rounded-xl outline-gray-100 border border-red-400"
+                : "p-2 rounded-xl outline-gray-100 border border-gray-200"
+            }
             placeholder="Email"
           />
           <label htmlFor="password" className="flex justify-end">
@@ -84,14 +97,26 @@ export default function LoginForm({ setOpenForm }) {
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="p-2 rounded-xl outline-gray-100 border border-gray-200"
+            className={
+              error
+                ? "p-2 rounded-xl outline-gray-100 border border-red-400"
+                : "p-2 rounded-xl outline-gray-100 border border-gray-200"
+            }
             placeholder="Password"
           />
+          {error && <div className="my-3 text-red-500">{error}</div>}
           <p className="text-[#1f9065] text-sm md:text-lg">
             Have you forgotten your password
           </p>
           <button className="bg-[#1f9065] rounded-xl p-2 my-2 text-white">
-            Introduction
+            {loading ? (
+              <div className="flex justify-center items-center gap-2">
+                <div className="h-5 w-5 animate-spin border-4 border-t-transparent border-white rounded-full"></div>
+                <p>loading</p>
+              </div>
+            ) : (
+              <p>Introduction</p>
+            )}
           </button>
         </form>
         <p className="px-3 text-xs text-center my-2 md:text-sm md:w-fit md:mx-auto">
