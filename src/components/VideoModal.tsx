@@ -37,17 +37,17 @@ export default function VideoModal({ url, onClose }: VideoModalProps) {
 
   return (
     <Backdrop>
-      <div className="fixed mx-auto w-[90%] h-[90%] bg-white rounded shadow-lg p-4">
+      <div className="mx-auto w-[90%] h-[90%] bg-white rounded shadow-lg">
         <button
           onClick={onClose}
-          className="absolute text-2xl top-4 right-4 text-gray-600 hover:text-gray-900"
+          className="absolute text-2xl top-4 right-6 text-gray-800 bg-white p-1 rounded-full"
         >
-         <FaTimes />
+          <FaTimes />
         </button>
         <iframe
           src={`https://www.youtube.com/embed/${videoId}`}
           title="YouTube video player"
-          className="w-[95%] h-full rounded mx-auto"
+          className="w-full h-full rounded mx-auto"
           allowFullScreen
         />
       </div>

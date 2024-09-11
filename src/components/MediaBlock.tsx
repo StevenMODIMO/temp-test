@@ -5,7 +5,6 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 import { IoEyeOutline } from "react-icons/io5";
 import VideoModal from "./VideoModal";
 
-
 export default function MediaBlock() {
   const [media, setMedia] = useState([]);
   const [modal, setModal] = useState(false);
@@ -44,7 +43,7 @@ export default function MediaBlock() {
         </h1>
       </header>
       <section className="flex flex-col items-center md:grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {media.map(({ id, title, image, url, view }) => (
+        {media.map(({ id, title, image, url, fatwa_issuer }) => (
           <div
             key={id}
             className="group relative"
@@ -59,14 +58,8 @@ export default function MediaBlock() {
               />
               <FaRegCirclePlay className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl opacity-0 group-hover:opacity-100 transition duration-300" />
             </div>
-            <h1 className="text-gray-500 text-xl mt-2">{title}</h1>
-            <div className="flex items-center gap-3 mt-1">
-              <div className="flex gap-1 items-center">
-                <p>Youtube</p>
-                <IoEyeOutline />
-              </div>
-              <p>{view}</p>
-            </div>
+            <h1 className="text-gray-500 text-xl mt-2 w-56">{title}</h1>
+            <div>{fatwa_issuer}</div>
           </div>
         ))}
       </section>

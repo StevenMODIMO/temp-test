@@ -22,22 +22,33 @@ export default function Footer() {
           on this path, and to get the right answers to the questions of our
           compatriots.
         </h1>
-        <h2 className="font-bold">All rights reserved.</h2>
+        <Link href="/terms-of-service">All rights reserved.</Link>
       </section>
       <section>
         <header className="font-bold">Contact us</header>
         <section className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">
             <IoCallOutline className="text-lg" />
-            <p>(78) 150-33-44</p>
+            <a href="tel:+7871503344" className="hover:text-white">
+              (78) 150-33-44
+            </a>
           </div>
           <div className="flex gap-2 items-center">
             <CiMail className="text-lg" />
-            <p>fatvo.uz@mail.ru</p>
+            <a href="mailto:fatvo.uz@mail.ru" className="hover:text-white">
+              fatvo.uz@mail.ru
+            </a>
           </div>
           <div className="flex gap-2 items-center">
             <CiLocationOn className="text-lg" />
-            <p>Tashkent city,Almazor district, korasayor street,47</p>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Tashkent+city,+Almazor+district,+korasayor+street,+47"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white"
+            >
+              Tashkent city, Almazor district, korasayor street, 47
+            </a>
           </div>
         </section>
       </section>

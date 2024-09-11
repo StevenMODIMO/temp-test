@@ -42,26 +42,6 @@ export default function Navbar(props: NavbarProps) {
       <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-24">
         <nav className="hidden md:flex gap-3 lg:gap-6">
           <Link href="/">Home</Link>
-          <div
-            className="relative"
-            onClick={() => setShowCategories(!showCategories)}
-          >
-            <button className="flex items-center gap-2 font-semibold text-gray-200 hover:text-white">
-              <p>Categories</p>
-              <MdOutlineKeyboardArrowDown className="text-xl" />
-            </button>
-            {showCategories && (
-              <div className="z-10 absolute top-full mt-2 w-32 bg-white text-black p-2 rounded shadow-lg">
-                {categories.map(({ id, slug, name }) => {
-                  return (
-                    <Link href={`/categories/${id}`}>
-                      {name}
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
-          </div>
           {navLinks.map(({ id, title, route }) => {
             return (
               <main
