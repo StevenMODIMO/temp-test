@@ -22,7 +22,7 @@ export default function PinnedQuestion() {
       }
     };
     getQuestion();
-  });
+  }, []);
   return (
     <main className="my-3 lg:my-5 rounded-md">
       <header className="border-b-4 border-[#1f9065]">

@@ -5,17 +5,33 @@ import Link from "next/link";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import BannerSearch from "./BannerSearch";
 import SendQuestion from "./SendQuestion";
-import RedirectModal from "./RedirectModal";
+import LoginForm from "./LoginForm";
 import fatvo from "@/public/fatvo.png";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Banner() {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
+  const { user } = useAuth();
+
+  const handleOpenModal = () => {
+    if (user) {
+      setOpen(true);
+    } else {
+      setOpen(true);
+    }
+  };
 
   return (
     <main className="relative w-full h-[400px] text-gray-200">
+      {open &&
+        (user ? (
+          <SendQuestion setOpen={setOpen} />
+        ) : (
+          <LoginForm setOpenForm={setOpen} />
+        ))}
       <Image
         fill
         alt="Banner"
@@ -34,10 +50,10 @@ export default function Banner() {
         </div>
         <div className="flex flex-col gap-4 p-1 sm:flex-row">
           <button
-            onClick={() => setOpen(true)}
+            onClick={handleOpenModal}
             className="p-3 flex gap-2 items-center border border-[#1f9065] rounded-[32px]"
           >
-            <h4>The question is yes</h4>
+            <h4>{user ? "Send a Question" : "The question is yes"}</h4>
             <MdOutlineArrowOutward />
           </button>
           <BannerSearch />

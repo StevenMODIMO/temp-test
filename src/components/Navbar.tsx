@@ -5,21 +5,22 @@ import { navLinks } from "@/lib/data";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "@/public/Frame.png";
 import { FiUser } from "react-icons/fi";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import NavLinks from "./NavLinks";
 import { AnimatePresence } from "framer-motion";
 import { LuLogOut } from "react-icons/lu";
 import LoginForm from "./LoginForm";
-import { useRouter } from "next/navigation";
-
+import SendQuestion from "./SendQuestion";
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 interface NavbarProps {}
 
 export default function Navbar(props: NavbarProps) {
   const [openLinks, setOpenLinks] = useState(false);
   const [openForm, setOpenForm] = useState(false);
-  const router = useRouter()
+  const [openSendQuestion, setOpenSendQuestion] = useState(false); // State for SendQuestion modal
+  const router = useRouter();
 
   const { user, dispatch } = useAuth();
 
@@ -31,10 +32,16 @@ export default function Navbar(props: NavbarProps) {
   };
 
   const handleProtectedRoute = (route: string) => {
-    if (!user) {
-      setOpenForm(true); // Open the login form if not authenticated
+    if (route === "/send-question") {
+      if (user) {
+        setOpenSendQuestion(true); // Open SendQuestion modal if user is authenticated
+      } else {
+        setOpenForm(true); // Open LoginForm modal if user is not authenticated
+      }
+    } else if (!user) {
+      setOpenForm(true); // Open LoginForm modal for other protected routes if user is not authenticated
     } else {
-      window.location.href = route; // Navigate to the route if authenticated
+      window.location.href = route; // Redirect to route if user is authenticated
     }
   };
 
@@ -45,7 +52,9 @@ export default function Navbar(props: NavbarProps) {
       </Link>
       <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-16">
         <nav className="hidden md:flex gap-3 lg:gap-6">
-          <Link href="/">Home</Link>
+          <Link href="/" className="font-semibold">
+            Home
+          </Link>
           {navLinks.map(({ id, title, route }) => {
             if (route === "/latest-answers" || route === "/send-question") {
               return (
@@ -97,6 +106,7 @@ export default function Navbar(props: NavbarProps) {
         {openLinks && <NavLinks setOpenLinks={setOpenLinks} />}
       </AnimatePresence>
       {openForm && <LoginForm setOpenForm={setOpenForm} />}
+      {openSendQuestion && <SendQuestion setOpen={setOpenSendQuestion} />}
     </main>
   );
 }
