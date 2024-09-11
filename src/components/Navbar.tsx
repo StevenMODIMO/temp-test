@@ -8,41 +8,56 @@ import { FiUser } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import NavLinks from "./NavLinks";
 import { AnimatePresence } from "framer-motion";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { LuLogOut } from "react-icons/lu";
 import LoginForm from "./LoginForm";
+import { useRouter } from "next/navigation";
+
+import { useAuth } from "@/context/AuthContext";
 
 interface NavbarProps {}
 
 export default function Navbar(props: NavbarProps) {
   const [openLinks, setOpenLinks] = useState(false);
   const [openForm, setOpenForm] = useState(false);
-  const [showCategories, setShowCategories] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const router = useRouter()
 
-  useEffect(() => {
-    const getCategories = async () => {
-      const response = await fetch(
-        "https://backfatvo.salyam.uz/api_v1/categories/"
-      );
-      const json = await response.json();
-      if (response.ok) {
-        setCategories(json);
-      } else {
-        console.log(json.error);
-      }
-    };
-    getCategories();
-  }, []);
+  const { user, dispatch } = useAuth();
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("user_tokens");
+    dispatch({ type: "LOGOUT" });
+    router.push("/");
+  };
+
+  const handleProtectedRoute = (route: string) => {
+    if (!user) {
+      setOpenForm(true); // Open the login form if not authenticated
+    } else {
+      window.location.href = route; // Navigate to the route if authenticated
+    }
+  };
 
   return (
     <main className="bg-[#1f9065] text-gray-200 p-4 flex justify-between md:p-4">
       <Link href="/">
         <Image src={logo} alt="logo" width={120} height={120} />
       </Link>
-      <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-24">
+      <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-16">
         <nav className="hidden md:flex gap-3 lg:gap-6">
           <Link href="/">Home</Link>
           {navLinks.map(({ id, title, route }) => {
+            if (route === "/latest-answers" || route === "/send-question") {
+              return (
+                <main
+                  key={id}
+                  className="font-semibold text-gray-200 hover:text-white cursor-pointer"
+                  onClick={() => handleProtectedRoute(route)}
+                >
+                  {title}
+                </main>
+              );
+            }
             return (
               <main
                 key={id}
@@ -54,13 +69,25 @@ export default function Navbar(props: NavbarProps) {
           })}
         </nav>
         <section className="flex gap-2 items-center">
-          <div
-            onClick={() => setOpenForm(true)}
-            className="cursor-pointer flex items-center hover:rounded hover:bg-[#40aa81] lg:p-3"
-          >
-            <FiUser />
-            <div>Introduction</div>
-          </div>
+          <main>
+            {user ? (
+              <div className="relative cursor-pointer flex justify-between gap-6 bg-[#1c855c] rounded items-center hover:bg-[#40aa81] lg:p-2">
+                <div className="flex gap-2 items-center">
+                  <FiUser className="text-lg" />
+                  <p className="text-lg font-semibold">{user.first_name}</p>
+                </div>
+                <LuLogOut onClick={logout} className="text-lg" />
+              </div>
+            ) : (
+              <div
+                onClick={() => setOpenForm(true)}
+                className="cursor-pointer flex items-center hover:rounded hover:bg-[#40aa81] lg:p-3"
+              >
+                <FiUser />
+                <div>Introduction</div>
+              </div>
+            )}
+          </main>
           <div className="md:hidden" onClick={() => setOpenLinks(!openLinks)}>
             {openLinks ? <FaTimes /> : <FaBars />}
           </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { AuthContextProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Fatvo markazi",
@@ -14,12 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <AuthContextProvider>
+      <html lang="en">
+        <body>
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </AuthContextProvider>
   );
 }

@@ -7,12 +7,51 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 
+import { useAuth } from "@/context/AuthContext";
+
 export default function LoginForm({ setOpenForm }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const { dispatch } = useAuth();
+
+  const getUser = async () => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("user_tokens"));
+      const access = tokens?.access_token;
+
+      if (!access) {
+        console.error("Access token not found");
+        return;
+      }
+
+      const response = await fetch(
+        "https://backfatvo.salyam.uz/api_v1/user/profile/",
+        {
+          headers: {
+            Authorization: `Bearer ${access}`,
+          },
+        }
+      );
+
+      const json = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("user", JSON.stringify(json));
+        dispatch({ type: "LOGIN", payload: json });
+      } else {
+        console.error("Error fetching user profile:", json.error);
+      }
+    } catch (error) {
+      console.error(
+        "An error occurred while fetching the user profile:",
+        error
+      );
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,6 +74,14 @@ export default function LoginForm({ setOpenForm }) {
         setPassword("");
         setLoading(false);
         setOpenForm(false);
+        localStorage.setItem(
+          "user_tokens",
+          JSON.stringify({
+            access_token: json.access,
+            refresh_token: json.refresh,
+          })
+        );
+        getUser();
       } else {
         setError(json.error);
         setLoading(false);

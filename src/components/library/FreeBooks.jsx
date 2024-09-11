@@ -19,7 +19,7 @@ export default function FreeBooks() {
       }
     };
     getFreeBooks();
-  });
+  },[]);
 
   const next = () => {
     setCurrent((prev) => (prev === freeBooks.length - 1 ? 0 : prev + 1));

@@ -56,7 +56,9 @@ export default function Footer() {
         <div className="flex flex-col gap-3">
           <section className="flex items-center gap-2 cursor-pointer hover:text-white">
             <FaXTwitter className="text-2xl" />
-            <p>Twitter</p>
+            <Link href="https://x.com/fatvouz" target="_blank">
+              Twitter
+            </Link>
           </section>
           <section className="flex items-center gap-2 cursor-pointer hover:text-white">
             <CiInstagram className="text-2xl" />

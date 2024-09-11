@@ -12,7 +12,7 @@ export default function Library() {
   return (
     <main className="bg-gray-200">
       <section className="mx-4 p-2 sm:mx-8 md:mx-10 md:px-2 md:pt-10">
-      <header className="text-[#1f9065] text-3xl font-semibold md:text-4xl">
+      <header className="text-black text-3xl font-semibold md:text-4xl">
         <h1>Library</h1>
       </header>
       <BookSales />
