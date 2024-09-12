@@ -68,52 +68,63 @@ export default function MyQuestions() {
         </header>
       </header>
       <section className="flex gap-4 mx-24 lg:max-w-[70%] lg:mx-auto">
-        <main className="flex flex-col gap-4 p-4 w-[90%]">
-          {questions.map(({ title, view, updated_at, is_answered }, index) => {
-            const formattedDate = updated_at
-              ? new Date(updated_at).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })
-              : "";
-            return (
-              <main
-                key={index}
-                className="py-12 px-6 flex flex-col gap-5 p-3 border-b-2 border-[#1f9065] bg-white rounded-xl"
-              >
-                <header className="flex justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="h-7 w-7 rounded-md bg-[#1f9065]"></div>
-                    <p className="text-xl text-gray-600">{formattedDate}</p>
-                  </div>
-                  <div>
-                    {is_answered ? (
-                      <div className="flex gap-2 items-center">
-                        <div className="rounded-full h-2 w-2 bg-[#1f9065]"></div>
-                        <p className="text-[#1f9065]">Answered</p>
+        {questions.length > 0 ? (
+          <main className="flex flex-col gap-4 p-4 w-[90%]">
+            {questions.map(
+              ({ title, view, updated_at, is_answered }, index) => {
+                const formattedDate = updated_at
+                  ? new Date(updated_at).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })
+                  : "";
+                return (
+                  <main
+                    key={index}
+                    className="py-12 px-6 flex flex-col gap-5 p-3 border-b-2 border-[#1f9065] bg-white rounded-xl"
+                  >
+                    <header className="flex justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="h-7 w-7 rounded-md bg-[#1f9065]"></div>
+                        <p className="text-xl text-gray-600">{formattedDate}</p>
                       </div>
-                    ) : (
-                      <div className="flex gap-2 items-center">
-                        <div className="rounded-full h-2 w-2 bg-red-500"></div>
-                        <p className="text-red-500">Unanswered</p>
+                      <div>
+                        {is_answered ? (
+                          <div className="flex gap-2 items-center">
+                            <div className="rounded-full h-2 w-2 bg-[#1f9065]"></div>
+                            <p className="text-[#1f9065]">Answered</p>
+                          </div>
+                        ) : (
+                          <div className="flex gap-2 items-center">
+                            <div className="rounded-full h-2 w-2 bg-red-500"></div>
+                            <p className="text-red-500">Unanswered</p>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                </header>
-                <section>
-                  <header className="text-[#1f9065] text-lg">
-                    <h1>Question</h1>
-                  </header>
-                  <div className="flex items-center gap-2 ml-4">
-                    <FaCircle className="text-gray-400 text-[5px]" />
-                    <p className="text-gray-400 text-lg">{title}</p>
-                  </div>
-                </section>
-              </main>
-            );
-          })}
-        </main>
+                    </header>
+                    <section>
+                      <header className="text-[#1f9065] text-lg">
+                        <h1>Question</h1>
+                      </header>
+                      <div className="flex items-center gap-2 ml-4">
+                        <FaCircle className="text-gray-400 text-[5px]" />
+                        <p className="text-gray-400 text-lg">{title}</p>
+                      </div>
+                    </section>
+                  </main>
+                );
+              }
+            )}
+          </main>
+        ) : (
+          <main>
+            <p className="text-center text-2xl font-semibold">
+              There is no question submitted yet. If you have questions, please
+              click ‘Submit question
+            </p>
+          </main>
+        )}
         <main className="w-[30%] mt-6">
           <section className="bg-white rounded-lg p-6 border-b-4 border-[#1f9065] flex flex-col gap-3">
             <header>

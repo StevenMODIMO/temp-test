@@ -22,7 +22,10 @@ export default function Footer() {
           on this path, and to get the right answers to the questions of our
           compatriots.
         </h1>
-        <Link href="/terms-of-service">All rights reserved.</Link>
+        <Link href="/privacy-policy" className="text-sm md:text-[16px]">Privacy policy.</Link>
+        <Link href="/terms-of-service" className="text-sm md:text-[16px]">Terms of service.</Link>
+        <Link href="/user-data-deletion" className="text-sm md:text-[16px]">User data deletion.</Link>
+        <Link href="/terms-of-service" className="text-sm md:text-[16px]">All rights reserved.</Link>
       </section>
       <section>
         <header className="font-bold">Contact us</header>

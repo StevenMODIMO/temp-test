@@ -83,14 +83,21 @@ export default function BookSales() {
               </div>
             ))}
         </div>
-        <section className="flex justify-between mt-4">
-          <div className="bg-gray-200 p-2 rounded-full absolute top-1/2 left-0">
-            <IoIosArrowBack onClick={handlePrev} />
+        <section className="flex justify-between mt-4 cursor-pointer">
+          <div
+            onClick={handlePrev}
+            className="bg-gray-200 p-2 rounded-full absolute top-1/2 left-0 hover:bg-[#1f9065] hover:text-white"
+          >
+            <IoIosArrowBack />
           </div>
-          <div className="bg-gray-200 p-2 rounded-full absolute top-1/2 right-0">
-            <IoIosArrowForward onClick={handleNext} />
+          <div
+            onClick={handleNext}
+            className="bg-gray-200 p-2 rounded-full absolute top-1/2 right-0 hover:bg-[#1f9065] hover:text-white"
+          >
+            <IoIosArrowForward />
           </div>
         </section>
+        
       </section>
     </main>
   );

@@ -19,7 +19,7 @@ export default function FreeBooks() {
       }
     };
     getFreeBooks();
-  },[]);
+  }, []);
 
   const next = () => {
     setCurrent((prev) => (prev === freeBooks.length - 1 ? 0 : prev + 1));
@@ -35,21 +35,21 @@ export default function FreeBooks() {
       <header className="pt-2 pl-2 text-[#1f9065] text-xl font-semibold border-b-4 border-[#1f9065]">
         <h1>Free books</h1>
       </header>
-      <main className="bg-[#1f9065] rounded-md p-4 mt-3 cursor-pointer lg:h-[30%] lg:p-2 lg:w-[20%]">
-        <section className="text-white flex flex-col gap-2">
+      <main className="relative bg-gray-100 mx-0 p-2 rounded-lg mt-2 md:p-4">
+        <section className="bg-white p-2 shadow rounded lg:w-52">
           {freeBooks.length > 0 && (
             <>
               <img
                 src={freeBooks[current].images[0]}
                 alt={freeBooks[current].title}
-                className="w-64 h-36 object-cover rounded-md transition duration-700 ease-in-out mx-auto lg:w-52"
+                className="h-56 w-80 object-cover rounded-md mb-4"
               />
-              <p className="font-semibold text-xl">
+              <p className="font-semibold text-lg text-gray-800">
                 {freeBooks[current].title}
               </p>
             </>
           )}
-          <footer className="flex gap-2 justify-end text-white">
+          <footer className="flex gap-2 justify-end text-[#1f9065]">
             <IoIosArrowBack onClick={prev} />
             <IoIosArrowForward onClick={next} />
           </footer>

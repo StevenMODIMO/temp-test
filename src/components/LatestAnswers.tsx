@@ -12,10 +12,10 @@ export default function LatestAnswers() {
     const getAnswers = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/questions/latest/"
+          "https://backfatvo.salyam.uz/api_v1/questions/?pageSize=12"
         );
         const json = await response.json();
-        setAnswers(json);
+        setAnswers(json.results);
       } catch (error) {
         console.log(error);
       }

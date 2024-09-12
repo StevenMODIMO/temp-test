@@ -21,7 +21,7 @@ export default function Categories() {
 
         if (response.ok) {
           setQuestions(json.results);
-          setTotalPages(json.pages_count); // Assuming the response provides the total page count
+          setTotalPages(json.pages_count);
         } else {
           console.error(json.error);
         }
@@ -49,7 +49,14 @@ export default function Categories() {
       <main className="flex-1">
         <div className="flex flex-col gap-4 p-4 w-[90%]">
           {questions.map(
-            ({ id, title, view, truncated_answer, updated_at }) => {
+            ({
+              id,
+              title,
+              view,
+              truncated_question,
+              truncated_answer,
+              updated_at,
+            }) => {
               return (
                 <main
                   key={id}
@@ -59,9 +66,11 @@ export default function Categories() {
                     <p className="text-[#1f9065] text-2xl font-semibold">
                       {title}
                     </p>
-                    <p className="text-gray-400">{view} views</p>
+                    <p className="text-gray-400 mt-2 text-sm">{view} views</p>
                   </header>
-                  <p>{truncated_answer}</p>
+                  <p className="text-[16px]">{truncated_question}</p>
+                  <div className="h-[2px] w-[95%] mx-auto bg-gray-200"></div>
+                  <p className="text-[16px]">{truncated_answer}</p>
                   <footer className="flex justify-between text-sm">
                     <div className="text-gray-400">
                       {new Date(updated_at).toLocaleString()}

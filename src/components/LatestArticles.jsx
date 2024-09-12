@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Slider from "react-slick";
-import Image from "next/image";
+import Link from "next/link";
 import { MdArrowForwardIos, MdOutlineArrowBackIosNew } from "react-icons/md";
 
 export default function LatestArticles() {
@@ -47,6 +46,12 @@ export default function LatestArticles() {
                 alt={articles[current].title}
                 className="w-80 h-44 object-cover rounded-[32px] transition duration-700 ease-in-out lg:w-full lg:h-72"
               />
+              <Link
+                href={`/articles/${articles[current].slug}`}
+                className="text-[#1f9065] text-3xl font-semibold p-2"
+              >
+                {articles[current].title}
+              </Link>
               <button
                 className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-1 rounded-full"
                 onClick={prev}

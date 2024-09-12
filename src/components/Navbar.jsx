@@ -44,7 +44,7 @@ export default function Navbar() {
     localStorage.removeItem("user");
     localStorage.removeItem("user_tokens");
     dispatch({ type: "LOGOUT" });
-
+    router.push("/");
     if (isAuth) {
       signOut();
     }

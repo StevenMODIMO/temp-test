@@ -48,7 +48,7 @@ export default function HotTopics() {
         })}
       </main>
       <Link
-        href="/question-details"
+        href="/categories"
         className="w-fit border border-[#1f9065] p-2 mt-3 rounded-full flex items-center gap-1"
       >
         All questions <MdOutlineArrowOutward className="text-[#1f9065]" />

@@ -8,7 +8,7 @@ interface PrivacyTypes {
 
 export default async function Page() {
   const response = await fetch(
-    "https://backfatvo.salyam.uz/api_v1/pages/terms-of-use/"
+    "https://backfatvo.salyam.uz/api_v1/pages/user-data-deletion/"
   );
   const data: PrivacyTypes = await response.json();
   return (
