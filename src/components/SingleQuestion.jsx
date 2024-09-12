@@ -1,13 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaCircle } from "react-icons/fa6";
 import { FaSquareFull } from "react-icons/fa";
-import { MdOutlineArrowOutward } from "react-icons/md";
-import { LuArrowDownRight } from "react-icons/lu";
+import Attachment from "./Attachment";
 
 export default function SingleQuestion({ id }) {
   const [question, setQuestion] = useState({});
-  const [answer, setAnswer] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const getQuestion = async () => {
@@ -46,47 +44,29 @@ export default function SingleQuestion({ id }) {
         </p>
       </header>
       <main>
-        <header className="text-xl text-[#1f9065]">
-          <h1>Question</h1>
-        </header>
         <section className="flex gap-4 p-4">
-          <FaCircle className="mt-2 text-xs text-gray-400" />
           <p className="text-lg text-gray-500">{question.question}</p>
         </section>
       </main>
-      {answer && (
-        <main>
-          <header className="text-xl text-[#1f9065]">
-            <h1>Answer</h1>
-          </header>
-          <section className="flex gap-4 p-4">
-            <FaCircle className="mt-2 text-xs text-gray-400" />
-            <div
-              className="text-lg text-[#1f9065]"
-              dangerouslySetInnerHTML={{ __html: question.answer }}
-            />
-          </section>
-        </main>
+      <main className="flex justify-end">
+        <button
+          onClick={() => setOpen(true)}
+          className="bg-[#1f9065] text-white p-2 rounded-md"
+        >
+          View attachment
+        </button>
+      </main>
+      <main>
+        <section className="flex gap-4 p-4">
+          <div
+            className="text-lg text-[#1f9065]"
+            dangerouslySetInnerHTML={{ __html: question.answer }}
+          />
+        </section>
+      </main>
+      {open && (
+        <Attachment setOpen={setOpen} attached_file={question.attached_file} />
       )}
-      <footer>
-        {!answer ? (
-          <div
-            onClick={() => setAnswer(true)}
-            className="cursor-pointer w-fit text-lg flex items-center gap-1 border-2 border-[#1f9065] p-1 rounded-xl hover:bg-[#1f9065] hover:text-white"
-          >
-            <p>More</p>
-            <LuArrowDownRight />
-          </div>
-        ) : (
-          <div
-            onClick={() => setAnswer(false)}
-            className="cursor-pointer w-fit text-lg flex items-center gap-2 border-2 border-[#1f9065] p-1 rounded-xl hover:bg-[#1f9065] hover:text-white"
-          >
-            <p>Minimize</p>
-            <MdOutlineArrowOutward />
-          </div>
-        )}
-      </footer>
     </main>
   );
 }
