@@ -1,12 +1,11 @@
 "use client";
 import Backdrop from "./Backdrop";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-//import { signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
-
 import { useAuth } from "@/context/AuthContext";
 
 export default function LoginForm({ setOpenForm }) {
@@ -15,7 +14,6 @@ export default function LoginForm({ setOpenForm }) {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const { dispatch } = useAuth();
 
   const getUser = async () => {
@@ -104,6 +102,7 @@ export default function LoginForm({ setOpenForm }) {
         </header>
         <section className="px-3 my-2 md:flex gap-2 md:w-fit md:mx-auto">
           <div
+            onClick={() => signIn("google")}
             className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-56"
           >
             <FcGoogle />
