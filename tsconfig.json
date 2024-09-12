@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/LatestArticles.jsx", "src/components/PinnedBooks.jsx", "src/components/FreeBooks.jsx", "src/hooks/useAuth.jsx", "src/context/AuthContext.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/LatestArticles.jsx", "src/components/PinnedBooks.jsx", "src/components/FreeBooks.jsx", "src/hooks/useAuth.jsx", "src/context/AuthContext.jsx", "src/components/SessionProvider.jsx", "src/components/PrayerTimes.jsx"],
   "exclude": ["node_modules"]
 }

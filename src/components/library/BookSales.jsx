@@ -60,7 +60,7 @@ export default function BookSales() {
       <header className="mt-3 pt-2 pl-2 text-[#1f9065] text-xl font-semibold border-b-4 border-[#1f9065]">
         <h1>Available for sale</h1>
       </header>
-      <main className="bg-gray-100 mx-0 p-2 rounded-lg mt-2 md:p-4">
+      <main className="relative bg-gray-100 mx-0 p-2 rounded-lg mt-2 md:p-4">
         <div className="flex gap-8">
           {books
             .slice(currentIndex, currentIndex + booksPerSlide)
@@ -70,7 +70,7 @@ export default function BookSales() {
                   <img
                     src={images[0]}
                     alt={title}
-                    className="h-40 w-80 object-cover rounded-md mb-4 lg:w-96 lg:h-48"
+                    className="h-56 w-80 object-cover rounded-md mb-4 lg:w-96 lg:h-64"
                   />
                   <h2 className="font-semibold text-lg text-gray-800">
                     {title}
@@ -81,10 +81,10 @@ export default function BookSales() {
             ))}
         </div>
         <section className="flex justify-between mt-4">
-          <div className="bg-white p-2 rounded-full">
+          <div className="bg-gray-200 p-2 rounded-full absolute top-1/2 left-0">
             <IoIosArrowBack onClick={handlePrev} />
           </div>
-          <div className="bg-white p-2 rounded-full">
+          <div className="bg-gray-200 p-2 rounded-full absolute top-1/2 right-0">
             <IoIosArrowForward onClick={handleNext} />
           </div>
         </section>

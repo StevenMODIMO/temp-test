@@ -59,7 +59,7 @@ export default function MyQuestions() {
 
   return (
     <main className="bg-gray-200">
-      <header className="flex flex-col gap-4 mx-28">
+      <header className="flex flex-col gap-4 mx-28 lg:max-w-[70%] lg:mx-auto">
         <header className="font-semibold text-3xl mt-4">
           <p>Welcome {user?.first_name}!</p>
         </header>
@@ -67,7 +67,7 @@ export default function MyQuestions() {
           <p>My questions</p>
         </header>
       </header>
-      <section className="flex gap-4 mx-24">
+      <section className="flex gap-4 mx-24 lg:max-w-[70%] lg:mx-auto">
         <main className="flex flex-col gap-4 p-4 w-[90%]">
           {questions.map(({ title, view, updated_at, is_answered }, index) => {
             const formattedDate = updated_at

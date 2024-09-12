@@ -5,7 +5,7 @@ interface Region {
   uz: string;
 }
 
-const regions = [
+export const regions: Region[] = [
   { en: "Angrеn", ru: "Ангрен", "uz-cyr": "Ангрен", uz: "Angrеn" },
   { en: "Andijon", ru: "Андижан", "uz-cyr": "Андижон", uz: "Andijon" },
   { en: "Arnasoy", ru: "Арнасой", "uz-cyr": "Арнасой", uz: "Arnasoy" },

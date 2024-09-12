@@ -33,20 +33,20 @@ export default function PinnedBooks() {
   };
 
   return (
-    <main className="my-3 rounded-[32px] cursor-pointer bg-[#1f9065] p-2">
+    <main className="my-3 rounded-md cursor-pointer bg-[#1f9065] p-2">
       <header className="border-b border-[#1f9065]">
         <h1 className="font-bold text-lg text-white lg:text-2xl">
           Book recommendation
         </h1>
       </header>
       <section className="text-white flex flex-col gap-2 my-3">
-        <main className="text-white flex gap-2 my-3">
+        <main className="text-white flex flex-col gap-2 my-3">
           {pinnedBooks.length > 0 && (
             <>
               <img
                 src={pinnedBooks[current].images[0]}
                 alt={pinnedBooks[current].title}
-                className="w-20 h-64 object-cover rounded-full transition duration-700 ease-in-out mx-auto lg:w-14 lg:h-60"
+                className="w-80 h-56 object-cover rounded transition duration-700 ease-in-out mx-auto lg:h-52"
               />
               <p className="text-sm md:text-xl">
                 {pinnedBooks[current].preview_description}

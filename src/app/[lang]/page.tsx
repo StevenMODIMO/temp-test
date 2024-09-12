@@ -16,6 +16,7 @@ export default function Home() {
   return (
     <div>
       <Banner />
+      <PrayerTimes />
       <section className="bg-gray-100 border-t-4 border-[#1f9065]">
         <main className="my-3 mx-5 lg:my-5 lg:mx-12 lg:flex lg:gap-14">
           <div className="lg:w-[60%]">

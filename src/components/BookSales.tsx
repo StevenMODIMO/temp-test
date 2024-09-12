@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export default function BookSales() {
   const [books, setBooks] = useState([]);
@@ -82,30 +83,14 @@ export default function BookSales() {
               </div>
             ))}
         </div>
-        <div className="absolute inset-y-0 left-0 flex items-center">
-          <button
-            onClick={handlePrev}
-            className={`bg-[#1f9065] text-white p-2 rounded-full shadow-lg transition-all duration-200 hover:bg-[#137552] ${
-              currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            disabled={currentIndex === 0}
-          >
-            &larr;
-          </button>
-        </div>
-        <div className="absolute inset-y-0 right-0 flex items-center">
-          <button
-            onClick={handleNext}
-            className={`bg-[#1f9065] text-white p-2 rounded-full shadow-lg transition-all duration-200 hover:bg-[#137552] ${
-              currentIndex + booksPerSlide >= books.length
-                ? "opacity-50 cursor-not-allowed"
-                : ""
-            }`}
-            disabled={currentIndex + booksPerSlide >= books.length}
-          >
-            &rarr;
-          </button>
-        </div>
+        <section className="flex justify-between mt-4">
+          <div className="bg-gray-200 p-2 rounded-full absolute top-1/2 left-0">
+            <IoIosArrowBack onClick={handlePrev} />
+          </div>
+          <div className="bg-gray-200 p-2 rounded-full absolute top-1/2 right-0">
+            <IoIosArrowForward onClick={handleNext} />
+          </div>
+        </section>
       </section>
     </main>
   );

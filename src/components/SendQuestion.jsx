@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
 import Backdrop from "./Backdrop";
+import SuccessModal from "./SuccessModal";
 import { FaTimes } from "react-icons/fa";
 import { RiAttachment2 } from "react-icons/ri";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
 
 export default function SendQuestion({ setOpen }) {
   const [name, setName] = useState("");
@@ -12,8 +12,8 @@ export default function SendQuestion({ setOpen }) {
   const [file, setFile] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const { user } = useAuth();
-  const router = useRouter();
 
   const sendQuestion = async (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ export default function SendQuestion({ setOpen }) {
       setFile("");
       setError(null);
       setLoading(false);
-      router.push("/latest-answers");
+      setOpenModal(true);
     } else {
       setName("");
       setQuestion("");
@@ -53,11 +53,15 @@ export default function SendQuestion({ setOpen }) {
       console.log(json.question[0]);
       setError(json.question[0]);
       setLoading(false);
+      setOpenModal(false);
     }
   };
 
   return (
     <Backdrop>
+      {openModal && (
+        <SuccessModal setOpenModal={setOpenModal} setOpen={setOpen} />
+      )}
       <main className="bg-white text-black rounded-t-xl w-[90%] sm:w-[70%] md:w-[60%]">
         <div className="flex justify-end mt-2 mr-2">
           <FaTimes

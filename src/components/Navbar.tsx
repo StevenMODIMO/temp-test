@@ -34,79 +34,81 @@ export default function Navbar(props: NavbarProps) {
   const handleProtectedRoute = (route: string) => {
     if (route === "/send-question") {
       if (user) {
-        setOpenSendQuestion(true); // Open SendQuestion modal if user is authenticated
+        setOpenSendQuestion(true);
       } else {
-        setOpenForm(true); // Open LoginForm modal if user is not authenticated
+        setOpenForm(true);
       }
     } else if (!user) {
-      setOpenForm(true); // Open LoginForm modal for other protected routes if user is not authenticated
+      setOpenForm(true);
     } else {
-      window.location.href = route; // Redirect to route if user is authenticated
+      window.location.href = route;
     }
   };
 
   return (
-    <main className="bg-[#1f9065] text-gray-200 p-4 flex justify-between md:p-4">
-      <Link href="/">
-        <Image src={logo} alt="logo" width={120} height={120} />
-      </Link>
-      <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-16">
-        <nav className="hidden md:flex gap-3 lg:gap-6">
-          <Link href="/" className="font-semibold">
-            Home
-          </Link>
-          {navLinks.map(({ id, title, route }) => {
-            if (route === "/latest-answers" || route === "/send-question") {
+    <main className="bg-[#1f9065]">
+      <section className=" text-gray-200 flex items-center justify-between p-4 lg:max-w-[70%] lg:mx-auto">
+        <Link href="/">
+          <Image src={logo} alt="logo" width={120} height={120} />
+        </Link>
+        <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-16">
+          <nav className="hidden md:flex items-center gap-3 lg:gap-6">
+            <Link href="/" className="font-semibold">
+              Home
+            </Link>
+            {navLinks.map(({ id, title, route }) => {
+              if (route === "/latest-answers" || route === "/send-question") {
+                return (
+                  <main
+                    key={id}
+                    className="font-semibold text-gray-200 hover:text-white cursor-pointer"
+                    onClick={() => handleProtectedRoute(route)}
+                  >
+                    {title}
+                  </main>
+                );
+              }
               return (
                 <main
                   key={id}
-                  className="font-semibold text-gray-200 hover:text-white cursor-pointer"
-                  onClick={() => handleProtectedRoute(route)}
+                  className="font-semibold text-gray-200 hover:text-white"
                 >
-                  {title}
+                  <Link href={route}>{title}</Link>
                 </main>
               );
-            }
-            return (
-              <main
-                key={id}
-                className="font-semibold text-gray-200 hover:text-white"
-              >
-                <Link href={route}>{title}</Link>
-              </main>
-            );
-          })}
-        </nav>
-        <section className="flex gap-2 items-center">
-          <main>
-            {user ? (
-              <div className="relative cursor-pointer flex justify-between gap-6 bg-[#1c855c] rounded items-center hover:bg-[#40aa81] lg:p-2">
-                <div className="flex gap-2 items-center">
-                  <FiUser className="text-lg" />
-                  <p className="text-lg font-semibold">{user.first_name}</p>
+            })}
+          </nav>
+          <section className="flex gap-2 items-center">
+            <main>
+              {user ? (
+                <div className="relative cursor-pointer flex justify-between gap-6 bg-[#1c855c] rounded items-center hover:bg-[#40aa81] lg:p-2">
+                  <div className="flex gap-2 items-center">
+                    <FiUser className="text-lg" />
+                    <p className="text-lg font-semibold">{user.first_name}</p>
+                  </div>
+                  <LuLogOut onClick={logout} className="text-lg" />
                 </div>
-                <LuLogOut onClick={logout} className="text-lg" />
-              </div>
-            ) : (
-              <div
-                onClick={() => setOpenForm(true)}
-                className="cursor-pointer flex items-center hover:rounded hover:bg-[#40aa81] lg:p-3"
-              >
-                <FiUser />
-                <div>Introduction</div>
-              </div>
-            )}
-          </main>
-          <div className="md:hidden" onClick={() => setOpenLinks(!openLinks)}>
-            {openLinks ? <FaTimes /> : <FaBars />}
-          </div>
+              ) : (
+                <div
+                  onClick={() => setOpenForm(true)}
+                  className="cursor-pointer flex items-center hover:rounded hover:bg-[#40aa81] lg:p-3"
+                >
+                  <FiUser />
+                  <div>Introduction</div>
+                </div>
+              )}
+            </main>
+            <div className="md:hidden" onClick={() => setOpenLinks(!openLinks)}>
+              {openLinks ? <FaTimes /> : <FaBars />}
+            </div>
+          </section>
         </section>
+        <AnimatePresence>
+          {openLinks && <NavLinks setOpenLinks={setOpenLinks} />}
+        </AnimatePresence>
+        {openForm && <LoginForm setOpenForm={setOpenForm} />}
+        {openSendQuestion && <SendQuestion setOpen={setOpenSendQuestion} />}
       </section>
-      <AnimatePresence>
-        {openLinks && <NavLinks setOpenLinks={setOpenLinks} />}
-      </AnimatePresence>
-      {openForm && <LoginForm setOpenForm={setOpenForm} />}
-      {openSendQuestion && <SendQuestion setOpen={setOpenSendQuestion} />}
     </main>
   );
 }
