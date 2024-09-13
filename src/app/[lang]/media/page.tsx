@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Media",
+  description: "Learn from interactive videos",
+};
+
 import MediaBlock from "@/components/MediaBlock";
 
 export default function Media() {

@@ -39,7 +39,7 @@ export default function MyQuestions() {
       }
     };
     getQuestions();
-  }, []);
+  }, [user]);
 
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
@@ -118,12 +118,22 @@ export default function MyQuestions() {
             )}
           </main>
         ) : (
-          <main>
-            <p className="text-center text-2xl font-semibold">
-              There is no question submitted yet. If you have questions, please
-              click ‘Submit question
-            </p>
-          </main>
+          <>
+            {!user ? (
+              <main>
+                <p className="text-center text-2xl font-semibold mt-24">
+                  You must be <span className="text-[#1f9065]">logged in</span> to view your questions
+                </p>
+              </main>
+            ) : (
+              <main>
+                <p className="text-center text-2xl font-semibold mt-24">
+                  There is no question submitted yet. If you have questions,
+                  please click <span className="text-[#1f9065]">The question is yes</span>
+                </p>
+              </main>
+            )}
+          </>
         )}
         <main className="w-[30%] mt-6">
           <section className="bg-white rounded-lg p-6 border-b-4 border-[#1f9065] flex flex-col gap-3">

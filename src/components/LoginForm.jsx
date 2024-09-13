@@ -170,7 +170,11 @@ export default function LoginForm({ setOpenForm }) {
         <p className="px-3 text-xs text-center my-2 md:text-sm md:w-fit md:mx-auto">
           Don't have an account?{" "}
           <span>
-            <Link href="/registration" className="text-[#1f9065]">
+            <Link
+              onClick={() => setOpenForm(false)}
+              href="/registration"
+              className="text-[#1f9065]"
+            >
               Registration
             </Link>
           </span>
