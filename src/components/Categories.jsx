@@ -3,19 +3,35 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Categories() {
+  const [search, setSearch] = useState("");
   const [questions, setQuestions] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [selectedCategories, setSelectedCategories] = useState({
-    category1: false,
-    category2: false,
-  });
+  const [categories, setCategories] = useState([]);
+  const [checkedCategories, setCheckedCategories] = useState({});
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const response = await fetch(
+        "https://backfatvo.salyam.uz/api_v1/categories/"
+      );
+      const json = await response.json();
+
+      if (response.ok) {
+        setCategories(json);
+      } else {
+        console.log(json.error);
+      }
+    };
+
+    getCategories();
+  }, []);
 
   useEffect(() => {
     const getQuestions = async () => {
       try {
         const response = await fetch(
-          `https://backfatvo.salyam.uz/api_v1/questions/?page=${currentPage}&pageSize=4`
+          `https://backfatvo.salyam.uz/api_v1/questions/?page=${currentPage}&pageSize=6`
         );
         const json = await response.json();
 
@@ -36,17 +52,28 @@ export default function Categories() {
     setCurrentPage(page);
   };
 
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    setSelectedCategories((prevState) => ({
-      ...prevState,
-      [name]: checked,
+  const handleCheckboxChange = (id) => {
+    setCheckedCategories((prevChecked) => ({
+      ...prevChecked,
+      [id]: !prevChecked[id],
     }));
   };
 
   return (
     <section className="flex gap-4">
       <main className="flex-1">
+        <header>
+          <form className="ml-6">
+            <label htmlFor="search"></label>
+            <input
+              id="search"
+              className="p-2 rounded-md outline-none"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="search bar"
+            />
+          </form>
+        </header>
         <div className="flex flex-col gap-4 p-4 w-[90%]">
           {questions.map(
             ({
@@ -122,28 +149,22 @@ export default function Categories() {
           <header>
             <h1 className="text-xl font-semibold mb-4">Categories</h1>
           </header>
-          <form>
-            <label className="block mb-2">
-              <input
-                type="checkbox"
-                name="category1"
-                checked={selectedCategories.category1}
-                onChange={handleCheckboxChange}
-                className="mr-2"
-              />
-              Category 1
-            </label>
-            <label className="block">
-              <input
-                type="checkbox"
-                name="category2"
-                checked={selectedCategories.category2}
-                onChange={handleCheckboxChange}
-                className="mr-2"
-              />
-              Category 2
-            </label>
-          </form>
+          <div>
+            {categories.map((category) => (
+              <div key={category.id} className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id={category.id}
+                  checked={!!checkedCategories[category.id]}
+                  onChange={() => handleCheckboxChange(category.id)}
+                  className="cursor-pointer"
+                />
+                <label htmlFor={category.id} className="cursor-pointer">
+                  {category.name}
+                </label>
+              </div>
+            ))}
+          </div>
         </section>
       </main>
     </section>
