@@ -4,6 +4,14 @@ import { IoClipboardOutline } from "react-icons/io5";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import Link from "next/link";
 
+function slugify(string:string) {
+  return string
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, "-") // Replace spaces and non-word characters with hyphens
+    .replace(/^-+|-+$/g, ""); // Remove leading or trailing hyphens
+}
+
 export default function HotTopics() {
   const [topics, setTopics] = useState([]);
 
@@ -34,7 +42,7 @@ export default function HotTopics() {
               className="rounded-lg bg-white border-b-4 my-1 border-[#1f9065]"
             >
               <Link
-                href={`/question-details/${id}`}
+                href={`/question-details/${slugify(title)}/${id}`}
                 className="flex justify-between p-3 lg:p-5"
               >
                 <div className="flex items-center gap-1">

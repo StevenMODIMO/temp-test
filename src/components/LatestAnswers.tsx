@@ -4,6 +4,15 @@ import { LuArrowDownRight } from "react-icons/lu";
 import { FaRegStar } from "react-icons/fa";
 import Link from "next/link";
 
+// Function to slugify the title
+function slugify(string:string) {
+  return string
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, "-") // Replace spaces and non-word characters with hyphens
+    .replace(/^-+|-+$/g, ""); // Remove leading or trailing hyphens
+}
+
 export default function LatestAnswers() {
   const [answers, setAnswers] = useState([]);
   const [expandedId, setExpandedId] = useState(null); // State to manage the expanded accordion
@@ -51,7 +60,12 @@ export default function LatestAnswers() {
             {expandedId === id && (
               <div className="p-2">
                 {truncated_answer}{" "}
-                <Link href={`/question-details/${id}`} className='text-[#1f9065]'>Read more</Link>
+                <Link
+                  href={`/question-details/${slugify(title)}/${id}`}
+                  className="text-[#1f9065]"
+                >
+                  Read more
+                </Link>
               </div>
             )}
           </div>

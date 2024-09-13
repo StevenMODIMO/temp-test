@@ -121,7 +121,7 @@ export default function Navbar() {
               <div className="absolute top-12 left-[490px] flex flex-col z-[999] bg-white text-black p-2 rounded mt-2">
                 {categories.map(({ id, name, slug }) => {
                   return (
-                    <Link key={id} href={`/categories/?category_ids=${id}`}>
+                    <Link key={id} href={`/categories/?search=&category_ids=${id}&page=1&pageSize=4`}>
                       {name}
                     </Link>
                   );
