@@ -17,7 +17,8 @@ export default function Home() {
     <div className="bg-gray-100">
       <Banner />
       <PrayerTimes />
-      <section className="border-t-4 border-[#1f9065] lg:w-[80%] lg:mx-auto">
+      <div className="bg-[#1f9065] w-full h-1"></div>
+      <section className="lg:w-[80%] lg:mx-auto">
         <main className="my-3 mx-5 lg:my-5 lg:mx-12 lg:flex lg:gap-14">
           <div className="lg:w-[60%]">
             <LatestArticles />
