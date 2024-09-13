@@ -64,7 +64,7 @@ export default function BookSales() {
         <div className="flex gap-8">
           {books
             .slice(currentIndex, currentIndex + booksPerSlide)
-            .map(({ id, title, price, images }) => (
+            .map(({ id, title, price, author, images }) => (
               <div key={id} className="bg-white p-3 shadow rounded">
                 <div>
                   <img
@@ -75,7 +75,8 @@ export default function BookSales() {
                   <h2 className="font-semibold text-lg text-gray-800">
                     {title}
                   </h2>
-                  <p className="text-[#1f9065] font-bold">{price}</p>
+                  <p className="text-[#1f9065] font-bold my-1">{price}</p>
+                  <p className="text-[#1f9065] font-bold text-xs my-1">{author}</p>
                 </div>
               </div>
             ))}
