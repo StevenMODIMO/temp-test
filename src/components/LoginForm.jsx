@@ -153,7 +153,7 @@ export default function LoginForm({ setOpenForm }) {
             placeholder="Password"
           />
           {error && <div className="my-3 text-red-500">{error}</div>}
-          <p className="text-[#1f9065] text-sm md:text-lg">
+          <p className="text-[#1f9065] text-sm text-center">
             Have you forgotten your password
           </p>
           <button className="bg-[#1f9065] rounded-xl p-2 my-2 text-white">

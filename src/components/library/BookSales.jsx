@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import BookModal from "./BookModal";
 
 export default function BookSales() {
   const [books, setBooks] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [booksPerSlide, setBooksPerSlide] = useState(3); // State for books per slide
+  const [booksPerSlide, setBooksPerSlide] = useState(3);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const getBooks = async () => {
@@ -65,7 +67,8 @@ export default function BookSales() {
           {books
             .slice(currentIndex, currentIndex + booksPerSlide)
             .map(({ id, title, price, author, images }) => (
-              <div key={id} className="bg-white p-3 shadow rounded">
+              <div key={id} className="bg-white p-3 shadow rounded" onClick={() => setOpen(true)}>
+                {open && <BookModal id={id} setOpen={setOpen} />}
                 <div>
                   <img
                     src={images[0]}
@@ -76,16 +79,24 @@ export default function BookSales() {
                     {title}
                   </h2>
                   <p className="text-[#1f9065] font-bold my-1">{price}</p>
-                  <p className="text-[#1f9065] font-bold text-xs my-1">{author}</p>
+                  <p className="text-[#1f9065] font-bold text-xs my-1">
+                    {author}
+                  </p>
                 </div>
               </div>
             ))}
         </div>
         <section className="flex justify-between mt-4 cursor-pointer">
-          <div onClick={handlePrev} className="bg-gray-200 p-4 rounded-full absolute top-1/2 left-0 hover:bg-[#1f9065] hover:text-white">
+          <div
+            onClick={handlePrev}
+            className="bg-gray-200 p-4 rounded-full absolute top-1/2 left-0 hover:bg-[#1f9065] hover:text-white"
+          >
             <IoIosArrowBack />
           </div>
-          <div onClick={handleNext} className="bg-gray-200 p-4 rounded-full absolute top-1/2 right-0 hover:bg-[#1f9065] hover:text-white">
+          <div
+            onClick={handleNext}
+            className="bg-gray-200 p-4 rounded-full absolute top-1/2 right-0 hover:bg-[#1f9065] hover:text-white"
+          >
             <IoIosArrowForward />
           </div>
         </section>
