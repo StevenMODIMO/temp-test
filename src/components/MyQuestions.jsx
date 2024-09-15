@@ -5,6 +5,7 @@ import { FaCircle } from "react-icons/fa6";
 
 export default function MyQuestions() {
   const [questions, setQuestions] = useState([]);
+  const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState({
     category1: false,
     category2: false,
@@ -34,12 +35,26 @@ export default function MyQuestions() {
       if (response.ok) {
         console.log(json);
         setQuestions(json);
+        setFilteredQuestions(json); // Initialize filteredQuestions with all questions
       } else {
         console.log(json.error);
       }
     };
     getQuestions();
   }, [user]);
+
+  // Filter questions based on the selected "Answered" and "Unanswered" options
+  useEffect(() => {
+    let filtered = questions;
+
+    if (selectedAnswer.category1 && !selectedAnswer.category2) {
+      filtered = questions.filter((q) => q.is_answered === true);
+    } else if (!selectedAnswer.category1 && selectedAnswer.category2) {
+      filtered = questions.filter((q) => q.is_answered === false);
+    }
+
+    setFilteredQuestions(filtered);
+  }, [selectedAnswer, questions]);
 
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
@@ -68,9 +83,9 @@ export default function MyQuestions() {
         </header>
       </header>
       <section className="flex gap-4 mx-24 lg:max-w-[70%] lg:mx-auto">
-        {questions.length > 0 ? (
+        {filteredQuestions.length > 0 ? (
           <main className="flex flex-col gap-4 p-4 w-[90%]">
-            {questions.map(
+            {filteredQuestions.map(
               ({ title, view, updated_at, is_answered }, index) => {
                 const formattedDate = updated_at
                   ? new Date(updated_at).toLocaleDateString("en-US", {
