@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
 export default function BookSales() {
   const [books, setBooks] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [booksPerSlide, setBooksPerSlide] = useState(3); // State for books per slide
+  const [booksPerSlide, setBooksPerSlide] = useState(3);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getSalesBooks = async () => {
@@ -57,7 +59,7 @@ export default function BookSales() {
   return (
     <main className="bg-gray-100 rounded-md p-4 mt-3 lg:w-[70%]">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">Books on Sale</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2">{t("onSale")}</h1>
       </header>
       <section className="relative">
         <div className="flex overflow-hidden">
@@ -97,7 +99,6 @@ export default function BookSales() {
             <IoIosArrowForward />
           </div>
         </section>
-        
       </section>
     </main>
   );

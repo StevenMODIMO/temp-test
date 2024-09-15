@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import NotFound from "./NotFound";
+import { useTranslation } from "react-i18next";
 
 // Define the structure of the hadith object
 interface Hadith {
@@ -10,6 +11,7 @@ interface Hadith {
 
 export default function PinnedHadith() {
   const [hadith, setHadith] = useState<Hadith | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getHadith = async () => {
@@ -29,7 +31,7 @@ export default function PinnedHadith() {
   return (
     <main className="my-3 lg:my-5 rounded-md ">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">Kun hadith</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2">{t("pinnedHadith")}</h1>
       </header>
       <section className="p-4">
         <div className="font-semibold text-gray-800 text-2xl">

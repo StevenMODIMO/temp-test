@@ -1,11 +1,21 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from 'next/link'
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+
+function slugify(string: string) {
+  return string
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, "-") // Replace spaces and non-word characters with hyphens
+    .replace(/^-+|-+$/g, ""); // Remove leading or trailing hyphens
+}
 
 export default function BannerSearch() {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (search.length === 0) {
@@ -48,7 +58,7 @@ export default function BannerSearch() {
             className="ml-2 rounded-full outline-none bg-black/50"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Searching ..."
+            placeholder={t("searchPlaceholder")}
           />
           {loading && (
             <div className="w-3 h-3 border-2 border-t-transparent border-white rounded-full animate-spin"></div>
@@ -59,7 +69,10 @@ export default function BannerSearch() {
         <ul className="absolute bg-white w-full text-black rounded-b-md">
           {results.map((result: any) => (
             <li key={result.id} className="hover:bg-gray-200">
-              <Link href={`/question-details/${result.id}`} className="block p-2">
+              <Link
+                href={`/question-details/${slugify(result.title)}/${result.id}`}
+                className="block p-2"
+              >
                 {result.title}
               </Link>
             </li>

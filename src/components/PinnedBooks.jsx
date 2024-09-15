@@ -2,10 +2,12 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
 export default function PinnedBooks() {
   const [pinnedBooks, setPinnedBooks] = useState([]);
   const [current, setCurrent] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getPinnedBooks = async () => {
@@ -36,7 +38,7 @@ export default function PinnedBooks() {
     <main className="my-3 rounded-md cursor-pointer bg-[#1f9065] p-2">
       <header className="border-b border-[#1f9065]">
         <h1 className="font-bold text-lg text-white lg:text-2xl">
-          Book recommendation
+          {t("bookDescription")}
         </h1>
       </header>
       <section className="text-white flex flex-col gap-2 my-3">

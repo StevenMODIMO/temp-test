@@ -15,6 +15,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { IoIosArrowDown } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const [openLinks, setOpenLinks] = useState(false);
@@ -26,6 +27,7 @@ export default function Navbar() {
   const { user, dispatch } = useAuth();
   const isAuth = status === "authenticated";
   const [logoutModal, setLogoutModal] = useState(false);
+  const { t } = useTranslation();
 
   const [categories, setCategories] = useState([]);
 
@@ -55,22 +57,6 @@ export default function Navbar() {
     }
   };
 
-  const handleProtectedRoute = (route) => {
-    if (route === "/send-question") {
-      if (user) {
-        setOpenSendQuestion(true);
-      } else {
-        setOpenForm(true);
-      }
-    } else if (route === "/categories") {
-      setShowCategoryLinks(!showCategoryLinks);
-    } else if (!user) {
-      setOpenForm(true);
-    } else {
-      window.location.href = route;
-    }
-  };
-
   return (
     <main className="bg-[#1f9065]">
       <section className="text-gray-200 flex items-center justify-between p-4 lg:max-w-[70%] lg:mx-auto">
@@ -80,52 +66,59 @@ export default function Navbar() {
         <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-16">
           <nav className="hidden md:flex items-center gap-3 lg:gap-6">
             <Link href="/" className="font-semibold">
-              Home
+              {t("home")}
             </Link>
-            {navLinks.map(({ id, title, route }) => {
-              if (
-                route === "/latest-answers" ||
-                route === "/send-question" ||
-                route === "/categories"
-              ) {
-                return (
-                  <main
-                    key={id}
-                    className={
-                      route === "/categories"
-                        ? "flex gap-2 items-center font-semibold text-gray-200 hover:text-white cursor-pointer"
-                        : "font-semibold text-gray-200 hover:text-white cursor-pointer"
-                    }
-                    onClick={() => handleProtectedRoute(route)}
-                  >
-                    {title}
-                    {route === "/categories" && <IoIosArrowDown />}
-                  </main>
-                );
-              }
-              return (
-                <main
-                  key={id}
-                  className="font-semibold text-gray-200 hover:text-white"
-                >
-                  <Link
-                    onClick={() => setShowCategoryLinks(false)}
-                    href={route}
-                  >
-                    {title}
-                  </Link>
+            <div className="relative cursor-pointer">
+              <header
+                className="flex items-center gap-2 text-gray-200 font-semibold"
+                onClick={() => setShowCategoryLinks(!showCategoryLinks)}
+              >
+                <h1>{t("categories")}</h1>
+                <IoIosArrowDown
+                  className={showCategoryLinks ? "rotate-180" : ""}
+                />
+              </header>
+              {showCategoryLinks && (
+                <main className="z-[999] w-36 absolute top-6 flex flex-col bg-white text-black p-1 rounded-md">
+                  {categories.map(({ id, name, slug }) => {
+                    return (
+                      <Link
+                        key={id}
+                        href={`/categories/?search=&category_ids=${id}&page=1&pageSize=4`}
+                      >
+                        {name}
+                      </Link>
+                    );
+                  })}
                 </main>
-              );
-            })}
-            {showCategoryLinks && (
-              <div className="absolute top-12 left-[490px] flex flex-col z-[999] bg-white text-black p-2 rounded mt-2">
-                {categories.map(({ id, name, slug }) => {
-                  return (
-                    <Link key={id} href={`/categories/?search=&category_ids=${id}&page=1&pageSize=4`}>
-                      {name}
-                    </Link>
-                  );
-                })}
+              )}
+            </div>
+            <div
+              onClick={() => {
+                if (user) {
+                  setOpenSendQuestion(true);
+                } else {
+                  setOpenForm(true);
+                }
+              }}
+              href="/send-question"
+              className="font-semibold cursor-pointer"
+            >
+              {t("sendQuestion")}
+            </div>
+            <Link href="/library" className="font-semibold">
+              {t("library")}
+            </Link>
+            <Link href="/media" className="font-semibold">
+              {t("media")}
+            </Link>
+            {user ? (
+              <Link href="/latest-answers" className="font-semibold">
+                {t("latestAnswer")}
+              </Link>
+            ) : (
+              <div onClick={() => setOpenForm(true)} className="font-semibold text-gray-200">
+                {t("latestAnswer")}
               </div>
             )}
           </nav>

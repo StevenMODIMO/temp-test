@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { IoClipboardOutline } from "react-icons/io5";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 function slugify(string:string) {
   return string
@@ -14,6 +15,7 @@ function slugify(string:string) {
 
 export default function HotTopics() {
   const [topics, setTopics] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getTopics = async () => {
@@ -32,7 +34,7 @@ export default function HotTopics() {
   return (
     <main className="my-3 lg:my-5">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">Lots of topics</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2">{t("trendingTopics")}</h1>
       </header>
       <main className="rounded-lg flex flex-col gap-2 mt-6">
         {topics.map(({ id, title }) => {

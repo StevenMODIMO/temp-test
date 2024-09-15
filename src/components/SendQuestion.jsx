@@ -5,6 +5,7 @@ import SuccessModal from "./SuccessModal";
 import { FaTimes } from "react-icons/fa";
 import { RiAttachment2 } from "react-icons/ri";
 import { useAuth } from "@/context/AuthContext";
+import Link from "next/link";
 
 export default function SendQuestion({ setOpen }) {
   const [name, setName] = useState("");
@@ -133,7 +134,7 @@ export default function SendQuestion({ setOpen }) {
           </div>
         )}
         <footer className="bg-[#1f9065] p-3 flex justify-between text-white px-3">
-          <p>Terms of use</p>
+          <Link herf="/terms-of-service">Terms of use</Link>
           <p>Tashkent 2024</p>
         </footer>
       </main>

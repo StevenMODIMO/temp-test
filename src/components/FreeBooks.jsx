@@ -1,10 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
 export default function FreeBooks() {
   const [freeBooks, setFreeBooks] = useState([]);
   const [current, setCurrent] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getFreeBooks = async () => {
@@ -33,7 +35,7 @@ export default function FreeBooks() {
   return (
     <main className="my-3 lg:my-5 bg-[#1f9065] rounded-md p-4 mt-3 cursor-pointer lg:h-[30%] lg:p-2 lg:w-[20%] lg:mt-16">
       <header>
-        <h1 className="font-bold text-lg text-white p-2">Library</h1>
+        <h1 className="font-bold text-lg text-white p-2">{t("library")}</h1>
       </header>
       <section className="text-white flex flex-col gap-2 my-3">
         {freeBooks.length > 0 && (

@@ -2,12 +2,18 @@
 import Backdrop from "./Backdrop";
 import { useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaRegEye,
+  FaRegEyeSlash,
+  FaTelegram,
+} from "react-icons/fa";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
 import ResetPassword from "./ResetPassword";
+import { useTranslation } from "react-i18next";
 
 export default function LoginForm({ setOpenForm }) {
   const [email, setEmail] = useState("");
@@ -16,6 +22,7 @@ export default function LoginForm({ setOpenForm }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { dispatch } = useAuth();
+  const { t } = useTranslation();
 
   const getUser = async () => {
     try {
@@ -99,19 +106,23 @@ export default function LoginForm({ setOpenForm }) {
           <FaTimes onClick={() => setOpenForm(false)} />
         </header>
         <header className="text-center text-[22px] text-[#292929] font-semibold px-3 md:text-[40px]">
-          <h1>Sign in</h1>
+          <h1>{t("signIn")}</h1>
         </header>
         <section className="px-3 my-2 md:flex gap-2 md:w-fit md:mx-auto">
           <div
             onClick={() => signIn("google")}
-            className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-56"
+            className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-48"
           >
             <FcGoogle />
             <p className="text-gray-500">Google</p>
           </div>
-          <div className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-56">
-            <FaFacebook className="text-white bg-blue-500" />
+          <div className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-48">
+            <FaFacebook className="text-blue-500" />
             <p className="text-gray-500">Facebook</p>
+          </div>
+          <div className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-48">
+            <FaTelegram className="text-blue-400" />
+            <p className="text-gray-500">Telegram</p>
           </div>
         </section>
         <div className="flex justify-center text-gray-500 items-center gap-2 my-5 px-3 md:mx-auto">
@@ -129,32 +140,35 @@ export default function LoginForm({ setOpenForm }) {
             onChange={(e) => setEmail(e.target.value)}
             className={
               error
-                ? "p-2 rounded-xl outline-gray-100 border border-red-400"
-                : "p-2 rounded-xl outline-gray-100 border border-gray-200"
+                ? "p-2 rounded-xl outline-gray-100 border border-red-400 lg:w-96"
+                : "p-2 rounded-xl outline-gray-100 border border-gray-200 lg:w-96"
             }
             placeholder="Email"
           />
-          <label htmlFor="password" className="flex justify-end">
+          <label
+            htmlFor="password"
+            className={
+              error
+                ? "flex justify-between items-center p-2 rounded-xl border border-red-400"
+                : "flex justify-between items-center p-2 rounded-xl border border-gray-200"
+            }
+          >
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="rounded-xl outline-none lg:w-80"
+            />
             {!showPassword ? (
               <FaRegEye onClick={() => setShowPassword(true)} />
             ) : (
               <FaRegEyeSlash onClick={() => setShowPassword(false)} />
             )}
           </label>
-          <input
-            id="password"
-            type={showPassword ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={
-              error
-                ? "p-2 rounded-xl outline-gray-100 border border-red-400"
-                : "p-2 rounded-xl outline-gray-100 border border-gray-200"
-            }
-            placeholder="Password"
-          />
           {error && <div className="my-3 text-red-500">{error}</div>}
-          <p className="text-[#1f9065] text-sm text-center">
+          <p className="cursor-pointer text-[#1f9065] text-sm text-center">
             Have you forgotten your password
           </p>
           <button className="bg-[#1f9065] rounded-xl p-2 my-2 text-white">
@@ -181,8 +195,8 @@ export default function LoginForm({ setOpenForm }) {
           </span>
         </p>
         <footer className="bg-[#1f9065] p-3 flex justify-between text-white px-3">
-          <p>Terms of use</p>
-          <p>Tashkent 2024</p>
+          <Link href="/terms-of-service">Terms of use</Link>
+          <>Tashkent 2024</>
         </footer>
       </main>
     </Backdrop>

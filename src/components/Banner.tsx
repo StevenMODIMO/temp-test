@@ -42,7 +42,7 @@ export default function Banner() {
       <div className="absolute inset-0 flex flex-col items-start justify-center bg-black bg-opacity-50 p-5">
         <div className="flex items-center mb-2 w-full justify-between">
           <h1 className="text-3xl font-bold mb-2 w-64 sm:w-72 sm:mt-2 md:w-96 md:text-4xl lg:w-[600px] lg:text-6xl">
-            Fatwa center of the office of muslims of Uzbekistan
+            {t("banner_title")}
           </h1>
           <div className="relative w-40 h-40 slow-spin md:mr-16 lg:mr-28">
             <Image fill src={fatvo} alt="logo" />
@@ -53,7 +53,7 @@ export default function Banner() {
             onClick={handleOpenModal}
             className="p-3 flex gap-2 items-center border border-[#1f9065] rounded-[32px]"
           >
-            <h4>{user ? "Send a Question" : "The question is yes"}</h4>
+            <h4>{user ? `${t("sendQuestion")}` : `${t("sendQuestion")}`}</h4>
             <MdOutlineArrowOutward />
           </button>
           <BannerSearch />

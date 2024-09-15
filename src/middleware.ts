@@ -5,15 +5,20 @@ import i18nConfig from "./i18nConfig";
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
+  // i18n routing
   const i18nResponse = i18nRouter(request, i18nConfig);
 
+  // Get the locale from the NEXT_LOCALE cookie
   const nextLocale = request.cookies.get("NEXT_LOCALE")?.value;
 
   if (nextLocale) {
     response.headers.set(
       "Accept-Language",
-      nextLocale === "uz" ? "uz" : "uz-cyr"
+      nextLocale === "uz-Cyrl" ? "uz-Cyrl" : nextLocale === "uz" ? "uz" : "en" // Set default to Uzbek Cyrillic, then Uzbek, and finally English
     );
+  } else {
+    // Fallback to Uzbek Cyrillic if no NEXT_LOCALE cookie is present
+    response.headers.set("Accept-Language", "uz-Cyrl");
   }
 
   return i18nResponse || response;

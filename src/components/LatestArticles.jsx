@@ -2,10 +2,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MdArrowForwardIos, MdOutlineArrowBackIosNew } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 export default function LatestArticles() {
   const [articles, setArticles] = useState([]);
   const [current, setCurrent] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getArticles = async () => {
@@ -35,7 +37,7 @@ export default function LatestArticles() {
   return (
     <main className="my-3 w-fit lg:my-5">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">Good articles</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2">{t("latestArticles")}</h1>
       </header>
       <section>
         <div className="relative my-3">

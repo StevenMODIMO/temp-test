@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 interface Question {
   title: string;
@@ -8,6 +9,7 @@ interface Question {
 
 export default function PinnedQuestion() {
   const [question, setQuestion] = useState<Question | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getQuestion = async () => {
@@ -26,7 +28,9 @@ export default function PinnedQuestion() {
   return (
     <main className="my-3 lg:my-5 rounded-md">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">It's a question</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2">
+          {t("pinnedQuestion")}
+        </h1>
       </header>
       <div className="p-4">
         <h2 className="font-semibold text-gray-800 text-2xl">
