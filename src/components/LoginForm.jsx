@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
+import ResetPassword from "./ResetPassword";
 
 export default function LoginForm({ setOpenForm }) {
   const [email, setEmail] = useState("");

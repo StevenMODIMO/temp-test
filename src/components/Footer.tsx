@@ -15,7 +15,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="rounded-lg mx-5 my-4 bg-[#1f9065] text-gray-200 p-4 text-sm flex flex-col gap-4 md:grid grid-cols-3 lg:gap-8 lg:text-lg md:p-8 lg:p-12">
+    <footer className="rounded-lg mx-5 my-4 bg-[#1f9065] text-gray-200 p-4 text-sm flex flex-col gap-4 md:grid grid-cols-3 lg:gap-8 lg:text-lg md:p-8 lg:p-12 lg:w-[70%] lg:mx-auto">
       <section className="flex flex-col gap-2">
         <h1>
           This site was created to master the Islamic sciences, not to get lost

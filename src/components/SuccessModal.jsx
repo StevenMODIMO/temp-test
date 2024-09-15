@@ -11,7 +11,7 @@ import Image from "next/image";
 export default function SuccessModal({ setOpenModal, setOpen }) {
   return (
     <Backdrop>
-      <main className="flex flex-col gap-6 bg-white text-black rounded-t-xl w-[90%] sm:w-[70%] md:w-[60%]">
+      <main className="flex flex-col gap-3 bg-white text-black rounded-t-xl w-[90%] sm:w-[70%] md:w-[35%]">
         <div className="flex justify-end mt-2 mr-2">
           <FaTimes
             onClick={() => {
@@ -28,47 +28,41 @@ export default function SuccessModal({ setOpenModal, setOpen }) {
           Follow us on social networks for new topics and answers
         </p>
         <footer>
-          <section className="flex gap-3 p-4">
+          <section className="flex justify-center gap-3 p-2">
             <div className="flex flex-col gap-3 md:flex-row">
               <section className="flex items-center gap-2 cursor-pointer">
-                <FaXTwitter className="text-2xl" />
                 <Link href="https://x.com/fatvouz" target="_blank">
-                  Twitter
+                  <FaXTwitter className="text-2xl" />
                 </Link>
               </section>
               <section className="flex items-center gap-2 cursor-pointer">
-                <CiInstagram className="text-2xl" />
                 <Link href="https://www.instagram.com/fatvouz/" target="_blank">
-                  Instagram
+                  <CiInstagram className="text-2xl" />
                 </Link>
               </section>
               <section className="flex items-center gap-2 cursor-pointer">
-                <CiYoutube className="text-2xl" />
                 <Link href="https://www.youtube.com/c/Fatvouzb" target="_blank">
-                  Youtube
+                  <CiYoutube className="text-2xl" />
                 </Link>
               </section>
               <section className="flex items-center gap-2 cursor-pointer">
-                <CiFacebook className="text-2xl" />
                 <Link
                   href="https://www.facebook.com/diniysavollar"
                   target="_blank"
                 >
-                  Facebook
+                  <CiFacebook className="text-2xl" />
                 </Link>
               </section>
               <section className="flex items-center gap-2 cursor-pointer">
-                <FaTelegramPlane className="text-2xl" />
                 <Link href="https://t.me/diniysavollar" target="_blank">
-                  Telegram
+                  <FaTelegramPlane className="text-2xl" />
                 </Link>
               </section>
               <section className="flex items-center relative gap-2 cursor-pointer">
-                <div className="relative w-6 h-6">
-                  <Image src={umma} alt="umma" fill />
-                </div>
                 <Link href="https://ummalife.com/fatvouz" target="_blank">
-                  UmmaLife platform
+                  <div className="relative w-6 h-6">
+                    <Image src={umma} alt="umma" fill />
+                  </div>
                 </Link>
               </section>
             </div>

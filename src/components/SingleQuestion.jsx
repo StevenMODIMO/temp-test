@@ -33,7 +33,7 @@ export default function SingleQuestion({ id }) {
     : "";
 
   return (
-    <main className="border-b-4 border-[#1f9065] bg-gray-100 rounded-lg w-[80%] ml-6 mt-4 p-6 flex flex-col gap-4">
+    <main className="border-b-4 border-[#1f9065] bg-gray-100 rounded-lg w-[80%] ml-6 mt-4 p-6 flex flex-col gap-4 lg:w-[70%] lg:mx-auto">
       <header className="flex justify-between">
         <div className="flex gap-3 items-center">
           <FaSquareFull className="text-[#1f9065] rounded text-3xl" />
