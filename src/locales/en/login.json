@@ -12,5 +12,9 @@
   "remember": "Remember",
   "withEmail": "With email",
   "modalFooterLeft": "User Terms",
-  "modalFooterRight": " Tashkent 2024"
+  "modalFooterRight": " Tashkent 2024",
+  "byEmail":"Email va parol orqali",
+  "loading": "Yuklanmoqda…",
+  "noAccount": "Shaxsiy hisobingiz bormi?",
+  "terms": " Xizmat shartlari"
 }

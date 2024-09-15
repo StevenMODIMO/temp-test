@@ -5,7 +5,7 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
-function slugify(string:string) {
+function slugify(string: string) {
   return string
     .toLowerCase()
     .trim()
@@ -34,7 +34,9 @@ export default function HotTopics() {
   return (
     <main className="my-3 lg:my-5">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">{t("trendingTopics")}</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2">
+          {t("trendingTopics")}
+        </h1>
       </header>
       <main className="rounded-lg flex flex-col gap-2 mt-6">
         {topics.map(({ id, title }) => {
@@ -61,7 +63,7 @@ export default function HotTopics() {
         href="/categories"
         className="w-fit border border-[#1f9065] p-2 mt-3 rounded-full flex items-center gap-1"
       >
-        All questions <MdOutlineArrowOutward className="text-[#1f9065]" />
+        {t("allQuestion")} <MdOutlineArrowOutward className="text-[#1f9065]" />
       </Link>
     </main>
   );

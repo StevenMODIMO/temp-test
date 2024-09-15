@@ -46,6 +46,7 @@ export default function FreeBooks() {
               className="w-64 h-36 object-cover rounded-md transition duration-700 ease-in-out mx-auto lg:w-52"
             />
             <p className="font-semibold text-xl">{freeBooks[current].title}</p>
+            <p>{freeBooks[current].formatted_price}</p>
           </>
         )}
         <footer className="flex gap-2 justify-end text-white">

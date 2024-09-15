@@ -141,7 +141,7 @@ export default function Navbar() {
                   className="cursor-pointer flex items-center hover:rounded hover:bg-[#40aa81] lg:p-3"
                 >
                   <FiUser />
-                  <div>Introduction</div>
+                  <div>{t("introduction")}</div>
                 </div>
               )}
             </main>

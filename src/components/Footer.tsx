@@ -24,13 +24,13 @@ export default function Footer() {
             {t("footerText")}
           </h1>
           <Link href="/privacy-policy" className="text-sm md:text-[16px]">
-            Privacy policy.
+           {t("privacyPolicy")}
           </Link>
           <Link href="/terms-of-service" className="text-sm md:text-[16px]">
             {t("modalFooterLeft")}
           </Link>
           <Link href="/user-data-deletion" className="text-sm md:text-[16px]">
-            User data deletion.
+            {t("userDeletion")}
           </Link>
           <Link href="/terms-of-service" className="text-sm md:text-[16px]">
             {t("reserved")}

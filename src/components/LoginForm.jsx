@@ -127,7 +127,7 @@ export default function LoginForm({ setOpenForm }) {
         </section>
         <div className="flex justify-center text-gray-500 items-center gap-2 my-5 px-3 md:mx-auto">
           <div className="bg-gray-500 h-[2px] w-12"></div>
-          <div>By e-mail</div>
+          <div>{t("byEmail")}</div>
           <div className="bg-gray-500 h-[2px] w-12"></div>
         </div>
         <form
@@ -169,33 +169,33 @@ export default function LoginForm({ setOpenForm }) {
           </label>
           {error && <div className="my-3 text-red-500">{error}</div>}
           <p className="cursor-pointer text-[#1f9065] text-sm text-center">
-            Have you forgotten your password
+            {t("forgotPassword")}
           </p>
           <button className="bg-[#1f9065] rounded-xl p-2 my-2 text-white">
             {loading ? (
               <div className="flex justify-center items-center gap-2">
                 <div className="h-5 w-5 animate-spin border-4 border-t-transparent border-white rounded-full"></div>
-                <p>loading</p>
+                <p>{t("loading")}</p>
               </div>
             ) : (
-              <p>Introduction</p>
+              <p>{t("introduction")}</p>
             )}
           </button>
         </form>
         <p className="px-3 text-xs text-center my-2 md:text-sm md:w-fit md:mx-auto">
-          Don't have an account?{" "}
+          {t("haveAnAccount")}?{" "}
           <span>
             <Link
               onClick={() => setOpenForm(false)}
               href="/registration"
               className="text-[#1f9065]"
             >
-              Registration
+              {t("register")}
             </Link>
           </span>
         </p>
         <footer className="bg-[#1f9065] p-3 flex justify-between text-white px-3">
-          <Link href="/terms-of-service">Terms of use</Link>
+          <Link href="/terms-of-service">{t("terms")}</Link>
           <>Tashkent 2024</>
         </footer>
       </main>

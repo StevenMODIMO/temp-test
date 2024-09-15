@@ -1,157 +1,12 @@
-// "use client";
-// import { useState, useEffect } from "react";
-// import { regions } from "@/lib/regions";
-
-// export default function PrayerTimes() {
-//   const [times, setTimes] = useState({});
-//   const [selectedRegion, setSelectedRegion] = useState("");
-//   const [activePrayer, setActivePrayer] = useState("");
-
-//   useEffect(() => {
-//     const getPrayerTimes = async () => {
-//       const response = await fetch(
-//         "https://backfatvo.salyam.uz/api_v1/prayer_times/"
-//       );
-//       const json = await response.json();
-
-//       if (response.ok) {
-//         setTimes(json);
-//       } else {
-//         console.log(json.error);
-//       }
-//     };
-//     getPrayerTimes();
-//   }, []);
-
-//   const handleRegionChange = (event) => {
-//     setSelectedRegion(event.target.value);
-
-//     // Array of prayer names to choose from
-//     const prayers = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
-
-//     // Randomly select one prayer to highlight
-//     const randomPrayer = prayers[Math.floor(Math.random() * prayers.length)];
-//     setActivePrayer(randomPrayer);
-//   };
-
-//   // Helper function to get styles based on whether the prayer is active
-//   const getPrayerStyles = (prayerName) => {
-//     const isActive = prayerName === activePrayer;
-//     return {
-//       backgroundColor: isActive ? "#1f9065" : "",
-//       color: isActive ? "white" : "#1f9065",
-//     };
-//   };
-
-//   return (
-//     <main className="my-3 lg:my-5">
-//       <section className="flex items-center gap-3 w-fit mx-auto">
-//         <select
-//           className="p-2 border rounded"
-//           value={selectedRegion}
-//           onChange={handleRegionChange}
-//         >
-//           <option value="" disabled>
-//             Select a region
-//           </option>
-//           {regions.map((region, index) => (
-//             <option key={index} value={region.en}>
-//               {region.en}
-//             </option>
-//           ))}
-//         </select>
-//         <main className="rounded-full shadow-2xl p-2">
-//           <div
-//             className="border border-[#1f9065] rounded-full w-16 h-16 flex flex-col items-center justify-center p-3"
-//             style={getPrayerStyles("fajr")}
-//           >
-//             <p className="font-bold">{times?.fajr}</p>
-//             <p className="text-[10px]">Morning</p>
-//           </div>
-//         </main>
-//         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//         </div>
-//         <main className="rounded-full shadow-2xl p-2">
-//           <div
-//             className="drop-shadow-lg border border-[#1f9065] rounded-full w-16 h-16 flex flex-col items-center justify-center p-3"
-//             style={getPrayerStyles("sunrise")}
-//           >
-//             <p className="font-bold">{times?.sunrise}</p>
-//             <p className="text-[10px]">The sun</p>
-//           </div>
-//         </main>
-//         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//         </div>
-//         <main className="rounded-full shadow-2xl p-2">
-//           <div
-//             className="drop-shadow-lg border border-[#1f9065] rounded-full w-16 h-16 flex flex-col items-center justify-center p-3"
-//             style={getPrayerStyles("dhuhr")}
-//           >
-//             <p className="font-bold">{times?.dhuhr}</p>
-//             <p className="text-[10px]">Before</p>
-//           </div>
-//         </main>
-//         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//         </div>
-//         <main className="rounded-full shadow-2xl p-2">
-//           <div
-//             className="drop-shadow-lg border border-[#1f9065] rounded-full w-16 h-16 flex flex-col items-center justify-center p-3"
-//             style={getPrayerStyles("asr")}
-//           >
-//             <p className="font-bold">{times?.asr}</p>
-//             <p className="text-[10px]">century</p>
-//           </div>
-//         </main>
-//         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//         </div>
-//         <main className="rounded-full shadow-2xl p-2">
-//           <div
-//             className="bg-[#1f9065] text-white rounded-full w-16 h-16 flex flex-col items-center justify-center p-3"
-//             style={getPrayerStyles("maghrib")}
-//           >
-//             <p className="font-bold">{times?.maghrib}</p>
-//             <p className="text-[10px]">evening</p>
-//           </div>
-//         </main>
-//         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//           <div className="h-3 relative w-[1px] bg-gray-400"></div>
-//         </div>
-//         <main className="rounded-full shadow-2xl p-2">
-//           <div
-//             className="drop-shadow-lg border border-[#1f9065] rounded-full w-16 h-16 flex flex-col items-center justify-center p-3"
-//             style={getPrayerStyles("isha")}
-//           >
-//             <p className="font-bold">{times?.isha}</p>
-//             <p className="text-[10px]">Hufton</p>
-//           </div>
-//         </main>
-//       </section>
-//     </main>
-//   );
-// }
-
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 
 export default function PrayerTimes() {
-  const [regions, setRegions] = useState({ regions: [] });
+  const [regions, setRegions] = useState({ regions: [], default: null });
   const [times, setTimes] = useState({});
-
   const [selectedRegion, setSelectedRegion] = useState("");
+  const [timeLeft, setTimeLeft] = useState("");
+  const countdownRef = useRef(null); // Use ref to store the countdown interval ID
 
   useEffect(() => {
     const getRegions = async () => {
@@ -162,42 +17,37 @@ export default function PrayerTimes() {
 
       if (response.ok) {
         setRegions(json);
+        if (json.default) {
+          getTimes(json.default);
+        }
       } else {
-        console.log(regions.error);
+        console.log(json.error);
       }
     };
     getRegions();
   }, []);
 
-  const getTimes = async (id) => {
+  const getTimes = async (regionId) => {
     function getTodayDate() {
       const today = new Date();
-
       const year = today.getFullYear();
       const month = String(today.getMonth() + 1).padStart(2, "0");
       const day = String(today.getDate()).padStart(2, "0");
-
       return `${year}-${month}-${day}`;
     }
 
-    // Example usage:
     const todayDate = getTodayDate();
     const response = await fetch(
-      `https://backfatvo.salyam.uz/api_v1/prayer_times/daily/?date=${todayDate}&region_id=${id}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      `https://backfatvo.salyam.uz/api_v1/prayer_times/daily/?date=${todayDate}&region_id=${regionId}`
     );
-
-    const times = await response.json();
+    const timesData = await response.json();
 
     if (response.ok) {
-      setTimes(times.data);
+      setTimes(timesData.data);
+      resetCountdown(); // Reset countdown when new region is selected
+      startCountdown(timesData.data); // Start countdown for the new region
     } else {
-      console.log(times.error);
+      console.log(timesData.error);
     }
   };
 
@@ -206,18 +56,194 @@ export default function PrayerTimes() {
     setSelectedRegion(regionId);
     getTimes(regionId);
   };
+
+  const resetCountdown = () => {
+    // Clear any existing interval and reset timeLeft state
+    if (countdownRef.current) {
+      clearInterval(countdownRef.current);
+    }
+    setTimeLeft("");
+  };
+
+  const getTimeInSeconds = (timeString) => {
+    const [hours, minutes] = timeString.split(":").map(Number);
+    return hours * 3600 + minutes * 60;
+  };
+
+  const startCountdown = (prayerTimes) => {
+    const prayerSequence = [
+      "fajr",
+      "sunrise",
+      "dhuhr",
+      "asr",
+      "maghrib",
+      "isha",
+    ];
+
+    // Current time in seconds
+    const now = new Date();
+    const nowInSeconds =
+      now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+
+    // Find the next prayer time
+    const prayerTimesInSeconds = prayerSequence.map((prayer) => {
+      return getTimeInSeconds(prayerTimes[prayer]);
+    });
+
+    let nextPrayerTimeInSeconds = null;
+
+    for (let i = 0; i < prayerTimesInSeconds.length; i++) {
+      if (prayerTimesInSeconds[i] > nowInSeconds) {
+        nextPrayerTimeInSeconds = prayerTimesInSeconds[i];
+        break;
+      }
+    }
+
+    // If no prayer is left for the day, set next to the first prayer of tomorrow
+    if (nextPrayerTimeInSeconds === null) {
+      nextPrayerTimeInSeconds = prayerTimesInSeconds[0] + 24 * 3600;
+    }
+
+    countdownRef.current = setInterval(() => {
+      const currentTime = new Date();
+      const currentInSeconds =
+        currentTime.getHours() * 3600 +
+        currentTime.getMinutes() * 60 +
+        currentTime.getSeconds();
+
+      const timeDifference = nextPrayerTimeInSeconds - currentInSeconds;
+
+      if (timeDifference <= 0) {
+        clearInterval(countdownRef.current);
+        // Optionally trigger next prayer fetching here
+      } else {
+        setTimeLeft(formatTime(timeDifference));
+      }
+    }, 1000);
+  };
+
+  const formatTime = (totalSeconds) => {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${hours}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  };
+
+
   return (
-    <main className="my-3 lg:my-5">
-      <select onChange={handleChange}>
-        {regions.regions.map(({ id, name }) => {
-          return (
-            <option key={id} value={id}>
-              {name}
-            </option>
-          );
-        })}
+    <main className="my-3 lg:my-5 flex items-center gap-5">
+      <select
+        value={selectedRegion}
+        onChange={handleChange}
+        className="outline-none p-2 w-72 rounded-md"
+      >
+        {regions.regions.map(({ id, name }) => (
+          <option key={id} value={id}>
+            {name}
+          </option>
+        ))}
       </select>
-      <div>{times.active}</div>
+      <main className="flex items-center gap-3">
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+          <div
+            className={
+              times.active === "fajr"
+                ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+            }
+          >
+            <p className="font-bold">{times.fajr}</p>
+            <p>Morning</p>
+            <p className="text-xs">{timeLeft}</p>
+          </div>
+        </div>
+        <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+        </div>
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+          <div
+            className={
+              times.active === "sunrise"
+                ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+            }
+          >
+            <p>{times.sunrise}</p>
+            <p>The sun</p>
+          </div>
+        </div>
+        <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+        </div>
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+          <div
+            className={
+              times.active === "dhuhr"
+                ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+            }
+          >
+            <p>{times.dhuhr}</p>
+            <p>Dhuhr</p>
+          </div>
+        </div>
+        <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+        </div>
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+          <div
+            className={
+              times.active === "asr"
+                ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+            }
+          >
+            <p>{times.asr}</p>
+            <p>Asr</p>
+          </div>
+        </div>
+        <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+        </div>
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+          <div
+            className={
+              times.active === "maghrib"
+                ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+            }
+          >
+            <p>{times.maghrib}</p>
+            <p>Maghrib</p>
+          </div>
+        </div>
+        <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+          <div className="h-3 relative w-[1px] bg-gray-400"></div>
+        </div>
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+          <div
+            className={
+              times.active === "isha"
+                ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+            }
+          >
+            <p>{times.isha}</p>
+            <p>Isha</p>
+          </div>
+        </div>
+      </main>
     </main>
   );
 }

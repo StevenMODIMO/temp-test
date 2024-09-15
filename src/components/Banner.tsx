@@ -6,7 +6,7 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 import BannerSearch from "./BannerSearch";
 import SendQuestion from "./SendQuestion";
 import LoginForm from "./LoginForm";
-import fatvo from "@/public/fatvo.png";
+import fatvo from "@/public/fatvo.gif";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/context/AuthContext";
@@ -44,7 +44,7 @@ export default function Banner() {
           <h1 className="text-3xl font-bold mb-2 w-64 sm:w-72 sm:mt-2 md:w-96 md:text-4xl lg:w-[600px] lg:text-6xl">
             {t("banner_title")}
           </h1>
-          <div className="relative w-40 h-40 slow-spin md:mr-16 lg:mr-28">
+          <div className="relative w-44 h-44 slow-spin md:mr-16 lg:mr-28">
             <Image fill src={fatvo} alt="logo" />
           </div>
         </div>

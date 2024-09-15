@@ -12,5 +12,9 @@
   "remember": "Eslab qolish",
   "withEmail": "Elektron pochta orqali",
   "modalFooterLeft": "Foydalanuvchi shartlari",
-  "modalFooterRight": " Toshkent 2024"
+  "modalFooterRight": " Toshkent 2024",
+  "byEmail":"Email va parol orqali",
+  "loading": "Yuklanmoqda…",
+  "noAccount": "Shaxsiy hisobingiz bormi?",
+  "terms": " Xizmat shartlari"
 }

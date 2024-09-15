@@ -65,7 +65,7 @@ export default function BookSales() {
         <div className="flex overflow-hidden">
           {books
             .slice(currentIndex, currentIndex + booksPerSlide)
-            .map(({ id, title, author, price, images }) => (
+            .map(({ id, title, author, formatted_price, images }) => (
               <div
                 key={id}
                 className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4 transition-transform duration-300 ease-in-out"
@@ -80,7 +80,7 @@ export default function BookSales() {
                     {title}
                   </h2>
                   <p className="text-gray-600 mb-2">Author: {author}</p>
-                  <p className="text-[#1f9065] font-bold">{price}</p>
+                  <p className="text-[#1f9065] font-bold">{formatted_price}</p>
                 </div>
               </div>
             ))}

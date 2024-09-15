@@ -17,5 +17,9 @@
   "modalFooterLeft": "Foydalanuvchi shartlari",
   "modalFooterRight": "Toshkent 2024",
   "previous": "Avvalgi",
-  "next": "Keyingi"
+  "next": "Keyingi",
+  "introduction": "Shaxsiy hisob",
+  "privacyPolicy": "Maxfiylik siyosati",
+  "terms": "Xizmat shartlari",
+  "useDeletion": "Ma'lumotlarini o'chirish"
 }

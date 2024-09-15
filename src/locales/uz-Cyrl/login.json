@@ -12,5 +12,9 @@
   "remember": "Эслаб қолиш",
   "withEmail": "Электрон почта орқали",
   "modalFooterLeft": "Фойдаланувчи шартлари",
-  "modalFooterRight": " Тошкент 2024"
-}
+  "modalFooterRight": " Тошкент 2024",
+  "byEmail":"E-mail ва парол орқали",
+  "loading": "YЮкланмоқда...",
+  "noAccount": "Шахсий ҳисобингиз борми?",
+  "terms": " Xizmat shartlari"
+} 
