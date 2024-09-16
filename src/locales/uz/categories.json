@@ -3,5 +3,9 @@
   "notFoundCategories": "Kategoriyalar topilmadi!",
   "reload": "Qayta yangilash",
   "selectedAnswers": "Tanlangan kategoriyalar bo’yicha savollarga javoblar",
-  "notFound": "Ma'lumot topilmadi!"
+  "notFound": "Ma'lumot topilmadi!",
+  "visibility": "Holati",
+  "categories": "Kategoriyalar",
+  "answered": "Javob berilgan",
+  "unAnswered": "Javob berilmagan"
 }

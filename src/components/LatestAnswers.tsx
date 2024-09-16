@@ -17,7 +17,7 @@ function slugify(string:string) {
 export default function LatestAnswers() {
   const [answers, setAnswers] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
-  const { t } = useTranslation(); // State to manage the expanded accordion
+  const { t } = useTranslation(["home"]); // State to manage the expanded accordion
 
   useEffect(() => {
     const getAnswers = async () => {

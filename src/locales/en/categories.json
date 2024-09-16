@@ -3,6 +3,8 @@
     "notFoundCategories": "Categories not found!",
     "reload": "Refresh",
     "selectedAnswers": "Answers to questions in selected categories",
-    "notFound": "Information not found!"
+    "notFound": "Information not found!",
+    "visibility": "Visibility",
+    "categories": "Categories"
   }
   
