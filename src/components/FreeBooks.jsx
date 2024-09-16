@@ -6,13 +6,18 @@ import { useTranslation } from "react-i18next";
 export default function FreeBooks() {
   const [freeBooks, setFreeBooks] = useState([]);
   const [current, setCurrent] = useState(0);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const getFreeBooks = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/books/free/"
+          "https://backfatvo.salyam.uz/api_v1/books/free/",
+          {
+            headers: {
+              "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
+            },
+          }
         );
         const json = await response.json();
         setFreeBooks(json.results);

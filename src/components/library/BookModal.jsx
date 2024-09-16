@@ -8,12 +8,18 @@ export default function BookModal({ id, setOpen }) {
   const [book, setBook] = useState({});
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [show, setShow] = useState(false);
-  const { t } = useTranslation(["library"]);
+  const { t, i18n } = useTranslation(["library"]);
 
   useEffect(() => {
     const getBook = async () => {
       const response = await fetch(
-        `https://backfatvo.salyam.uz/api_v1/books/${id}/`
+        `https://backfatvo.salyam.uz/api_v1/books/${id}/`,
+        {
+          headers: {
+            "Accept-Language":
+              i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
+          },
+        }
       );
 
       const json = await response.json();

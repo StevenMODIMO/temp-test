@@ -10,12 +10,17 @@ export default function BookSales() {
   const [booksPerSlide, setBooksPerSlide] = useState(3);
   const [open, setOpen] = useState(false);
   const [bookId, setBookId] = useState("");
-  const { t } = useTranslation(["library"]);
+  const { t, i18n } = useTranslation(["library"]);
 
   useEffect(() => {
     const getBooks = async () => {
       const response = await fetch(
-        "https://backfatvo.salyam.uz/api_v1/books/sales/"
+        "https://backfatvo.salyam.uz/api_v1/books/sales/",
+        {
+          headers: {
+            "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
+          },
+        }
       );
 
       const json = await response.json();

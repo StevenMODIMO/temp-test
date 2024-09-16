@@ -9,13 +9,18 @@ export default function FreeBooks() {
   const [current, setCurrent] = useState(0);
   const [open, setOpen] = useState(false);
   const [bookId, setBookId] = useState("");
-  const { t } = useTranslation(["library"])
+  const { t, i18n } = useTranslation(["library"])
 
   useEffect(() => {
     const getFreeBooks = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/books/free/"
+          "https://backfatvo.salyam.uz/api_v1/books/free/",
+          {
+            headers: {
+              "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
+            },
+          }
         );
         const json = await response.json();
         setFreeBooks(json.results);

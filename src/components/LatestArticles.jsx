@@ -13,10 +13,11 @@ export default function LatestArticles() {
     const getArticles = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/last_articles/", {
+          "https://backfatvo.salyam.uz/api_v1/last_articles/",
+          {
             headers: {
-              "Accept-Language": i18n.language
-            }
+              "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
+            },
           }
         );
         const data = await response.json();

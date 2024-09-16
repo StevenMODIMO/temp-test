@@ -4,17 +4,25 @@ import Image from "next/image";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { IoEyeOutline } from "react-icons/io5";
 import VideoModal from "./VideoModal";
+import { useTranslation } from "react-i18next";
 
 export default function MediaBlock() {
   const [media, setMedia] = useState([]);
   const [modal, setModal] = useState(false);
   const [currentVideoUrl, setCurrentVideoUrl] = useState("");
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const getMedia = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/media/latest/"
+          "https://backfatvo.salyam.uz/api_v1/media/latest/",
+          {
+            headers: {
+              "Accept-Language":
+                i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
+            },
+          }
         );
         const json = await response.json();
         setMedia(json);

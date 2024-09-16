@@ -21,12 +21,18 @@ export default function Categories() {
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [checkedCategories, setCheckedCategories] = useState({});
   const router = useRouter();
-  const { t } = useTranslation(["categories"]);
+  const { t, i18n } = useTranslation(["categories"]);
 
   useEffect(() => {
     const getCategories = async () => {
       const response = await fetch(
-        "https://backfatvo.salyam.uz/api_v1/categories/"
+        "https://backfatvo.salyam.uz/api_v1/categories/",
+        {
+          headers: {
+            "Accept-Language":
+              i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
+          },
+        }
       );
       const json = await response.json();
 
@@ -62,7 +68,12 @@ export default function Categories() {
       const url = `https://backfatvo.salyam.uz/api_v1/questions/?page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`;
 
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          headers: {
+            "Accept-Language":
+              i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
+          },
+        });
         const json = await response.json();
 
         if (response.ok) {

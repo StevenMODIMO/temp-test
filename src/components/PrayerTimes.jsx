@@ -7,13 +7,19 @@ export default function PrayerTimes() {
   const [times, setTimes] = useState({});
   const [selectedRegion, setSelectedRegion] = useState("");
   const [timeLeft, setTimeLeft] = useState("");
-  const countdownRef = useRef(null); 
-  const { t } = useTranslation(["prayer"]);
+  const countdownRef = useRef(null);
+  const { t, i18n } = useTranslation(["prayer"]);
 
   useEffect(() => {
     const getRegions = async () => {
       const response = await fetch(
-        "https://backfatvo.salyam.uz/api_v1/prayer_times/regions/"
+        "https://backfatvo.salyam.uz/api_v1/prayer_times/regions/",
+        {
+          headers: {
+            "Accept-Language":
+              i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
+          },
+        }
       );
       const json = await response.json();
 
@@ -40,7 +46,13 @@ export default function PrayerTimes() {
 
     const todayDate = getTodayDate();
     const response = await fetch(
-      `https://backfatvo.salyam.uz/api_v1/prayer_times/daily/?date=${todayDate}&region_id=${regionId}`
+      `https://backfatvo.salyam.uz/api_v1/prayer_times/daily/?date=${todayDate}&region_id=${regionId}`,
+      {
+        headers: {
+          "Accept-Language":
+            i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
+        },
+      }
     );
     const timesData = await response.json();
 
@@ -196,7 +208,7 @@ export default function PrayerTimes() {
             }
           >
             <p>{times.dhuhr}</p>
-            <p>{t('dhuhr')}</p>
+            <p>{t("dhuhr")}</p>
 
             {times.active === "dhuhr" && <p className="text-xs">{timeLeft}</p>}
           </div>

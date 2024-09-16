@@ -12,7 +12,7 @@ export default function SingleQuestion({ id }) {
         `https://backfatvo.salyam.uz/api_v1/questions/${id}/`,
         {
           headers: {
-            "Accept-Language": i18n.language,
+            "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
           },
         }
       );

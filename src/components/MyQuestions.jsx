@@ -16,7 +16,7 @@ export default function MyQuestions() {
     category2: false,
   });
   const { user } = useAuth();
-  const { t } = useTranslation(["latestAnswers"]);
+  const { t,i18n } = useTranslation(["latestAnswers"]);
 
   useEffect(() => {
     const getQuestions = async () => {
@@ -27,7 +27,7 @@ export default function MyQuestions() {
         "https://backfatvo.salyam.uz/api_v1/questions/mine/",
         {
           headers: {
-            Authorization: `Bearer ${access}`,
+            "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
           },
         }
       );

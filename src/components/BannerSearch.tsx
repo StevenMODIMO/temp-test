@@ -15,7 +15,7 @@ export default function BannerSearch() {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { t } = useTranslation();
+  const { t,i18n } = useTranslation();
 
   useEffect(() => {
     if (search.length === 0) {
@@ -28,7 +28,12 @@ export default function BannerSearch() {
       setLoading(true);
       try {
         const response = await fetch(
-          `https://backfatvo.salyam.uz/api_v1/questions/autosuggest/?q=${search}`
+          `https://backfatvo.salyam.uz/api_v1/questions/autosuggest/?q=${search}`,
+          {
+            headers: {
+              "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
+            },
+          }
         );
         const data = await response.json();
         setResults(data);
