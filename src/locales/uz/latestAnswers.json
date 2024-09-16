@@ -10,5 +10,9 @@
   "less": "Kichraytirish",
   "more": "Batafsil",
   "notFound": "Ma'lumot topilmadi",
-  "reload": "Qayta yuklash"
+  "reload": "Qayta yuklash",
+  "visibility": "Holati",
+  "categories": "Kategoriyalar",
+  "Answered": "Javob berilgan",
+  "unAnswered": "Javob berilmagan"
 }

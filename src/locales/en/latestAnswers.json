@@ -9,5 +9,9 @@
   "answer": "Answer",
   "less": "Less",
   "more": "More",
-  "reload": "Refresh"
+  "reload": "Refresh",
+  "visibility": "Holati",
+  "categories": "Kategoriyalar",
+  "Answered": "Javob berilgan",
+  "unAnswered": "Javob berilmagan"
 }

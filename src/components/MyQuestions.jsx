@@ -76,7 +76,9 @@ export default function MyQuestions() {
     <main className="bg-gray-200">
       <header className="flex flex-col gap-4 mx-28 lg:max-w-[70%] lg:mx-auto">
         <header className="font-semibold text-3xl mt-4">
-          <p>{t("welcome")} {user?.first_name}!</p>
+          <p>
+            {t("welcome")} {user?.first_name}!
+          </p>
         </header>
         <header className="font-semibold text-2xl text-[#1f9065]">
           <p>{t("myQuestion")}</p>
@@ -113,7 +115,9 @@ export default function MyQuestions() {
                         ) : (
                           <div className="flex gap-2 items-center">
                             <div className="rounded-full h-2 w-2 bg-red-500"></div>
-                            <p className="text-red-500">{t("beingConsidered")}</p>
+                            <p className="text-red-500">
+                              {t("beingConsidered")}
+                            </p>
                           </div>
                         )}
                       </div>
@@ -137,14 +141,16 @@ export default function MyQuestions() {
             {!user ? (
               <main>
                 <p className="text-center text-2xl font-semibold mt-24">
-                  You must be <span className="text-[#1f9065]">logged in</span> to view your questions
+                  You must be <span className="text-[#1f9065]">logged in</span>{" "}
+                  to view your questions
                 </p>
               </main>
             ) : (
               <main>
                 <p className="text-center text-2xl font-semibold mt-24">
                   There is no question submitted yet. If you have questions,
-                  please click <span className="text-[#1f9065]">The question is yes</span>
+                  please click{" "}
+                  <span className="text-[#1f9065]">The question is yes</span>
                 </p>
               </main>
             )}
@@ -153,7 +159,7 @@ export default function MyQuestions() {
         <main className="w-[30%] mt-6">
           <section className="bg-white rounded-lg p-6 border-b-4 border-[#1f9065] flex flex-col gap-3">
             <header>
-              <h1 className="text-xl font-semibold mb-4">Visibility</h1>
+              <h1 className="text-xl font-semibold mb-4">{t("visibility")}</h1>
             </header>
             <form>
               <label className="block mb-2">
@@ -164,7 +170,7 @@ export default function MyQuestions() {
                   onChange={handleAnswerCheckbox}
                   className="mr-2"
                 />
-                Answered
+                {t('Answered')}
               </label>
               <label className="block">
                 <input
@@ -174,11 +180,11 @@ export default function MyQuestions() {
                   onChange={handleAnswerCheckbox}
                   className="mr-2"
                 />
-                Unanswered
+                {t("unAnswered")}
               </label>
             </form>
             <header>
-              <h1 className="text-xl font-semibold mb-4">Categories</h1>
+              <h1 className="text-xl font-semibold mb-4">{t("categories")}</h1>
             </header>
             <form>
               <label className="block mb-2">
