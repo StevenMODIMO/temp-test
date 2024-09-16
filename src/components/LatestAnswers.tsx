@@ -4,15 +4,7 @@ import { LuArrowDownRight } from "react-icons/lu";
 import { FaRegStar } from "react-icons/fa";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-
-// Function to slugify the title
-function slugify(string: string) {
-  return string
-    .toLowerCase()
-    .trim()
-    .replace(/[\s\W-]+/g, "-") // Replace spaces and non-word characters with hyphens
-    .replace(/^-+|-+$/g, ""); // Remove leading or trailing hyphens
-}
+import slugify from "slugify"
 
 export default function LatestAnswers() {
   const [answers, setAnswers] = useState([]);

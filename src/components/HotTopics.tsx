@@ -4,14 +4,7 @@ import { IoClipboardOutline } from "react-icons/io5";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-
-function slugify(string: string) {
-  return string
-    .toLowerCase()
-    .trim()
-    .replace(/[\s\W-]+/g, "-") // Replace spaces and non-word characters with hyphens
-    .replace(/^-+|-+$/g, ""); // Remove leading or trailing hyphens
-}
+import slugify from "slugify"
 
 export default function HotTopics() {
   const [topics, setTopics] = useState([]);

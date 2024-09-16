@@ -2,14 +2,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import slugify from "slugify"
 
-function slugify(string: string) {
-  return string
-    .toLowerCase()
-    .trim()
-    .replace(/[\s\W-]+/g, "-") // Replace spaces and non-word characters with hyphens
-    .replace(/^-+|-+$/g, ""); // Remove leading or trailing hyphens
-}
 
 export default function BannerSearch() {
   const [search, setSearch] = useState("");
