@@ -109,7 +109,7 @@ export default function LoginForm({ setOpenForm }) {
           <FaTimes onClick={() => setOpenForm(false)} />
         </header>
         <header className="text-center text-[22px] text-[#292929] font-semibold px-3 md:text-[40px]">
-          <h1>{t("signIn")}</h1>
+          <h1>{t("introduction")}</h1>
         </header>
         <section className="px-3 my-2 md:flex gap-2 md:w-fit md:mx-auto">
           <div
@@ -184,7 +184,7 @@ export default function LoginForm({ setOpenForm }) {
                 <p>{t("loading")}</p>
               </div>
             ) : (
-              <p>{t("introduction")}</p>
+              <p>{t("signIn")}</p>
             )}
           </button>
         </form>

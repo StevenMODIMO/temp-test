@@ -9,13 +9,18 @@ interface Question {
 
 export default function PinnedQuestion() {
   const [question, setQuestion] = useState<Question | null>(null);
-  const { t } = useTranslation();
+  const { t,i18n } = useTranslation();
 
   useEffect(() => {
     const getQuestion = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/questions/pinned/"
+          "https://backfatvo.salyam.uz/api_v1/questions/pinned/",
+          {
+            headers: {
+              "Accept-Language": i18n.language,
+            },
+          }
         );
         const json: Question = await response.json();
         setQuestion(json);

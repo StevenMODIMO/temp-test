@@ -60,7 +60,7 @@ export default function LanguageBlock() {
   }, [i18n, currentLocale]);
 
   return (
-    <ul className="flex items-center justify-center gap-2 text-gray-200 border border-gray-200 font-light rounded-2xl">
+    <ul className="flex items-center justify-center gap-2 text-gray-200 font-light rounded-2xl">
       {languages.map((lang) => (
         <li key={lang.code} className="cursor-pointer">
           <div

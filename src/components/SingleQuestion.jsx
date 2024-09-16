@@ -1,14 +1,20 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaSquareFull } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export default function SingleQuestion({ id }) {
   const [question, setQuestion] = useState({});
+  const { t,i18n } = useTranslation(["categories"]);
 
   useEffect(() => {
     const getQuestion = async () => {
       const response = await fetch(
-        `https://backfatvo.salyam.uz/api_v1/questions/${id}/`
+        `https://backfatvo.salyam.uz/api_v1/questions/${id}/`,
+        {
+          headers: {
+            "Accept-Language": i18n.language,
+          },
+        }
       );
 
       const json = await response.json();
@@ -31,20 +37,23 @@ export default function SingleQuestion({ id }) {
     : "";
 
   return (
-    <main className="border-b-4 border-[#1f9065] bg-white shadow-lg rounded-lg w-[80%] ml-6 mt-4 p-6 flex flex-col gap-4 lg:w-[70%] lg:mx-auto">
+    <main className="border-b-4 border-[#1f9065] bg-white shadow-lg rounded-lg w-[80%] ml-6 p-6 flex flex-col gap-4 lg:w-[70%] lg:mx-auto">
       <header className="flex justify-between">
-        <div className="flex gap-3 items-center">
-          <p className="text-xl">{formattedDate}</p>
+        <div className="flex items-center gap-2">
+          <p className="text-[#1f9065] text-2xl font-semibold">
+            {question.title}
+          </p>
+          <p className="text-gray-500 text-sm">
+            {question.view} {t("views")}
+          </p>
         </div>
-        <p className="text-lg text-[#1f9065]">
-          {question.is_answered ? "Answered" : "Unanswered"}
-        </p>
       </header>
       <main>
         <section className="flex gap-4 p-4">
           <p className="text-lg text-gray-500">{question.question}</p>
         </section>
       </main>
+      <div className="h-[2px] w-[95%] mx-auto bg-gray-200"></div>
       <main>
         <section className="flex gap-4 p-4">
           <div
@@ -52,6 +61,7 @@ export default function SingleQuestion({ id }) {
             dangerouslySetInnerHTML={{ __html: question.answer }}
           />
         </section>
+        <p>{formattedDate}</p>
       </main>
     </main>
   );

@@ -15,13 +15,18 @@ function slugify(string: string) {
 
 export default function HotTopics() {
   const [topics, setTopics] = useState([]);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const getTopics = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/questions/latest/"
+          "https://backfatvo.salyam.uz/api_v1/questions/latest/",
+          {
+            headers: {
+              "Accept-Language": i18n.language,
+            },
+          }
         );
         const json = await response.json();
         setTopics(json);

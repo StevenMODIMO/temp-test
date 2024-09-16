@@ -11,5 +11,7 @@
   "loader": "Loading",
   "modalFooterLeft": "User Terms",
   "modalFooterRight": " Tashkent 2024",
-  "freeBook": "Free books"
+  "freeBook": "Free books",
+  "sellButton": "Sale",
+  "freeButton": "Download"
 }

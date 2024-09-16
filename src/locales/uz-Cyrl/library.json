@@ -14,5 +14,7 @@
   "author": "Муаллиф",
   "description": "Тавсиф",
   "price": "Нарх",
-  "freeBook": "Бепул китоблар"
+  "freeBook": "Бепул китоблар",
+  "sellButton": "Сотиб олиш",
+  "freeButton": "Юклаб олиш"
 }

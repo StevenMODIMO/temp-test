@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 // Function to slugify the title
-function slugify(string:string) {
+function slugify(string: string) {
   return string
     .toLowerCase()
     .trim()
@@ -17,13 +17,18 @@ function slugify(string:string) {
 export default function LatestAnswers() {
   const [answers, setAnswers] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
-  const { t } = useTranslation(["home"]); // State to manage the expanded accordion
+  const { t, i18n } = useTranslation(["home"]); // State to manage the expanded accordion
 
   useEffect(() => {
     const getAnswers = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/questions/?pageSize=12"
+          "https://backfatvo.salyam.uz/api_v1/questions/?pageSize=12",
+          {
+            headers: {
+              "Accept-Language": i18n.language,
+            },
+          }
         );
         const json = await response.json();
         setAnswers(json.results);
@@ -41,7 +46,9 @@ export default function LatestAnswers() {
   return (
     <main className="my-3 lg:my-5">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">{t("latestAnswers")}</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2">
+          {t("latestAnswers")}
+        </h1>
       </header>
       <main className="flex flex-col gap-2 mt-6">
         {answers.map(({ id, title, truncated_answer }) => (

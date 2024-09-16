@@ -21,7 +21,7 @@ export default function Categories() {
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [checkedCategories, setCheckedCategories] = useState({});
   const router = useRouter();
-  const { t } = useTranslation(["categories"])
+  const { t } = useTranslation(["categories"]);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -55,7 +55,9 @@ export default function Categories() {
         (id) => checkedCategories[id]
       );
       const categoryIdsParam =
-        selectedCategoryIds.length > 0 ? `&category_ids=${selectedCategoryIds.join(",")}` : "";
+        selectedCategoryIds.length > 0
+          ? `&category_ids=${selectedCategoryIds.join(",")}`
+          : "";
       const searchParam = search ? `&search=${encodeURIComponent(search)}` : "";
       const url = `https://backfatvo.salyam.uz/api_v1/questions/?page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`;
 
@@ -81,9 +83,13 @@ export default function Categories() {
       (id) => checkedCategories[id]
     );
     const categoryIdsParam =
-      selectedCategoryIds.length > 0 ? `&category_ids=${selectedCategoryIds.join(",")}` : "";
+      selectedCategoryIds.length > 0
+        ? `&category_ids=${selectedCategoryIds.join(",")}`
+        : "";
     const searchParam = search ? `&search=${encodeURIComponent(search)}` : "";
-    router.push(`/uz/categories?page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`);
+    router.push(
+      `/uz/categories?page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`
+    );
   }, [currentPage, checkedCategories, search]);
 
   const handlePageClick = (page) => {
@@ -93,7 +99,9 @@ export default function Categories() {
   const handleCheckboxChange = (id) => {
     setCheckedCategories((prevChecked) => {
       const newChecked = { ...prevChecked, [id]: !prevChecked[id] };
-      const selectedCategoryIds = Object.keys(newChecked).filter((id) => newChecked[id]);
+      const selectedCategoryIds = Object.keys(newChecked).filter(
+        (id) => newChecked[id]
+      );
 
       if (selectedCategoryIds.length === 0) {
         // If no categories are selected, show all questions
@@ -117,7 +125,7 @@ export default function Categories() {
               className="p-2 rounded-md outline-none"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search..."
+              placeholder={t("search")}
             />
           </form>
         </header>
@@ -138,13 +146,12 @@ export default function Categories() {
                     className="flex flex-col gap-5 p-3 border-b-2 border-[#1f9065] bg-white rounded-xl"
                   >
                     <header className="flex gap-2 items-center">
-                      <Link
-                        href={`/question-details/${slugify(title)}/${id}`}
-                        className="text-[#1f9065] text-2xl font-semibold"
-                      >
+                      <p className="text-[#1f9065] text-2xl font-semibold">
                         {title}
-                      </Link>
-                      <p className="text-gray-400 mt-2 text-sm">{view} views</p>
+                      </p>
+                      <p className="text-gray-400 mt-2 text-sm">
+                        {view} {t("views")}
+                      </p>
                     </header>
                     <p className="text-[16px]">{truncated_question}</p>
                     <div className="h-[2px] w-[95%] mx-auto bg-gray-200"></div>
@@ -153,13 +160,17 @@ export default function Categories() {
                       <div className="text-gray-400">
                         {new Date(updated_at).toLocaleString()}
                       </div>
+                      <Link href={`/question-details/${slugify(title)}/${id}`} 
+                        className="text-[#1f9065] font-semibold">
+                        {t("readMore")}
+                      </Link>
                     </footer>
                   </main>
                 );
               }
             )
           ) : (
-            <p className="text-center text-gray-500">No results found.</p>
+            <p className="text-center text-gray-500">{t("noResults")}</p>
           )}
           <div className="pagination flex justify-center gap-2 mt-4">
             <button

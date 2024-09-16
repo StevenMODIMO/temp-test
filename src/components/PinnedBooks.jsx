@@ -7,13 +7,18 @@ import { useTranslation } from "react-i18next";
 export default function PinnedBooks() {
   const [pinnedBooks, setPinnedBooks] = useState([]);
   const [current, setCurrent] = useState(0);
-  const { t } = useTranslation();
+  const { t,i18n } = useTranslation();
 
   useEffect(() => {
     const getPinnedBooks = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/books/pinned/"
+          "https://backfatvo.salyam.uz/api_v1/books/pinned/",
+          {
+            headers: {
+              "Accept-Language": i18n.language,
+            },
+          }
         );
         const json = await response.json();
         setPinnedBooks(json.results);

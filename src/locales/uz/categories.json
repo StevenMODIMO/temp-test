@@ -7,5 +7,10 @@
   "visibility": "Holati",
   "categories": "Kategoriyalar",
   "answered": "Javob berilgan",
-  "unAnswered": "Javob berilmagan"
+  "unAnswered": "Javob berilmagan",
+  "views": "marta ko'rildi",
+  "noResults": "Natija topilmadi",
+  "search": "Shu yerga yozing…",
+  "readMore": "Davomini o'qish",
+  "showAttachment": "Ilovani ko'rish"
 }

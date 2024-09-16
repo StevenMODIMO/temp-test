@@ -44,7 +44,7 @@ export default function BannerSearch() {
   }, [search]);
 
   return (
-    <main className="relative">
+    <main className="relative lg:w-[80%] lg:mx-auto">
       <form>
         <label
           htmlFor="search"

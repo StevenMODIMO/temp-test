@@ -7,5 +7,10 @@
   "visibility": "Ҳолат",
   "categories": "Категориялар",
   "answered": "Жавоб берилган",
-  "unAnswered": "Жавоб берилмаган"
+  "unAnswered": "Жавоб берилмаган",
+  "views": "марта кўрилди",
+  "noResults": "Натижа топилмади",
+  "search": "Шу ерга ёзинг…",
+  "readMore": "Давомини ўқиш",
+  "showAttachment": " Иловани кўриш"
 }

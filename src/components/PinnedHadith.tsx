@@ -11,13 +11,18 @@ interface Hadith {
 
 export default function PinnedHadith() {
   const [hadith, setHadith] = useState<Hadith | null>(null);
-  const { t } = useTranslation();
+  const { t,i18n } = useTranslation();
 
   useEffect(() => {
     const getHadith = async () => {
       try {
         const response = await fetch(
-          "https://backfatvo.salyam.uz/api_v1/hadiths/pinned/"
+          "https://backfatvo.salyam.uz/api_v1/hadiths/pinned/",
+          {
+            headers: {
+              "Accept-Language": i18n.language,
+            },
+          }
         );
         const json: Hadith = await response.json();
         setHadith(json);

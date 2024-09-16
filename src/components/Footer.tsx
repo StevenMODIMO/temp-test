@@ -18,7 +18,7 @@ export default function Footer() {
   const { t } = useTranslation();
   return (
     <section className="bg-[#1f9065]">
-      <footer className="rounded-lg mt-2 lg:w-[70%] lg:mx-auto  text-gray-200 p-4 text-sm flex flex-col gap-4 md:grid grid-cols-3 lg:gap-8 lg:text-lg md:p-8 lg:p-12">
+      <footer className="rounded-lg lg:w-[70%] lg:mx-auto  text-gray-200 p-4 text-sm flex flex-col gap-4 md:grid grid-cols-3 lg:gap-8 lg:text-lg md:p-8 lg:p-12">
         <section className="flex flex-col gap-4">
           <h1>
             {t("footerText")}
