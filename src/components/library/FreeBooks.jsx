@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import BookModal from "./BookModal";
+import { useTranslation } from "react-i18next";
 
 export default function FreeBooks() {
   const [freeBooks, setFreeBooks] = useState([]);

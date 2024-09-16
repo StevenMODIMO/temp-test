@@ -2,11 +2,13 @@
 import { useEffect, useState } from "react";
 import Backdrop from "../Backdrop";
 import { FaTimes, FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export default function BookModal({ id, setOpen }) {
   const [book, setBook] = useState({});
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [show, setShow] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getBook = async () => {
@@ -81,18 +83,19 @@ export default function BookModal({ id, setOpen }) {
         <section className="flex flex-col gap-2 mt-4">
           <p className="text-[#1f9065] text-3xl font-semibold">{book.title}</p>
           <p>
-            <span className="text font-semibold">Author:</span> {book.author}
+            <span className="text font-semibold">{t("author")}:</span>{" "}
+            {book.author}
           </p>
           <div>
-            <p className="text font-semibold">Description:</p>
+            <p className="text font-semibold">{t("description")}:</p>
             <div dangerouslySetInnerHTML={{ __html: book.description }} />
           </div>
           <p>
-            <span className="text font-semibold">Publisher:</span>{" "}
+            <span className="text font-semibold">{t("publisher")}:</span>{" "}
             {book.publisher}
           </p>
           <p>
-            <span className="text font-semibold">Price:</span>{" "}
+            <span className="text font-semibold">{t("price")}:</span>{" "}
             {book.price_formatted}
           </p>
           {book.is_free ? (

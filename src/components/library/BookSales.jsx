@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import BookModal from "./BookModal";
+import { useTranslation } from "react-i18next";
 
 export default function BookSales() {
   const [books, setBooks] = useState([]);
@@ -9,6 +10,7 @@ export default function BookSales() {
   const [booksPerSlide, setBooksPerSlide] = useState(3);
   const [open, setOpen] = useState(false);
   const [bookId, setBookId] = useState("");
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getBooks = async () => {
@@ -60,8 +62,11 @@ export default function BookSales() {
 
   return (
     <main>
+      <header className="text-black text-3xl font-semibold md:text-4xl">
+        <h1>{t("library")}</h1>
+      </header>
       <header className="mt-3 pt-2 pl-2 text-[#1f9065] text-xl font-semibold border-b-4 border-[#1f9065]">
-        <h1>Available for sale</h1>
+        <h1>{t("availableForSale")}</h1>
       </header>
       {open && bookId && <BookModal id={bookId} setOpen={setOpen} />}
       <main className="relative bg-gray-100 mx-0 p-2 rounded-lg mt-2 md:p-4">

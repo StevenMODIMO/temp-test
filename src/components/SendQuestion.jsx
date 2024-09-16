@@ -6,6 +6,7 @@ import { FaTimes } from "react-icons/fa";
 import { RiAttachment2 } from "react-icons/ri";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function SendQuestion({ setOpen }) {
   const [name, setName] = useState("");
@@ -15,6 +16,7 @@ export default function SendQuestion({ setOpen }) {
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   const sendQuestion = async (e) => {
     e.preventDefault();
@@ -71,7 +73,7 @@ export default function SendQuestion({ setOpen }) {
           />
         </div>
         <header className="text-3xl font-semibold text-[#1f9065] text-center">
-          <h1>Ask question</h1>
+          <h1>{t("title")}</h1>
         </header>
         <form
           onSubmit={sendQuestion}
@@ -79,7 +81,7 @@ export default function SendQuestion({ setOpen }) {
           className="flex flex-col gap-3 my-2 px-3  w-[70%] mx-auto"
         >
           <label htmlFor="name" className="text-lg font-semibold">
-            Name
+            {t("first_name")}
           </label>
           <input
             id="name"
@@ -92,7 +94,7 @@ export default function SendQuestion({ setOpen }) {
             }
           />
           <label htmlFor="question" className="text-lg font-semibold">
-            Question
+            {t("question")}
           </label>
           <textarea
             id="question"
@@ -134,8 +136,8 @@ export default function SendQuestion({ setOpen }) {
           </div>
         )}
         <footer className="bg-[#1f9065] p-3 flex justify-between text-white px-3">
-          <Link href="/terms-of-service">Terms of use</Link>
-          <p>Tashkent 2024</p>
+          <Link href="/terms-of-service">{t("modalFooterLeft")}</Link>
+          <p>{t("modalFooterRight")}</p>
         </footer>
       </main>
     </Backdrop>

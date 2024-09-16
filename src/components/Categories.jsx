@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 function slugify(string) {
   return string
@@ -20,6 +21,7 @@ export default function Categories() {
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [checkedCategories, setCheckedCategories] = useState({});
   const router = useRouter();
+  const { t } = useTranslation()
 
   useEffect(() => {
     const getCategories = async () => {
@@ -195,7 +197,7 @@ export default function Categories() {
       <main className="w-[30%] mt-6">
         <section className="bg-white rounded-lg p-6 border-b-4 border-[#1f9065]">
           <header>
-            <h1 className="text-xl font-semibold mb-4">Categories</h1>
+            <h1 className="text-xl font-semibold mb-4">{t("title")}</h1>
           </header>
           <div>
             {filteredCategories.map((category) => (

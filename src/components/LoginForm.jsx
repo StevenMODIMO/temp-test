@@ -130,7 +130,7 @@ export default function LoginForm({ setOpenForm }) {
         </section>
         <div className="flex justify-center text-gray-500 items-center gap-2 my-5 px-3 md:mx-auto">
           <div className="bg-gray-500 h-[2px] w-12"></div>
-          <div>{t("byEmail")}</div>
+          <div>{t("withEmail")}</div>
           <div className="bg-gray-500 h-[2px] w-12"></div>
         </div>
         <form
