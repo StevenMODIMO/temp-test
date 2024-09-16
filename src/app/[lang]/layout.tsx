@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  return i18nConfig.locales.map(locale => ({ locale }));
+  return i18nConfig.locales.map((locale) => ({ locale }));
 }
 
 interface RootLayoutProps {
@@ -27,14 +27,40 @@ export default async function RootLayout({
   children,
   params: { lang },
 }: Readonly<RootLayoutProps & { children: React.ReactNode }>) {
-  const { resources } = await initTranslations(lang, ["layout","categories", "login", "media", "library", "registration", "searchDeeper", "home", "forgotPassword", "sendQuestion", "latestAnswers", "prayer"]);
+  const { resources } = await initTranslations(lang, [
+    "layout",
+    "categories",
+    "login",
+    "media",
+    "library",
+    "registration",
+    "searchDeeper",
+    "home",
+    "forgotPassword",
+    "sendQuestion",
+    "latestAnswers",
+    "prayer",
+  ]);
 
   return (
     <AuthContextProvider>
       <AuthProvider>
         <html lang={lang} dir={dir(lang)}>
           <TranslationsProvider
-            namespaces={["layout","categories", "login", "media", "library", "registration", "searchDeeper", "home", "forgotPassword", "sendQuestion", "latestAnswers", "prayer"]}
+            namespaces={[
+              "layout",
+              "categories",
+              "login",
+              "media",
+              "library",
+              "registration",
+              "searchDeeper",
+              "home",
+              "forgotPassword",
+              "sendQuestion",
+              "latestAnswers",
+              "prayer",
+            ]}
             locale={lang}
             resources={resources}
           >
