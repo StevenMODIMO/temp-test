@@ -58,7 +58,13 @@ export default function BookModal({ id, setOpen }) {
 
   return (
     <Backdrop>
-      <main className="bg-white w-[60%] h-[90%] rounded-md p-4 overflow-auto">
+      <main
+        className={
+          book.images?.length
+            ? "bg-white w-[60%] h-[90%] rounded-md p-4 overflow-auto"
+            : "bg-white w-[60%] h-fit rounded-md p-4 overflow-auto"
+        }
+      >
         <header className="flex justify-end">
           <FaTimes
             onClick={() => setOpen(false)}
@@ -101,7 +107,6 @@ export default function BookModal({ id, setOpen }) {
               <span className="text font-semibold">{t("publisher")}:</span>{" "}
               {book.publisher}
             </p>
-
             <div>
               {book.is_free ? (
                 <button
@@ -128,10 +133,12 @@ export default function BookModal({ id, setOpen }) {
               )}
             </div>
           </section>
-          <p>
-            <span className="text font-semibold">{t("price")}:</span>{" "}
-            {book.price_formatted}
-          </p>
+          {book.price_formatedd && (
+            <p>
+              <span className="text font-semibold">{t("price")}:</span>{" "}
+              {book.price_formatted}
+            </p>
+          )}
         </section>
       </main>
     </Backdrop>

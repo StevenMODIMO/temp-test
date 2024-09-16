@@ -155,18 +155,18 @@ export default function PrayerTimes() {
   };
 
   return (
-    <main className="flex items-center mx-auto gap-72 w-[80%] my-3">
-      <main className="flex items-center gap-3 lg:ml-10">
-        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+    <main className="flex items-center mx-auto gap-48 w-[80%] my-10">
+      <main className="flex items-center gap-3 lg:ml-8">
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-24 w-24 rounded-full shadow-md p-1">
           <div
             className={
               times.active === "fajr"
                 ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
-                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
             <p className="font-bold">{times.fajr}</p>
-            <p>{t("fajr")}</p>
+            <p className="text-[15px]">{t("fajr")}</p>
             {times.active === "fajr" && <p className="text-xs">{timeLeft}</p>}
           </div>
         </div>
@@ -175,16 +175,16 @@ export default function PrayerTimes() {
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
         </div>
-        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-24 w-24 rounded-full shadow-md p-1">
           <div
             className={
               times.active === "sunrise"
                 ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
-                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
             <p>{times.sunrise}</p>
-            <p>{t("sunrise")}</p>
+            <p className="text-[15px]">{t("sunrise")}</p>
 
             {times.active === "sunrise" && (
               <p className="text-xs">{timeLeft}</p>
@@ -196,16 +196,16 @@ export default function PrayerTimes() {
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
         </div>
-        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-24 w-24 rounded-full shadow-md p-1">
           <div
             className={
               times.active === "dhuhr"
                 ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
-                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
             <p>{times.dhuhr}</p>
-            <p>{t("dhuhr")}</p>
+            <p className="text-[15px]">{t("dhuhr")}</p>
 
             {times.active === "dhuhr" && <p className="text-xs">{timeLeft}</p>}
           </div>
@@ -215,16 +215,16 @@ export default function PrayerTimes() {
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
         </div>
-        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-24 w-24 rounded-full shadow-md p-1">
           <div
             className={
               times.active === "asr"
                 ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
-                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
             <p>{times.asr}</p>
-            <p>{t("asr")}</p>
+            <p className="text-[15px]">{t("asr")}</p>
 
             {times.active === "asr" && <p className="text-xs">{timeLeft}</p>}
           </div>
@@ -234,16 +234,16 @@ export default function PrayerTimes() {
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
         </div>
-        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-24 w-24 rounded-full shadow-md p-1">
           <div
             className={
               times.active === "maghrib"
                 ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
-                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
             <p>{times.maghrib}</p>
-            <p>{t("maghrib")}</p>
+            <p className="text-[15px]">{t("maghrib")}</p>
 
             {times.active === "maghrib" && (
               <p className="text-xs">{timeLeft}</p>
@@ -255,16 +255,16 @@ export default function PrayerTimes() {
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
           <div className="h-3 relative w-[1px] bg-gray-400"></div>
         </div>
-        <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
+        <div className="flex items-center justify-center text-[#1f9065] text-xs h-24 w-24 rounded-full shadow-md p-1">
           <div
             className={
               times.active === "isha"
                 ? "border border-white bg-[#1f9065] text-white rounded-full h-full w-full flex flex-col items-center justify-center"
-                : "border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
+                : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
             <p>{times.isha}</p>
-            <p>{t("isha")}</p>
+            <p className="text-[15px]">{t("isha")}</p>
 
             {times.active === "isha" && <p className="text-xs">{timeLeft}</p>}
           </div>

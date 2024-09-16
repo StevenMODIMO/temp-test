@@ -27,7 +27,7 @@ export default async function Article({
   const data = await response.json();
   return (
     <main className="w-[70%] mx-auto my-24 p-4">
-      <header className="flex gap-2 items-center">
+      <header className="flex gap-2 items-center justify-between">
         <p className="text-2xl font-semibold">{data.title}</p>
         <p className="text-gray-500 text-lg mt-1">{data.view} {t("views")}</p>
       </header>

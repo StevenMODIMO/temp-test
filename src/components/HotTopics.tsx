@@ -56,7 +56,7 @@ export default function HotTopics() {
             >
               <div className="flex items-center gap-1 w-full">
                 <IoClipboardOutline className="text-[#1f9065] font-bold" />
-                <p className="whitespace-normal break-words max-w-[90%]">
+                <p className="whitespace-normal break-words max-w-[85%]">
                   {title}
                 </p>
               </div>

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function CreateAccount({ security_key }) {
   const [first_name, setFirstName] = useState("");
@@ -8,6 +9,7 @@ export default function CreateAccount({ security_key }) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { t } = useTranslation(["registration"]);
 
   const createAccount = async (e) => {
     e.preventDefault();
@@ -52,7 +54,7 @@ export default function CreateAccount({ security_key }) {
   return (
     <main className="bg-[#1f9065] text-white rounded-md p-3 mx-2 md:w-[60%] md:mx-auto">
       <header className="text-center text-lg font-semibold p-3 lg:text-xl">
-        <h1>Complete account creation</h1>
+        <h1>{t("completeAccount")}</h1>
       </header>
       <form
         onFocus={() => setError(false)}
@@ -60,27 +62,27 @@ export default function CreateAccount({ security_key }) {
         className="flex flex-col gap-3 mx-auto w-fit my-5 sm:w-96"
       >
         <label htmlFor="firstName" className="font-semibold lg:text-xl">
-          First name
+          {t("firstName")}
         </label>
         <input
           id="firstName"
           value={first_name}
           onChange={(e) => setFirstName(e.target.value)}
           className="bg-white rounded-md p-2 outline-none text-black"
-          placeholder="John"
+          placeholder={t("john")}
         />
         <label htmlFor="lastName" className="font-semibold lg:text-xl">
-          Last name
+          {t("lastName")}
         </label>
         <input
           id="lastName"
           value={last_name}
           onChange={(e) => setLastName(e.target.value)}
           className="bg-white rounded-md p-2 outline-none text-black"
-          placeholder="Doe"
+          placeholder={t("doe")}
         />
         <label htmlFor="email" className="font-semibold lg:text-xl">
-          Email
+          {t("email")}
         </label>
         <input
           id="email"
@@ -90,7 +92,7 @@ export default function CreateAccount({ security_key }) {
           placeholder="user@example.com"
         />
         <label htmlFor="password" className="font-semibold lg:text-xl">
-          Password
+          {t("password")}
         </label>
         <input
           id="password"
@@ -103,10 +105,10 @@ export default function CreateAccount({ security_key }) {
           {loading ? (
             <div className="flex justify-center items-center gap-2">
               <div className="h-5 w-5 animate-spin border-4 border-t-transparent border-[#1f9065] rounded-full"></div>
-              <p>loading</p>
+              <p>{t("loader")}</p>
             </div>
           ) : (
-            <p>Create account</p>
+            <p>{t("createButton")}</p>
           )}
         </button>
       </form>

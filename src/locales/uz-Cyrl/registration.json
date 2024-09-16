@@ -17,5 +17,19 @@
   "registration": "Рўйхатдан ўтиш",
   "loader": "Юкланмоқда",
   "modalFooterLeft": "Фойдаланувчи шартлари",
-  "modalFooterRight": " Тошкент 2024"
+  "modalFooterRight": "Тошкент 2024",
+  "createAccount": "Шахсий ҳисоб яратиш",
+  "completeAccount": "Маълумотларни тўлдиринг",
+  "firstName": "Исм",
+  "lastName": "Фамилия",
+  "email": "Электрон почта",
+  "password": "Парол",
+  "john": "Муҳаммад",
+  "doe": "Маҳмудов",
+  "createButton": "Давом этиш",
+  "verifyCode": "Жўнатилган код орқали электрон почтангизни тасдиқланг",
+  "code": "Код",
+  "verifyButton": "Тасдиқлаш",
+  "emailCode": "Шахсий элеcтрон почтангизни киритинг",
+  "sendCode": "Кодни жўнатиш"
 }

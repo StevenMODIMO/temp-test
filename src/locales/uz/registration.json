@@ -17,5 +17,19 @@
   "registration": "Ro‘yxatdan o‘tish",
   "loader": "Yuklanmoqda",
   "modalFooterLeft": "Foydalanuvchi shartlari",
-  "modalFooterRight": " Toshkent 2024"
+  "modalFooterRight": " Toshkent 2024",
+  "createAccount": "Shaxsiy hisob yaratish",
+  "completeAccount": "Ma'lumotlarni to'ldiring",
+  "firstName": "Ism",
+  "lastName": "Familiya",
+  "email": "Elektron pochta",
+  "password": "Parol",
+  "john": "Muhammad",
+  "doe": "Mahmudov",
+  "createButton": "Davom etish",
+  "verifyCode": "Jo'natilgan kod orqali elektron pochtangizni tasdiqlang",
+  "code": "Kod",
+  "verifyButton": "Tasdiqlash",
+  "emailCode": "Shaxsiy electron pochtangizni kiriting",
+  "sendCode": "Kodni jo'natish"
 }
