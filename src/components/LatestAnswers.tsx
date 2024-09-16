@@ -73,7 +73,7 @@ export default function LatestAnswers() {
                   href={`/question-details/${slugify(title)}/${id}`}
                   className="text-[#1f9065]"
                 >
-                  Read more
+                  {t("readMore")}
                 </Link>
               </div>
             )}
