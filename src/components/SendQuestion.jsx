@@ -134,7 +134,7 @@ export default function SendQuestion({ setOpen }) {
           </div>
         )}
         <footer className="bg-[#1f9065] p-3 flex justify-between text-white px-3">
-          <Link herf="/terms-of-service">Terms of use</Link>
+          <Link href="/terms-of-service">Terms of use</Link>
           <p>Tashkent 2024</p>
         </footer>
       </main>

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function PrayerTimes() {
   const [regions, setRegions] = useState({ regions: [], default: null });
@@ -127,12 +127,13 @@ export default function PrayerTimes() {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    return `${hours}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    return `${hours}:${String(minutes).padStart(2, "0")}:${String(
+      seconds
+    ).padStart(2, "0")}`;
   };
 
-
   return (
-    <main className="my-3 lg:my-5 flex items-center gap-5 lg:ml-24">
+    <main className="my-3 lg:my-5 flex items-center gap-5 lg:ml-12">
       <select
         value={selectedRegion}
         onChange={handleChange}
@@ -155,7 +156,7 @@ export default function PrayerTimes() {
           >
             <p className="font-bold">{times.fajr}</p>
             <p>Morning</p>
-            <p className="text-xs">{timeLeft}</p>
+            {times.active === "fajr" && <p className="text-xs">{timeLeft}</p>}
           </div>
         </div>
         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
@@ -173,6 +174,10 @@ export default function PrayerTimes() {
           >
             <p>{times.sunrise}</p>
             <p>The sun</p>
+
+            {times.active === "sunrise" && (
+              <p className="text-xs">{timeLeft}</p>
+            )}
           </div>
         </div>
         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
@@ -190,6 +195,8 @@ export default function PrayerTimes() {
           >
             <p>{times.dhuhr}</p>
             <p>Dhuhr</p>
+
+            {times.active === "dhuhr" && <p className="text-xs">{timeLeft}</p>}
           </div>
         </div>
         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
@@ -207,6 +214,8 @@ export default function PrayerTimes() {
           >
             <p>{times.asr}</p>
             <p>Asr</p>
+
+            {times.active === "asr" && <p className="text-xs">{timeLeft}</p>}
           </div>
         </div>
         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
@@ -224,6 +233,10 @@ export default function PrayerTimes() {
           >
             <p>{times.maghrib}</p>
             <p>Maghrib</p>
+
+            {times.active === "maghrib" && (
+              <p className="text-xs">{timeLeft}</p>
+            )}
           </div>
         </div>
         <div className="w-8 lg:w-16 h-[1px] flex items-center justify-around bg-gray-400">
@@ -241,6 +254,8 @@ export default function PrayerTimes() {
           >
             <p>{times.isha}</p>
             <p>Isha</p>
+
+            {times.active === "isha" && <p className="text-xs">{timeLeft}</p>}
           </div>
         </div>
       </main>
