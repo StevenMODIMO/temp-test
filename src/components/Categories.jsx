@@ -21,7 +21,7 @@ export default function Categories() {
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [checkedCategories, setCheckedCategories] = useState({});
   const router = useRouter();
-  const { t } = useTranslation()
+  const { t } = useTranslation(["categories"])
 
   useEffect(() => {
     const getCategories = async () => {
@@ -42,7 +42,6 @@ export default function Categories() {
   }, []);
 
   useEffect(() => {
-    // Update filteredCategories based on search input
     setFilteredCategories(
       categories.filter((category) =>
         category.name.toLowerCase().includes(search.toLowerCase())
@@ -78,7 +77,6 @@ export default function Categories() {
   }, [currentPage, checkedCategories, search]);
 
   useEffect(() => {
-    // Update URL with search and category filters
     const selectedCategoryIds = Object.keys(checkedCategories).filter(
       (id) => checkedCategories[id]
     );

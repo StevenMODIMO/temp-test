@@ -10,7 +10,7 @@ export default function BookSales() {
   const [booksPerSlide, setBooksPerSlide] = useState(3);
   const [open, setOpen] = useState(false);
   const [bookId, setBookId] = useState("");
-  const { t } = useTranslation();
+  const { t } = useTranslation(["library"]);
 
   useEffect(() => {
     const getBooks = async () => {

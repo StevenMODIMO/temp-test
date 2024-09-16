@@ -22,7 +22,7 @@ export default function LoginForm({ setOpenForm }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { dispatch } = useAuth();
-  const { t } = useTranslation();
+  const { t } = useTranslation(["login"]);
 
   const [openReset, setOpenreset] = useState(false);
 

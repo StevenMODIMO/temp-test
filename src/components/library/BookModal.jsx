@@ -8,7 +8,7 @@ export default function BookModal({ id, setOpen }) {
   const [book, setBook] = useState({});
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [show, setShow] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation(["library"]);
 
   useEffect(() => {
     const getBook = async () => {
@@ -107,7 +107,7 @@ export default function BookModal({ id, setOpen }) {
                   : "hidden"
               }
             >
-              {book.file && "Download"}
+              {book.file && <div>{t("freeButton")}</div>}
             </button>
           ) : (
             <button
@@ -117,7 +117,7 @@ export default function BookModal({ id, setOpen }) {
               {show && book.phone ? (
                 <a href={`tel:+${book.phone}`}>{book.phone}</a>
               ) : (
-                "Sale"
+                <div>{t("sellButton")}</div>
               )}
             </button>
           )}

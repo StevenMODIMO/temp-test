@@ -27,7 +27,6 @@ export default function Navbar() {
   const { data: session, status } = useSession();
   const { user, dispatch } = useAuth();
   const isAuth = status === "authenticated";
-  const [logoutModal, setLogoutModal] = useState(false);
   const { t } = useTranslation();
 
   const [categories, setCategories] = useState([]);

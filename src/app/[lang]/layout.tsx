@@ -27,14 +27,14 @@ export default async function RootLayout({
   children,
   params: { lang },
 }: Readonly<RootLayoutProps & { children: React.ReactNode }>) {
-  const { resources } = await initTranslations(lang, ["layout"]);
+  const { resources } = await initTranslations(lang, ["layout","categories", "login", "media", "library", "registration", "searchDeeper", "home", "forgotPassword", "sendQuestion", "latestAnswers"]);
 
   return (
     <AuthContextProvider>
       <AuthProvider>
         <html lang={lang} dir={dir(lang)}>
           <TranslationsProvider
-            namespaces={["layout"]}
+            namespaces={["layout","categories", "login", "media", "library", "registration", "searchDeeper", "home", "forgotPassword", "sendQuestion", "latestAnswers"]}
             locale={lang}
             resources={resources}
           >

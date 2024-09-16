@@ -36,7 +36,7 @@ export default function Footer() {
             {t("reserved")}
           </Link>
         </section>
-        <section>
+        <section className="lg:ml-16">
           <section className="flex flex-col gap-2">
             <div className="flex gap-2 items-center">
               <IoCallOutline className="text-lg" />
@@ -63,7 +63,7 @@ export default function Footer() {
             </div>
           </section>
         </section>
-        <section className="flex flex-col gap-3">
+        <section className="flex flex-col gap-3 lg:ml-24">
           <div className="flex flex-col gap-3">
             <section className="flex items-center gap-2 cursor-pointer hover:text-white">
               <FaXTwitter className="text-2xl" />

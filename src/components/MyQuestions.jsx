@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { FaCircle } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 export default function MyQuestions() {
   const [questions, setQuestions] = useState([]);
@@ -15,6 +16,7 @@ export default function MyQuestions() {
     category2: false,
   });
   const { user } = useAuth();
+  const { t } = useTranslation(["latestAnswers"]);
 
   useEffect(() => {
     const getQuestions = async () => {
@@ -35,15 +37,13 @@ export default function MyQuestions() {
       if (response.ok) {
         console.log(json);
         setQuestions(json);
-        setFilteredQuestions(json); // Initialize filteredQuestions with all questions
+        setFilteredQuestions(json);
       } else {
         console.log(json.error);
       }
     };
     getQuestions();
   }, [user]);
-
-  // Filter questions based on the selected "Answered" and "Unanswered" options
   useEffect(() => {
     let filtered = questions;
 
@@ -76,10 +76,10 @@ export default function MyQuestions() {
     <main className="bg-gray-200">
       <header className="flex flex-col gap-4 mx-28 lg:max-w-[70%] lg:mx-auto">
         <header className="font-semibold text-3xl mt-4">
-          <p>Welcome {user?.first_name}!</p>
+          <p>{t("welcome")} {user?.first_name}!</p>
         </header>
         <header className="font-semibold text-2xl text-[#1f9065]">
-          <p>My questions</p>
+          <p>{t("myQuestion")}</p>
         </header>
       </header>
       <section className="flex gap-4 mx-24 lg:max-w-[70%] lg:mx-auto">
@@ -108,19 +108,19 @@ export default function MyQuestions() {
                         {is_answered ? (
                           <div className="flex gap-2 items-center">
                             <div className="rounded-full h-2 w-2 bg-[#1f9065]"></div>
-                            <p className="text-[#1f9065]">Answered</p>
+                            <p className="text-[#1f9065]">{t("answered")}</p>
                           </div>
                         ) : (
                           <div className="flex gap-2 items-center">
                             <div className="rounded-full h-2 w-2 bg-red-500"></div>
-                            <p className="text-red-500">Unanswered</p>
+                            <p className="text-red-500">{t("beingConsidered")}</p>
                           </div>
                         )}
                       </div>
                     </header>
                     <section>
                       <header className="text-[#1f9065] text-lg">
-                        <h1>Question</h1>
+                        <h1>{t("question")}</h1>
                       </header>
                       <div className="flex items-center gap-2 ml-4">
                         <FaCircle className="text-gray-400 text-[5px]" />

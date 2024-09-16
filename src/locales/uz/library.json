@@ -13,5 +13,8 @@
   "modalFooterRight": " Toshkent 2024",
   "author": "Muallif",
   "description": "Tavsif",
-  "price": "Narx"
+  "price": "Narx",
+  "sellButton": "Sotib olish",
+  "freeButton": "Yuklab olish",
+  "freeBook": "Bepul kitoblar"
 }

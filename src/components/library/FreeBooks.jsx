@@ -9,6 +9,7 @@ export default function FreeBooks() {
   const [current, setCurrent] = useState(0);
   const [open, setOpen] = useState(false);
   const [bookId, setBookId] = useState("");
+  const { t } = useTranslation(["library"])
 
   useEffect(() => {
     const getFreeBooks = async () => {
@@ -37,7 +38,7 @@ export default function FreeBooks() {
   return (
     <main className="mt-4">
       <header className="pt-2 pl-2 text-[#1f9065] text-xl font-semibold border-b-4 border-[#1f9065]">
-        <h1>Free books</h1>
+        <h1>{t("freeBook")}</h1>
       </header>
       {open && bookId && <BookModal id={bookId} setOpen={setOpen} />}
       <main className="relative bg-gray-100 mx-0 p-2 rounded-lg mt-2 md:p-4">
