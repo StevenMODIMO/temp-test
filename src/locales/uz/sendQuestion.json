@@ -17,5 +17,7 @@
   "loader": "Yuklanmoqda",
   "attachedFile": "Fayl biriktirish",
   "modalFooterLeft": "Foydalanuvchi shartlari",
-  "modalFooterRight": " Toshkent 2024"
+  "modalFooterRight": " Toshkent 2024",
+  "error": "Bu maydonlar to'ldirilishi shart",
+  "followUs": ""
 }

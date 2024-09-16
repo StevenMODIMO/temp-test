@@ -17,5 +17,7 @@
   "loader": "Юкланмоқда",
   "attachedFile": "Файл бириктириш",
   "modalFooterLeft": "Фойдаланувчи шартлари",
-  "modalFooterRight": " Тошкент 2024"
+  "modalFooterRight": "Тошкент 2024",
+  "error": "Бу майдонлар тўлдирилиши шарт",
+  "followUs": ""
 }

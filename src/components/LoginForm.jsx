@@ -189,7 +189,7 @@ export default function LoginForm({ setOpenForm }) {
           </button>
         </form>
         <p className="px-3 text-xs text-center my-2 md:text-sm md:w-fit md:mx-auto">
-          {t("haveAnAccount")}?{" "}
+          {t("haveAnAccount")}{" "}
           <span>
             <Link
               onClick={() => setOpenForm(false)}

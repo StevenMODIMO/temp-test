@@ -2,7 +2,7 @@
   "haveAnAccount": "Do you have an account?",
   "signIn": "Sign In",
   "signUp": "Sign Up",
-  "redirectSignUpStart": "You must first ",
+  "redirectSignUpStart": "You must first",
   "redirectSignUpEnd": " to submit a question.",
   "title": "Submit a Question",
   "first_name": "Enter your first name",

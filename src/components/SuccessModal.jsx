@@ -7,8 +7,10 @@ import { FaTelegramPlane } from "react-icons/fa";
 import Link from "next/link";
 import umma from "@/public/download.png";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 export default function SuccessModal({ setOpenModal, setOpen }) {
+  const { t } = useTranslation(["sendQuestion"]);
   return (
     <Backdrop>
       <main className="flex flex-col gap-3 bg-white text-black rounded-t-xl w-[90%] sm:w-[70%] md:w-[35%]">
@@ -22,10 +24,10 @@ export default function SuccessModal({ setOpenModal, setOpen }) {
           />
         </div>
         <header className="text-3xl font-semibold text-[#1f9065] text-center">
-          <h1>Question sent!</h1>
+          <h1>{t("successTitle")}</h1>
         </header>
         <p className="text-center mt-3 text-lg font-bold">
-          Follow us on social networks for new topics and answers
+          {t('followUs')}
         </p>
         <footer>
           <section className="flex justify-center gap-3 p-2">

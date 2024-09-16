@@ -147,11 +147,11 @@ export default function PrayerTimes() {
   };
 
   return (
-    <main className="my-3 lg:my-5 flex items-center gap-5 lg:ml-12">
+    <main className="my-3 lg:my-5 flex items-center justify-center gap-5 lg:ml-12 lg:w-[70%]">
       <select
         value={selectedRegion}
         onChange={handleChange}
-        className="outline-none p-2 w-72 rounded-md"
+        className="outline-none p-2 w-36 rounded-md"
       >
         {regions.regions.map(({ id, name }) => (
           <option key={id} value={id}>

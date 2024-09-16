@@ -27,14 +27,42 @@ export default function Navbar() {
   const { data: session, status } = useSession();
   const { user, dispatch } = useAuth();
   const isAuth = status === "authenticated";
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [categories, setCategories] = useState([]);
+  const [regions, setRegions] = useState({ regions: [], default: null });
+
+  useEffect(() => {
+    const getRegions = async () => {
+      const response = await fetch(
+        "https://backfatvo.salyam.uz/api_v1/prayer_times/regions/",
+        {
+          headers: {
+            "Accept-Language":
+              i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
+          },
+        }
+      );
+      const json = await response.json();
+
+      if (response.ok) {
+        setRegions(json);
+      } else {
+        console.log(json.error);
+      }
+    };
+    getRegions();
+  }, []);
 
   useEffect(() => {
     const getCategories = async () => {
       const response = await fetch(
-        "https://backfatvo.salyam.uz/api_v1/categories/"
+        "https://backfatvo.salyam.uz/api_v1/categories/",
+        {
+          headers: {
+            "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
+          },
+        }
       );
       const json = await response.json();
 
@@ -68,7 +96,7 @@ export default function Navbar() {
             <Link href="/" className="font-semibold">
               {t("home")}
             </Link>
-            <div className="relative cursor-pointer">
+            <div className="relative cursor-pointer lg:flex flex-col lg:items-center lg:justify-center">
               <header
                 className="flex items-center gap-2 text-gray-200 font-semibold"
                 onClick={() => setShowCategoryLinks(!showCategoryLinks)}
@@ -79,7 +107,7 @@ export default function Navbar() {
                 />
               </header>
               {showCategoryLinks && (
-                <main className="z-[999] w-36 absolute top-6 flex flex-col bg-white text-black p-1 rounded-md">
+                <main className="z-[999] w-36 absolute top-8 flex flex-col bg-white text-black p-1 rounded-md lg:grid lg:grid-cols-5 lg:gap-2 lg:w-[600px]">
                   {categories.map(({ id, name, slug }) => {
                     return (
                       <Link

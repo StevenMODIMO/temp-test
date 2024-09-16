@@ -123,7 +123,7 @@ export default function SendQuestion({ setOpen }) {
             {loading ? (
               <div className="flex justify-center items-center gap-2">
                 <div className="h-5 w-5 animate-spin border-4 border-t-transparent border-white rounded-full"></div>
-                <p>loading</p>
+                <p>{t("loader")}</p>
               </div>
             ) : (
               <p>{t("submitTitle")}</p>
@@ -132,7 +132,7 @@ export default function SendQuestion({ setOpen }) {
         </form>
         {error && (
           <div className="text-red-500 mx-auto w-fit text-lg p-3 font-semibold">
-            {error}
+            {t("error")}
           </div>
         )}
         <footer className="bg-[#1f9065] p-3 flex justify-between text-white px-3">
