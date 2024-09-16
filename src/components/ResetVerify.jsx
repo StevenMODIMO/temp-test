@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function ResetVerify({ setSecuritykey }) {
+export default function ResetVerify({ setSecretKey }) {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
@@ -13,7 +13,7 @@ export default function ResetVerify({ setSecuritykey }) {
 
     setLoading(true);
     const response = await fetch(
-      "https://backfatvo.salyam.uz/api_v1/register/verify_code/",
+      "https://backfatvo.salyam.uz/api_v1/auth/reset_password/verify_code/",
       {
         method: "POST",
         headers: {
@@ -31,7 +31,7 @@ export default function ResetVerify({ setSecuritykey }) {
       setCode("");
       setLoading(false);
     } else {
-      setSecuritykey(json.secret_key);
+      setSecretKey(json.secret_key);
       setEmail("");
       setCode("");
       setError(null);

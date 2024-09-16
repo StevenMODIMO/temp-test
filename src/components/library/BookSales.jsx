@@ -8,6 +8,7 @@ export default function BookSales() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [booksPerSlide, setBooksPerSlide] = useState(3);
   const [open, setOpen] = useState(false);
+  const [bookId, setBookId] = useState("");
 
   useEffect(() => {
     const getBooks = async () => {
@@ -62,13 +63,20 @@ export default function BookSales() {
       <header className="mt-3 pt-2 pl-2 text-[#1f9065] text-xl font-semibold border-b-4 border-[#1f9065]">
         <h1>Available for sale</h1>
       </header>
+      {open && bookId && <BookModal id={bookId} setOpen={setOpen} />}
       <main className="relative bg-gray-100 mx-0 p-2 rounded-lg mt-2 md:p-4">
         <div className="flex gap-8">
           {books
             .slice(currentIndex, currentIndex + booksPerSlide)
             .map(({ id, title, price, author, images }) => (
-              <div key={id} className="bg-white p-3 shadow rounded" onClick={() => setOpen(true)}>
-                {open && <BookModal id={id} setOpen={setOpen} />}
+              <div
+                key={id}
+                className="bg-white p-3 shadow rounded"
+                onClick={() => {
+                  setOpen(true);
+                  setBookId(id);
+                }}
+              >
                 <div>
                   <img
                     src={images[0]}

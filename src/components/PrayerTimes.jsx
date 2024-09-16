@@ -132,7 +132,7 @@ export default function PrayerTimes() {
 
 
   return (
-    <main className="my-3 lg:my-5 flex items-center gap-5">
+    <main className="my-3 lg:my-5 flex items-center gap-5 lg:ml-24">
       <select
         value={selectedRegion}
         onChange={handleChange}

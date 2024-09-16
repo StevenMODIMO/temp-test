@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { useTranslation } from "react-i18next";
+import LanguageBlock from "./LanguageBlock";
 
 export default function Navbar() {
   const [openLinks, setOpenLinks] = useState(false);
@@ -59,11 +60,11 @@ export default function Navbar() {
 
   return (
     <main className="bg-[#1f9065]">
-      <section className="text-gray-200 flex items-center justify-between p-4 lg:max-w-[70%] lg:mx-auto">
+      <section className="text-gray-200 flex items-center justify-between p-4 lg:w-[80%] lg:mx-auto">
         <Link href="/">
           <Image src={logo} alt="logo" width={120} height={120} />
         </Link>
-        <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-16">
+        <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-6">
           <nav className="hidden md:flex items-center gap-3 lg:gap-6">
             <Link href="/" className="font-semibold">
               {t("home")}
@@ -117,17 +118,20 @@ export default function Navbar() {
                 {t("latestAnswer")}
               </Link>
             ) : (
-              <div onClick={() => setOpenForm(true)} className="font-semibold text-gray-200">
+              <div
+                onClick={() => setOpenForm(true)}
+                className="font-semibold text-gray-200"
+              >
                 {t("latestAnswer")}
               </div>
             )}
           </nav>
           <section className="flex gap-2 items-center">
-            <main>
+            <main className="flex gap-1 items-center">
               {user ? (
                 <div
                   onClick={logout}
-                  className="relative cursor-pointer flex justify-between gap-6 bg-[#1c855c] rounded items-center hover:bg-[#40aa81] lg:p-2"
+                  className="relative cursor-pointer flex justify-between gap-3 bg-[#1c855c] rounded items-center hover:bg-[#40aa81] lg:p-2"
                 >
                   <div className="flex gap-2 items-center">
                     <FiUser className="text-lg" />
@@ -144,6 +148,7 @@ export default function Navbar() {
                   <div>{t("introduction")}</div>
                 </div>
               )}
+              <LanguageBlock />
             </main>
             <div className="md:hidden" onClick={() => setOpenLinks(!openLinks)}>
               {openLinks ? <FaTimes /> : <FaBars />}

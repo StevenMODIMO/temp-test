@@ -24,6 +24,8 @@ export default function LoginForm({ setOpenForm }) {
   const { dispatch } = useAuth();
   const { t } = useTranslation();
 
+  const [openReset, setOpenreset] = useState(false);
+
   const getUser = async () => {
     try {
       const tokens = JSON.parse(localStorage.getItem("user_tokens"));
@@ -101,6 +103,7 @@ export default function LoginForm({ setOpenForm }) {
 
   return (
     <Backdrop>
+      {openReset && <ResetPassword setOpenreset={setOpenreset} />}
       <main className="bg-white text-black rounded-t-xl w-[90%] sm:w-[70%] md:w-[60%]">
         <header className="px-3 flex justify-end text-xl py-3">
           <FaTimes onClick={() => setOpenForm(false)} />
@@ -168,7 +171,10 @@ export default function LoginForm({ setOpenForm }) {
             )}
           </label>
           {error && <div className="my-3 text-red-500">{error}</div>}
-          <p className="cursor-pointer text-[#1f9065] text-sm text-center">
+          <p
+            onClick={() => setOpenreset(true)}
+            className="cursor-pointer text-[#1f9065] text-sm text-center"
+          >
             {t("forgotPassword")}
           </p>
           <button className="bg-[#1f9065] rounded-xl p-2 my-2 text-white">

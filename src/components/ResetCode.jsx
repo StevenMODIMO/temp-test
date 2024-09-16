@@ -10,7 +10,7 @@ export default function ResetCode({ setCode }) {
     e.preventDefault();
     setLoading(true);
     const response = await fetch(
-      "https://backfatvo.salyam.uz/api_v1/register/send_code/",
+      "https://backfatvo.salyam.uz/api_v1/auth/reset_password/send_code/",
       {
         method: "POST",
         headers: {

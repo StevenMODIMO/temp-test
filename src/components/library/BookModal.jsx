@@ -1,9 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import Backdrop from "../Backdrop";
+import { FaTimes, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function BookModal({ id, setOpen }) {
-  const [book, setBook] = useState(null);
+  const [book, setBook] = useState({});
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const getBook = async () => {
@@ -22,89 +25,101 @@ export default function BookModal({ id, setOpen }) {
     getBook();
   }, [id]);
 
-  if (!book) {
-    return (
-      <Backdrop>
-        <div className="flex items-center justify-center h-full">
-          <p className="text-white">Loading...</p>
-        </div>
-      </Backdrop>
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === book.images?.length - 1 ? 0 : prevIndex + 1
     );
-  }
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? book.images?.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleDownload = () => {
+    if (book.file) {
+      const link = document.createElement("a");
+      link.href = book.file;
+      link.download = book.title || "book";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
 
   return (
     <Backdrop>
-      <main
-        className="bg-white w-[70%] rounded-md p-6 my-5 overflow-y-auto z-[999]"
-        onClick={() => setOpen(false)}
-      >
-        <h1 className="text-2xl font-bold text-[#1f9065]">{book.title}</h1>
-        <p className="text-lg text-black mt-2">
-          <strong>Author:</strong> {book.author}
-        </p>
-        <p className="text-lg text-black mt-2">
-          <strong>Description:</strong> {book.description}
-        </p>
-        <p className="text-lg text-black mt-2">
-          <strong>Publisher:</strong> {book.publisher}
-        </p>
-        <p className="text-lg text-black mt-2">
-          <strong>Updated At:</strong>{" "}
-          {new Date(book.updated_at).toLocaleDateString()}
-        </p>
-        <p className="text-lg text-black mt-2">
-          <strong>Price:</strong> {book.is_free ? "Free" : `$${book.price}`}
-        </p>
-        <p className="text-lg text-black mt-2">
-          <strong>Contact:</strong> {book.phone}
-        </p>
-        <p className="text-lg text-black mt-2">
-          <strong>Amount:</strong> {book.amount}
-        </p>
-        <ImageSlider images={book.images} />
+      <main className="bg-white w-[60%] h-[90%] rounded-md p-4 overflow-auto">
+        <header className="flex justify-end">
+          <FaTimes
+            onClick={() => setOpen(false)}
+            className="cursor-pointer w-10 h-10 bg-[#1f9065] rounded-full p-2 text-white"
+          />
+        </header>
+        {book.images?.length > 0 && (
+          <div className="relative w-full h-64 mt-2">
+            <img
+              src={book.images[currentImageIndex]}
+              alt="Book"
+              className="w-full h-full object-cover rounded-md"
+            />
+            <button
+              onClick={prevImage}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 rounded-full text-white"
+            >
+              <FaArrowLeft />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 rounded-full text-white"
+            >
+              <FaArrowRight />
+            </button>
+          </div>
+        )}
+        <section className="flex flex-col gap-2 mt-4">
+          <p className="text-[#1f9065] text-3xl font-semibold">{book.title}</p>
+          <p>
+            <span className="text font-semibold">Author:</span> {book.author}
+          </p>
+          <div>
+            <p className="text font-semibold">Description:</p>
+            <div dangerouslySetInnerHTML={{ __html: book.description }} />
+          </div>
+          <p>
+            <span className="text font-semibold">Publisher:</span>{" "}
+            {book.publisher}
+          </p>
+          <p>
+            <span className="text font-semibold">Price:</span>{" "}
+            {book.price_formatted}
+          </p>
+          {book.is_free ? (
+            <button
+              onClick={handleDownload}
+              className={
+                book.file
+                  ? "bg-[#1f9065] w-24 text-white rounded-md p-2"
+                  : "hidden"
+              }
+            >
+              {book.file && "Download"}
+            </button>
+          ) : (
+            <button
+              onClick={() => setShow(!show)}
+              className="bg-[#1f9065] w-24 text-white rounded-md p-2"
+            >
+              {show && book.phone ? (
+                <a href={`tel:+${book.phone}`}>{book.phone}</a>
+              ) : (
+                "Sale"
+              )}
+            </button>
+          )}
+        </section>
       </main>
     </Backdrop>
-  );
-}
-
-function ImageSlider({ images }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  if (!images || images.length === 0) {
-    return null;
-  }
-
-  return (
-    <div className="relative mt-4">
-      <img
-        src={images[currentIndex]}
-        alt={`Book Image ${currentIndex + 1}`}
-        className="w-full h-64 object-cover rounded-md"
-      />
-      <button
-        onClick={handlePrev}
-        className="absolute top-1/2 left-2 bg-[#1f9065] text-white p-2 rounded-full"
-      >
-        &#8249;
-      </button>
-      <button
-        onClick={handleNext}
-        className="absolute top-1/2 right-2 bg-[#1f9065] text-white p-2 rounded-full"
-      >
-        &#8250;
-      </button>
-    </div>
   );
 }

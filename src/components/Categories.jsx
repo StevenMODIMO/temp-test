@@ -1,6 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+function slugify(string) {
+  return string
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, "-") // Replace spaces and non-word characters with hyphens
+    .replace(/^-+|-+$/g, ""); // Remove leading or trailing hyphens
+}
 
 export default function Categories() {
   const [search, setSearch] = useState("");
@@ -8,7 +17,9 @@ export default function Categories() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [categories, setCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
   const [checkedCategories, setCheckedCategories] = useState({});
+  const router = useRouter();
 
   useEffect(() => {
     const getCategories = async () => {
@@ -19,6 +30,7 @@ export default function Categories() {
 
       if (response.ok) {
         setCategories(json);
+        setFilteredCategories(json);
       } else {
         console.log(json.error);
       }
@@ -28,11 +40,26 @@ export default function Categories() {
   }, []);
 
   useEffect(() => {
+    // Update filteredCategories based on search input
+    setFilteredCategories(
+      categories.filter((category) =>
+        category.name.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, categories]);
+
+  useEffect(() => {
     const getQuestions = async () => {
+      const selectedCategoryIds = Object.keys(checkedCategories).filter(
+        (id) => checkedCategories[id]
+      );
+      const categoryIdsParam =
+        selectedCategoryIds.length > 0 ? `&category_ids=${selectedCategoryIds.join(",")}` : "";
+      const searchParam = search ? `&search=${encodeURIComponent(search)}` : "";
+      const url = `https://backfatvo.salyam.uz/api_v1/questions/?page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`;
+
       try {
-        const response = await fetch(
-          `https://backfatvo.salyam.uz/api_v1/questions/?page=${currentPage}&pageSize=6`
-        );
+        const response = await fetch(url);
         const json = await response.json();
 
         if (response.ok) {
@@ -46,17 +73,37 @@ export default function Categories() {
       }
     };
     getQuestions();
-  }, [currentPage]);
+  }, [currentPage, checkedCategories, search]);
+
+  useEffect(() => {
+    // Update URL with search and category filters
+    const selectedCategoryIds = Object.keys(checkedCategories).filter(
+      (id) => checkedCategories[id]
+    );
+    const categoryIdsParam =
+      selectedCategoryIds.length > 0 ? `&category_ids=${selectedCategoryIds.join(",")}` : "";
+    const searchParam = search ? `&search=${encodeURIComponent(search)}` : "";
+    router.push(`/uz/categories?page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`);
+  }, [currentPage, checkedCategories, search]);
 
   const handlePageClick = (page) => {
     setCurrentPage(page);
   };
 
   const handleCheckboxChange = (id) => {
-    setCheckedCategories((prevChecked) => ({
-      ...prevChecked,
-      [id]: !prevChecked[id],
-    }));
+    setCheckedCategories((prevChecked) => {
+      const newChecked = { ...prevChecked, [id]: !prevChecked[id] };
+      const selectedCategoryIds = Object.keys(newChecked).filter((id) => newChecked[id]);
+
+      if (selectedCategoryIds.length === 0) {
+        // If no categories are selected, show all questions
+        setCheckedCategories({});
+      } else {
+        setCheckedCategories(newChecked);
+      }
+
+      return newChecked;
+    });
   };
 
   return (
@@ -70,48 +117,49 @@ export default function Categories() {
               className="p-2 rounded-md outline-none"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="search bar"
+              placeholder="Search..."
             />
           </form>
         </header>
         <div className="flex flex-col gap-4 p-4 w-[90%]">
-          {questions.map(
-            ({
-              id,
-              title,
-              view,
-              truncated_question,
-              truncated_answer,
-              updated_at,
-            }) => {
-              return (
-                <main
-                  key={id}
-                  className="flex flex-col gap-5 p-3 border-b-2 border-[#1f9065] bg-white rounded-xl"
-                >
-                  <header className="flex gap-2 items-center">
-                    <p className="text-[#1f9065] text-2xl font-semibold">
-                      {title}
-                    </p>
-                    <p className="text-gray-400 mt-2 text-sm">{view} views</p>
-                  </header>
-                  <p className="text-[16px]">{truncated_question}</p>
-                  <div className="h-[2px] w-[95%] mx-auto bg-gray-200"></div>
-                  <p className="text-[16px]">{truncated_answer}</p>
-                  <footer className="flex justify-between text-sm">
-                    <div className="text-gray-400">
-                      {new Date(updated_at).toLocaleString()}
-                    </div>
-                    <Link
-                      href={`/question-details/${id}`}
-                      className="text-[#1f9065]"
-                    >
-                      Read more...
-                    </Link>
-                  </footer>
-                </main>
-              );
-            }
+          {questions.length > 0 ? (
+            questions.map(
+              ({
+                id,
+                title,
+                view,
+                truncated_question,
+                truncated_answer,
+                updated_at,
+              }) => {
+                return (
+                  <main
+                    key={id}
+                    className="flex flex-col gap-5 p-3 border-b-2 border-[#1f9065] bg-white rounded-xl"
+                  >
+                    <header className="flex gap-2 items-center">
+                      <Link
+                        href={`/question-details/${slugify(title)}/${id}`}
+                        className="text-[#1f9065] text-2xl font-semibold"
+                      >
+                        {title}
+                      </Link>
+                      <p className="text-gray-400 mt-2 text-sm">{view} views</p>
+                    </header>
+                    <p className="text-[16px]">{truncated_question}</p>
+                    <div className="h-[2px] w-[95%] mx-auto bg-gray-200"></div>
+                    <p className="text-[16px]">{truncated_answer}</p>
+                    <footer className="flex justify-between text-sm">
+                      <div className="text-gray-400">
+                        {new Date(updated_at).toLocaleString()}
+                      </div>
+                    </footer>
+                  </main>
+                );
+              }
+            )
+          ) : (
+            <p className="text-center text-gray-500">No results found.</p>
           )}
           <div className="pagination flex justify-center gap-2 mt-4">
             <button
@@ -150,7 +198,7 @@ export default function Categories() {
             <h1 className="text-xl font-semibold mb-4">Categories</h1>
           </header>
           <div>
-            {categories.map((category) => (
+            {filteredCategories.map((category) => (
               <div key={category.id} className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -170,21 +218,3 @@ export default function Categories() {
     </section>
   );
 }
-
-// "use client";
-// import { useSearchParams } from "next/navigation";
-
-// export default function Categories() {
-//   const searchParams = useSearchParams();
-//   return (
-//     <section>
-//       <header>Categories.</header>
-//       <div>
-//         <p>Search: {searchParams.get("search")}</p>
-//         <p>Category id: {searchParams.get("category_ids")}</p>
-//         <p>page: {searchParams.get("page")}</p>
-//         <p>pageSize: {searchParams.get("pageSize")}</p>
-//       </div> 
-//     </section>
-//   );
-// }
