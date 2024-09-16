@@ -30,29 +30,6 @@ export default function Navbar() {
   const { t, i18n } = useTranslation();
 
   const [categories, setCategories] = useState([]);
-  const [regions, setRegions] = useState({ regions: [], default: null });
-
-  useEffect(() => {
-    const getRegions = async () => {
-      const response = await fetch(
-        "https://backfatvo.salyam.uz/api_v1/prayer_times/regions/",
-        {
-          headers: {
-            "Accept-Language":
-              i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
-          },
-        }
-      );
-      const json = await response.json();
-
-      if (response.ok) {
-        setRegions(json);
-      } else {
-        console.log(json.error);
-      }
-    };
-    getRegions();
-  }, []);
 
   useEffect(() => {
     const getCategories = async () => {

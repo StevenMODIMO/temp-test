@@ -25,7 +25,13 @@ export default function PrayerTimes() {
 
       if (response.ok) {
         setRegions(json);
-        if (json.default) {
+        // Check if there is a previously selected region in localStorage
+        const storedRegion = localStorage.getItem("selectedRegion");
+        if (storedRegion) {
+          setSelectedRegion(storedRegion);
+          getTimes(storedRegion);
+        } else if (json.default) {
+          setSelectedRegion(json.default);
           getTimes(json.default);
         }
       } else {
@@ -68,6 +74,8 @@ export default function PrayerTimes() {
   const handleChange = (event) => {
     const regionId = event.target.value;
     setSelectedRegion(regionId);
+    // Store selected region in localStorage
+    localStorage.setItem("selectedRegion", regionId);
     getTimes(regionId);
   };
 
@@ -146,9 +154,10 @@ export default function PrayerTimes() {
     ).padStart(2, "0")}`;
   };
 
+
   return (
     <main className="my-3 lg:my-5 flex items-center justify-center gap-5 lg:ml-12 lg:w-[70%]">
-      <select
+       <select
         value={selectedRegion}
         onChange={handleChange}
         className="outline-none p-2 w-36 rounded-md"
@@ -187,7 +196,7 @@ export default function PrayerTimes() {
             }
           >
             <p>{times.sunrise}</p>
-            <p>{t("theSun")}</p>
+            <p>{t("sun")}</p>
 
             {times.active === "sunrise" && (
               <p className="text-xs">{timeLeft}</p>
