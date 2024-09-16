@@ -28,6 +28,7 @@ export default function MyQuestions() {
         {
           headers: {
             "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
+            Authorization: `Bearer ${access}`
           },
         }
       );
@@ -141,16 +142,13 @@ export default function MyQuestions() {
             {!user ? (
               <main>
                 <p className="text-center text-2xl font-semibold mt-24">
-                  You must be <span className="text-[#1f9065]">logged in</span>{" "}
-                  to view your questions
+                  {t("noLogged")}
                 </p>
               </main>
             ) : (
               <main>
                 <p className="text-center text-2xl font-semibold mt-24">
-                  There is no question submitted yet. If you have questions,
-                  please click{" "}
-                  <span className="text-[#1f9065]">The question is yes</span>
+                  {t("noQuestion")}
                 </p>
               </main>
             )}

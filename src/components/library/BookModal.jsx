@@ -66,7 +66,7 @@ export default function BookModal({ id, setOpen }) {
           />
         </header>
         {book.images?.length > 0 && (
-          <div className="relative w-full h-64 mt-2">
+          <div className="relative w-full h-[500px] mt-2">
             <img
               src={book.images[currentImageIndex]}
               alt="Book"
@@ -104,6 +104,7 @@ export default function BookModal({ id, setOpen }) {
             <span className="text font-semibold">{t("price")}:</span>{" "}
             {book.price_formatted}
           </p>
+          <div className="flex justify-end">
           {book.is_free ? (
             <button
               onClick={handleDownload}
@@ -127,6 +128,7 @@ export default function BookModal({ id, setOpen }) {
               )}
             </button>
           )}
+          </div>
         </section>
       </main>
     </Backdrop>

@@ -84,7 +84,7 @@ export default function Navbar() {
                 />
               </header>
               {showCategoryLinks && (
-                <main className="z-[999] w-36 absolute top-8 flex flex-col bg-white text-black p-1 rounded-md lg:grid lg:grid-cols-5 lg:gap-2 lg:w-[600px]">
+                <main className="z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-5 lg:gap-2 lg:w-[800px]">
                   {categories.map(({ id, name, slug }) => {
                     return (
                       <Link

@@ -12,7 +12,7 @@ import { useAuth } from "@/context/AuthContext";
 
 export default function Banner() {
   const [open, setOpen] = useState(false);
-  const { t } = useTranslation(["sendQuestion"]);
+  const { t } = useTranslation();
   const { user } = useAuth();
 
   const handleOpenModal = () => {

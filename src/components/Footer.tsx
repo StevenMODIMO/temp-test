@@ -32,9 +32,6 @@ export default function Footer() {
           <Link href="/user-data-deletion" className="text-sm md:text-[16px]">
             {t("userDeletion")}
           </Link>
-          <Link href="/terms-of-service" className="text-sm md:text-[16px]">
-            {t("reserved")}
-          </Link>
         </section>
         <section className="lg:ml-16">
           <section className="flex flex-col gap-2">

@@ -14,5 +14,7 @@
   "visibility": "Holati",
   "categories": "Kategoriyalar",
   "Answered": "Javob berilgan",
-  "unAnswered": "Javob berilmagan"
+  "unAnswered": "Javob berilmagan",
+  "noQuestion": "Sizda yo'llangan savollar mavjud emas. Savol yo'llash tugmasini bosing",
+  "noLogged": ""
 }
