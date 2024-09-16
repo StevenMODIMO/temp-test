@@ -21,7 +21,7 @@ export default function Register() {
       ) : code &&  !security_key ? (
         <VerifyCode setSecuritykey={setSecurityKey} uemail={uemail} />
       ) : security_key ? (
-        <CreateAccount security_key={security_key} />
+        <CreateAccount uemail={uemail} security_key={security_key} />
       ) : null}
     </main>
   );

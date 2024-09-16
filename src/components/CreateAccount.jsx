@@ -2,10 +2,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function CreateAccount({ security_key }) {
+export default function CreateAccount({ security_key, uemail }) {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -25,7 +24,7 @@ export default function CreateAccount({ security_key }) {
         body: JSON.stringify({
           first_name,
           last_name,
-          email,
+          uemail,
           password,
           secret_key: security_key,
         }),
@@ -36,13 +35,11 @@ export default function CreateAccount({ security_key }) {
 
     if (json.error) {
       setError(json.error);
-      setEmail("");
       setFirstName("");
       setLastName("");
       setPassword("");
       setLoading(false);
     } else {
-      setEmail("");
       setFirstName("");
       setLastName("");
       setPassword("");
@@ -81,16 +78,9 @@ export default function CreateAccount({ security_key }) {
           className="bg-white rounded-md p-2 outline-none text-black"
           placeholder={t("doe")}
         />
-        <label htmlFor="email" className="font-semibold lg:text-xl">
-          {t("email")}
-        </label>
-        <input
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="bg-white rounded-md p-2 outline-none text-black"
-          placeholder="user@example.com"
-        />
+        <div className="font-semibold lg:text-xl p-2 cursor-pointer rounded-md text-black bg-white">
+          {uemail}
+        </div>
         <label htmlFor="password" className="font-semibold lg:text-xl">
           {t("password")}
         </label>

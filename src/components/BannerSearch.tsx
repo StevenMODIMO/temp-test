@@ -54,7 +54,7 @@ export default function BannerSearch() {
           }
         >
           <input
-            className="ml-2 rounded-full outline-none bg-black/50"
+            className="ml-2 rounded-full outline-none w-full bg-black/50"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t("searchPlaceholder")}
