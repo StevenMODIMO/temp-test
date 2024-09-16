@@ -44,7 +44,7 @@ export default function MediaBlock() {
   };
 
   return (
-    <main className="my-3 lg:my-5 bg-white rounded-md p-4 mt-3 cursor-pointer">
+    <main className="my-3 lg:my-5 bg-white rounded-md p-4 mt-3 cursor-pointer lg:w-[88%] lg:ml-11">
       <header>
         <h1 className="font-bold text-lg text-gray-800 p-2 lg:text-3xl">
           Fatvo.uz <span className="text-[#1f9065]">Media</span>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "framer-motion": "^11.5.4",
     "i18next": "^23.14.0",
     "i18next-http-backend": "^2.6.1",

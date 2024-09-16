@@ -154,21 +154,9 @@ export default function PrayerTimes() {
     ).padStart(2, "0")}`;
   };
 
-
   return (
-    <main className="my-3 lg:my-5 flex items-center justify-center gap-5 lg:ml-12 lg:w-[70%]">
-       <select
-        value={selectedRegion}
-        onChange={handleChange}
-        className="outline-none p-2 w-36 rounded-md"
-      >
-        {regions.regions.map(({ id, name }) => (
-          <option key={id} value={id}>
-            {name}
-          </option>
-        ))}
-      </select>
-      <main className="flex items-center gap-3">
+    <main className="flex items-center mx-auto gap-72 w-[80%] my-3">
+      <main className="flex items-center gap-3 lg:ml-10">
         <div className="flex items-center justify-center text-[#1f9065] text-xs h-20 w-20 rounded-full shadow-md p-1">
           <div
             className={
@@ -178,7 +166,7 @@ export default function PrayerTimes() {
             }
           >
             <p className="font-bold">{times.fajr}</p>
-            <p>{t("morning")}</p>
+            <p>{t("fajr")}</p>
             {times.active === "fajr" && <p className="text-xs">{timeLeft}</p>}
           </div>
         </div>
@@ -196,7 +184,7 @@ export default function PrayerTimes() {
             }
           >
             <p>{times.sunrise}</p>
-            <p>{t("sun")}</p>
+            <p>{t("sunrise")}</p>
 
             {times.active === "sunrise" && (
               <p className="text-xs">{timeLeft}</p>
@@ -282,6 +270,17 @@ export default function PrayerTimes() {
           </div>
         </div>
       </main>
+      <select
+        value={selectedRegion}
+        onChange={handleChange}
+        className="outline-none p-2 w-36 rounded-md"
+      >
+        {regions.regions.map(({ id, name }) => (
+          <option key={id} value={id}>
+            {name}
+          </option>
+        ))}
+      </select>
     </main>
   );
 }

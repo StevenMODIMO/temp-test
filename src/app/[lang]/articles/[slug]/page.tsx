@@ -29,7 +29,7 @@ export default async function Article({
     <main className="w-[70%] mx-auto my-24 p-4">
       <header className="flex gap-2 items-center">
         <p className="text-2xl font-semibold">{data.title}</p>
-        <p className="text-gray-500 text-lg mt-3">{t("views")}: {data.view}</p>
+        <p className="text-gray-500 text-lg mt-1">{data.view} {t("views")}</p>
       </header>
       <p className="text-[#1f9065] text-lg p-3 font-semibold">
          {data.author}

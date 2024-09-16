@@ -62,7 +62,7 @@ export default function BookModal({ id, setOpen }) {
         <header className="flex justify-end">
           <FaTimes
             onClick={() => setOpen(false)}
-            className="cursor-pointer w-10 h-10 bg-[#1f9065] rounded-full p-2 text-white"
+            className="cursor-pointer w-10 h-10 bg-[#1f9065] rounded-full p-2 text-white absolute top-2 right-4"
           />
         </header>
         {book.images?.length > 0 && (
@@ -96,39 +96,42 @@ export default function BookModal({ id, setOpen }) {
             <p className="text font-semibold">{t("description")}:</p>
             <div dangerouslySetInnerHTML={{ __html: book.description }} />
           </div>
-          <p>
-            <span className="text font-semibold">{t("publisher")}:</span>{" "}
-            {book.publisher}
-          </p>
+          <section className="flex items-center justify-between">
+            <p>
+              <span className="text font-semibold">{t("publisher")}:</span>{" "}
+              {book.publisher}
+            </p>
+
+            <div>
+              {book.is_free ? (
+                <button
+                  onClick={handleDownload}
+                  className={
+                    book.file
+                      ? "bg-[#1f9065] text-white rounded-md p-2"
+                      : "hidden"
+                  }
+                >
+                  {book.file && <div>{t("freeButton")}</div>}
+                </button>
+              ) : (
+                <button
+                  onClick={() => setShow(!show)}
+                  className="bg-[#1f9065] text-white rounded-md p-2"
+                >
+                  {show && book.phone ? (
+                    <a href={`tel:+${book.phone}`}>{book.phone}</a>
+                  ) : (
+                    <div>{t("sellButton")}</div>
+                  )}
+                </button>
+              )}
+            </div>
+          </section>
           <p>
             <span className="text font-semibold">{t("price")}:</span>{" "}
             {book.price_formatted}
           </p>
-          <div className="flex justify-end">
-          {book.is_free ? (
-            <button
-              onClick={handleDownload}
-              className={
-                book.file
-                  ? "bg-[#1f9065] w-24 text-white rounded-md p-2"
-                  : "hidden"
-              }
-            >
-              {book.file && <div>{t("freeButton")}</div>}
-            </button>
-          ) : (
-            <button
-              onClick={() => setShow(!show)}
-              className="bg-[#1f9065] w-24 text-white rounded-md p-2"
-            >
-              {show && book.phone ? (
-                <a href={`tel:+${book.phone}`}>{book.phone}</a>
-              ) : (
-                <div>{t("sellButton")}</div>
-              )}
-            </button>
-          )}
-          </div>
         </section>
       </main>
     </Backdrop>

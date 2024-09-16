@@ -3,14 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
-
-function slugify(string) {
-  return string
-    .toLowerCase()
-    .trim()
-    .replace(/[\s\W-]+/g, "-") // Replace spaces and non-word characters with hyphens
-    .replace(/^-+|-+$/g, ""); // Remove leading or trailing hyphens
-}
+import slugify from "slugify";
 
 export default function Categories() {
   const [search, setSearch] = useState("");
@@ -129,7 +122,7 @@ export default function Categories() {
     <section className="flex gap-4">
       <main className="flex-1">
         <header>
-          <form className="ml-6">
+          <form className="ml-4">
             <label htmlFor="search"></label>
             <input
               id="search"
@@ -156,10 +149,13 @@ export default function Categories() {
                     key={id}
                     className="flex flex-col gap-5 p-3 border-b-2 border-[#1f9065] bg-white rounded-xl"
                   >
-                    <header className="flex gap-2 items-center">
-                      <p className="text-[#1f9065] text-2xl font-semibold">
+                    <header className="flex gap-2 items-center justify-between">
+                      <Link
+                        href={`/question-details/${slugify(title)}/${id}`}
+                        className="text-[#1f9065] text-2xl font-semibold"
+                      >
                         {title}
-                      </p>
+                      </Link>
                       <p className="text-gray-400 mt-2 text-sm">
                         {view} {t("views")}
                       </p>
@@ -225,7 +221,7 @@ export default function Categories() {
           </header>
           <div>
             {filteredCategories.map((category) => (
-              <div key={category.id} className="flex items-center gap-2">
+              <div key={category.id} className="flex items-center gap-2 my-1">
                 <input
                   type="checkbox"
                   id={category.id}
