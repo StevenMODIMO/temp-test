@@ -1,12 +1,14 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function PrayerTimes() {
   const [regions, setRegions] = useState({ regions: [], default: null });
   const [times, setTimes] = useState({});
   const [selectedRegion, setSelectedRegion] = useState("");
   const [timeLeft, setTimeLeft] = useState("");
-  const countdownRef = useRef(null); // Use ref to store the countdown interval ID
+  const countdownRef = useRef(null); 
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getRegions = async () => {
@@ -213,7 +215,7 @@ export default function PrayerTimes() {
             }
           >
             <p>{times.asr}</p>
-            <p>Asr</p>
+            <p>{t("asr")}</p>
 
             {times.active === "asr" && <p className="text-xs">{timeLeft}</p>}
           </div>
@@ -232,7 +234,7 @@ export default function PrayerTimes() {
             }
           >
             <p>{times.maghrib}</p>
-            <p>Maghrib</p>
+            <p>{t("maghrib")}</p>
 
             {times.active === "maghrib" && (
               <p className="text-xs">{timeLeft}</p>
@@ -253,7 +255,7 @@ export default function PrayerTimes() {
             }
           >
             <p>{times.isha}</p>
-            <p>Isha</p>
+            <p>{t("isha")}</p>
 
             {times.active === "isha" && <p className="text-xs">{timeLeft}</p>}
           </div>

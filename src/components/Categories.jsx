@@ -122,7 +122,7 @@ export default function Categories() {
             <label htmlFor="search"></label>
             <input
               id="search"
-              className="p-2 rounded-md outline-none"
+              className="p-2 rounded-md outline-none lg:w-[70%]"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={t("search")}
@@ -160,8 +160,10 @@ export default function Categories() {
                       <div className="text-gray-400">
                         {new Date(updated_at).toLocaleString()}
                       </div>
-                      <Link href={`/question-details/${slugify(title)}/${id}`} 
-                        className="text-[#1f9065] font-semibold">
+                      <Link
+                        href={`/question-details/${slugify(title)}/${id}`}
+                        className="text-[#1f9065] font-semibold"
+                      >
                         {t("readMore")}
                       </Link>
                     </footer>
@@ -172,35 +174,37 @@ export default function Categories() {
           ) : (
             <p className="text-center text-gray-500">{t("noResults")}</p>
           )}
-          <div className="pagination flex justify-center gap-2 mt-4">
-            <button
-              onClick={() => handlePageClick(currentPage - 1)}
-              disabled={currentPage === 1}
-              className="px-3 py-1 border rounded disabled:opacity-50"
-            >
-              Previous
-            </button>
-            {Array.from({ length: totalPages }, (_, index) => index + 1).map(
-              (page) => (
-                <button
-                  key={page}
-                  onClick={() => handlePageClick(page)}
-                  className={`px-3 py-1 border rounded ${
-                    page === currentPage ? "bg-[#1f9065] text-white" : ""
-                  }`}
-                >
-                  {page}
-                </button>
-              )
-            )}
-            <button
-              onClick={() => handlePageClick(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className="px-3 py-1 border rounded disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
+          {questions.length > 0 && (
+            <div className="pagination flex justify-center gap-2 mt-4">
+              <button
+                onClick={() => handlePageClick(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="px-3 py-1 border rounded disabled:opacity-50"
+              >
+                Previous
+              </button>
+              {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageClick(page)}
+                    className={`px-3 py-1 border rounded ${
+                      page === currentPage ? "bg-[#1f9065] text-white" : ""
+                    }`}
+                  >
+                    {page}
+                  </button>
+                )
+              )}
+              <button
+                onClick={() => handlePageClick(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="px-3 py-1 border rounded disabled:opacity-50"
+              >
+                Next
+              </button>
+            </div>
+          )}
         </div>
       </main>
       <main className="w-[30%] mt-6">
