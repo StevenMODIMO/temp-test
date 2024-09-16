@@ -42,7 +42,7 @@ export default function MediaBlock() {
           Fatvo.uz <span className="text-[#1f9065]">Media</span>
         </h1>
       </header>
-      <section className="flex flex-col items-center md:grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="flex flex-col items-center mt-8 md:grid grid-cols-2 lg:grid-cols-4 gap-4">
         {media.map(({ id, title, image, url, fatwa_issuer }) => (
           <div
             key={id}

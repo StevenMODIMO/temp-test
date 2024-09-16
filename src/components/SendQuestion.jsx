@@ -16,7 +16,7 @@ export default function SendQuestion({ setOpen }) {
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const { user } = useAuth();
-  const { t } = useTranslation();
+  const { t } = useTranslation(["sendQuestion"]);
 
   const sendQuestion = async (e) => {
     e.preventDefault();
@@ -69,7 +69,7 @@ export default function SendQuestion({ setOpen }) {
         <div className="flex justify-end mt-2 mr-2">
           <FaTimes
             onClick={() => setOpen(false)}
-            className="bg-[#1f9065] p-1 cursor-pointer text-xl rounded-full text-white"
+            className="bg-[#1f9065] p-1 cursor-pointer text-4xl rounded-full text-white hover:text-[#1f9065] hover:bg-white"
           />
         </div>
         <header className="text-3xl font-semibold text-[#1f9065] text-center">
@@ -111,7 +111,7 @@ export default function SendQuestion({ setOpen }) {
             className="cursor-pointer bg-[#1f9065] rounded text-lg flex items-center justify-center gap-2 text-white p-2"
           >
             <RiAttachment2 />
-            <p>Attach file</p>
+            <p>{t("attachedFile")}</p>
           </label>
           <input
             id="file"
@@ -126,7 +126,7 @@ export default function SendQuestion({ setOpen }) {
                 <p>loading</p>
               </div>
             ) : (
-              " Send question"
+              <p>{t("submitTitle")}</p>
             )}
           </button>
         </form>

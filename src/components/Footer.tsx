@@ -51,7 +51,7 @@ export default function Footer() {
               </a>
             </div>
             <div className="flex gap-2 items-center">
-              <CiLocationOn className="text-lg" />
+              <CiLocationOn className="text-3xl font-bold" />
               <a
                 href="https://www.google.com/maps/search/?api=1&query=Tashkent+city,+Almazor+district,+korasayor+street,+47"
                 target="_blank"

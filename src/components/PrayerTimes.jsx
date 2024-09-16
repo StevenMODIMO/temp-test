@@ -8,7 +8,7 @@ export default function PrayerTimes() {
   const [selectedRegion, setSelectedRegion] = useState("");
   const [timeLeft, setTimeLeft] = useState("");
   const countdownRef = useRef(null); 
-  const { t } = useTranslation();
+  const { t } = useTranslation(["prayer"]);
 
   useEffect(() => {
     const getRegions = async () => {
@@ -157,7 +157,7 @@ export default function PrayerTimes() {
             }
           >
             <p className="font-bold">{times.fajr}</p>
-            <p>Morning</p>
+            <p>{t("morning")}</p>
             {times.active === "fajr" && <p className="text-xs">{timeLeft}</p>}
           </div>
         </div>
@@ -175,7 +175,7 @@ export default function PrayerTimes() {
             }
           >
             <p>{times.sunrise}</p>
-            <p>The sun</p>
+            <p>{t("theSun")}</p>
 
             {times.active === "sunrise" && (
               <p className="text-xs">{timeLeft}</p>
@@ -196,7 +196,7 @@ export default function PrayerTimes() {
             }
           >
             <p>{times.dhuhr}</p>
-            <p>Dhuhr</p>
+            <p>{t('dhuhr')}</p>
 
             {times.active === "dhuhr" && <p className="text-xs">{timeLeft}</p>}
           </div>
