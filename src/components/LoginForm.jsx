@@ -14,7 +14,7 @@ import { FaTimes } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
 import ResetPassword from "./ResetPassword";
 import { useTranslation } from "react-i18next";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm({ setOpenForm }) {
   const [email, setEmail] = useState("");
@@ -26,22 +26,9 @@ export default function LoginForm({ setOpenForm }) {
   const { t } = useTranslation(["login"]);
   const router = useRouter();
   const [openReset, setOpenreset] = useState(false);
-  const params = useSearchParams();
-
-  const access = params.get("access");
-  const refresh = params.get("refresh");
 
   const getUser = async () => {
     try {
-      if (access && refresh) {
-        localStorage.setItem(
-          "user_tokens",
-          JSON.stringify({
-            access_token: access,
-            refresh_token: refresh,
-          })
-        );
-      }
       const tokens = JSON.parse(localStorage.getItem("user_tokens"));
       const accessToken = tokens?.access_token;
 
@@ -49,8 +36,6 @@ export default function LoginForm({ setOpenForm }) {
         console.error("Access token not found");
         return;
       }
-
-      // Fetch the user profile with the access token
       const response = await fetch(
         "https://backfatvo.salyam.uz/api_v1/user/profile/",
         {

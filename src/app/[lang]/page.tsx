@@ -9,7 +9,7 @@ import PinnedBooks from "@/components/PinnedBooks";
 import MediaBlock from "@/components/MediaBlock";
 import BookSales from "@/components/BookSales";
 import FreeBooks from "@/components/FreeBooks";
-import NotFound from "@/components/NotFound";
+import TelegramAuth from "@/components/TelegramAuth";
 import TranslationsProvider from "./TranslationsProvider";
 import initTranslations from "../i18n";
 
@@ -26,6 +26,7 @@ export default async function Home({ params: { lang } }: IHomePageProps) {
       locale={lang}
       resources={resources}
     >
+      <TelegramAuth />
       <div className="bg-gray-100">
         <Banner />
         <PrayerTimes />
