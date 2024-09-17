@@ -33,12 +33,12 @@ export default function PinnedQuestion() {
   return (
     <main className="my-3 lg:my-5 rounded-md">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">
+        <h1 className="font-bold text-lg text-gray-800 p-2 cursor-pointer hover:text-[#1f9065]">
           {t("pinnedQuestion")}
         </h1>
       </header>
       <div className="p-4">
-        <h2 className="font-semibold text-gray-800 text-2xl">
+        <h2 className="font-semibold text-gray-800 text-2xl cursor-pointer hover:text-[#1f9065]">
           {question?.title}
         </h2>
         <p className="text-gray-600">{question?.truncated_answer}</p>

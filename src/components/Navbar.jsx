@@ -70,12 +70,12 @@ export default function Navbar() {
         </Link>
         <section className="text-[16px] md:text-sm md:flex gap-6 items-center lg:gap-6">
           <nav className="hidden md:flex items-center gap-3 lg:gap-6">
-            <Link href="/" className="font-semibold">
+            <Link href="/" className="font-semibold hover:text-gray-300">
               {t("home")}
             </Link>
             <div className="relative cursor-pointer lg:flex flex-col lg:items-center lg:justify-center">
               <header
-                className="flex items-center gap-2 text-gray-200 font-semibold"
+                className="flex items-center gap-2 text-gray-200 font-semibold hover:text-gray-300"
                 onClick={() => setShowCategoryLinks(!showCategoryLinks)}
               >
                 <h1>{t("categories")}</h1>
@@ -91,6 +91,7 @@ export default function Navbar() {
                         key={id}
                         href={`/categories/?search=&category_ids=${id}&page=1&pageSize=4`}
                         onClick={() => setShowCategoryLinks(false)}
+                        className="hover:text-[#1f9065]"
                       >
                         {name}
                       </Link>
@@ -108,24 +109,24 @@ export default function Navbar() {
                 }
               }}
               href="/send-question"
-              className="font-semibold cursor-pointer"
+              className="font-semibold cursor-pointer hover:text-gray-300"
             >
               {t("sendQuestion")}
             </div>
-            <Link href="/library" className="font-semibold">
+            <Link href="/library" className="font-semibold hover:text-gray-300">
               {t("library")}
             </Link>
-            <Link href="/media" className="font-semibold">
+            <Link href="/media" className="font-semibold hover:text-gray-300">
               {t("media")}
             </Link>
             {user ? (
-              <Link href="/latest-answers" className="font-semibold">
+              <Link href="/latest-answers" className="font-semibold hover:text-gray-300">
                 {t("latestAnswer")}
               </Link>
             ) : (
               <div
                 onClick={() => setOpenForm(true)}
-                className="font-semibold text-gray-200"
+                className="font-semibold text-gray-200 cursor-pointer hover:text-gray-300"
               >
                 {t("latestAnswer")}
               </div>

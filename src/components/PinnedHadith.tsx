@@ -36,10 +36,10 @@ export default function PinnedHadith() {
   return (
     <main className="my-3 lg:my-5 rounded-md ">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">{t("pinnedHadith")}</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2 cursor-pointer hover:text-[#1f9065]">{t("pinnedHadith")}</h1>
       </header>
       <section className="p-4">
-        <div className="font-semibold text-gray-800 text-2xl">
+        <div className="font-semibold text-gray-800 text-2xl cursor-pointer hover:text-[#1f9065]">
           {hadith?.title}
         </div>
         <p className="text-gray-600">{hadith?.preview_hadith}</p>

@@ -38,7 +38,7 @@ export default function LatestAnswers() {
   return (
     <main className="my-3 lg:my-5">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">
+        <h1 className="font-bold text-lg text-gray-800 p-2 cursor-pointer hover:text-[#1f9065]">
           {t("latestAnswers")}
         </h1>
       </header>
@@ -54,7 +54,7 @@ export default function LatestAnswers() {
             >
               <div className="flex gap-3 items-center">
                 <FaRegStar className="bg-[#1f9065] text-white rounded-md p-1 text-2xl font-bold" />
-                <h2>{title}</h2>
+                <h2 className="cursor-pointer hover:text-[#1f9065]">{title}</h2>
               </div>
               <LuArrowDownRight className="text-[#1f9065] mr-5" />
             </button>

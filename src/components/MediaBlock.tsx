@@ -66,8 +66,8 @@ export default function MediaBlock() {
               />
               <FaRegCirclePlay className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl opacity-0 group-hover:opacity-100 transition duration-300" />
             </div>
-            <h1 className="text-gray-500 text-xl mt-2 w-56">{title}</h1>
-            <div>{fatwa_issuer}</div>
+            <h1 className="text-gray-500 text-xl mt-2 w-56 hover:text-[#1f9065]">{title}</h1>
+            <div className=" hover:text-gray-500">{fatwa_issuer}</div>
           </div>
         ))}
       </section>

@@ -50,7 +50,7 @@ export default function Banner() {
         <div className="flex flex-col gap-4 p-1 sm:flex-row">
           <button
             onClick={handleOpenModal}
-            className="p-1 flex gap-2 justify-center items-center border border-[#1f9065] w-52 rounded-[32px]"
+            className="p-1 flex gap-2 justify-center items-center border border-[#1f9065] w-52 rounded-[32px] hover:bg-[#1f9065]"
           >
             <h4>{user ? `${t("sendQuestion")}` : `${t("sendQuestion")}`}</h4>
             <MdOutlineArrowOutward />

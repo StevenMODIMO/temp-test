@@ -42,7 +42,7 @@ export default function PinnedBooks() {
   return (
     <main className="my-3 rounded-md cursor-pointer bg-[#1f9065] p-2">
       <header className="border-b border-[#1f9065]">
-        <h1 className="font-bold text-lg text-white lg:text-2xl">
+        <h1 className="font-bold text-lg text-white cursor-pointer hover:text-gray-200 lg:text-2xl">
           {t("bookDescription")}
         </h1>
       </header>
@@ -55,7 +55,7 @@ export default function PinnedBooks() {
                 alt={pinnedBooks[current].title}
                 className="w-80 h-56 object-cover rounded transition duration-700 ease-in-out mx-auto lg:h-52"
               />
-              <p className="text-sm md:text-xl">
+              <p className="text-sm md:text-xl cursor-pointer hover:text-gray-200">
                 {pinnedBooks[current].preview_description}
               </p>
             </>

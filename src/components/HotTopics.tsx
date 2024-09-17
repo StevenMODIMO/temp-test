@@ -40,7 +40,7 @@ export default function HotTopics() {
   return (
     <main className="my-3 lg:my-5">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">
+        <h1 className="font-bold text-lg text-gray-800 p-2 cursor-pointer hover:text-[#1f9065]">
           {t("trendingTopics")}
         </h1>
       </header>
@@ -56,7 +56,7 @@ export default function HotTopics() {
             >
               <div className="flex items-center gap-1 w-full">
                 <IoClipboardOutline className="text-[#1f9065] font-bold" />
-                <p className="whitespace-normal break-words max-w-[85%]">
+                <p className="whitespace-normal break-words max-w-[85%] cursor-pointer hover:text-[#1f9065]">
                   {title}
                 </p>
               </div>
@@ -67,9 +67,10 @@ export default function HotTopics() {
       </main>
       <Link
         href="/categories"
-        className="w-fit border border-[#1f9065] p-2 mt-3 rounded-full flex items-center gap-1"
+        className="w-fit border border-[#1f9065] p-2 mt-3 rounded-full flex items-center gap-1 text-[#1f9065] hover:text-white hover:bg-[#1f9065]"
       >
-        {t("allQuestion")} <MdOutlineArrowOutward className="text-[#1f9065]" />
+        {t("allQuestion")}{" "}
+        <MdOutlineArrowOutward />
       </Link>
     </main>
   );

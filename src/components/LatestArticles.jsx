@@ -42,7 +42,7 @@ export default function LatestArticles() {
   return (
     <main className="my-3 w-fit lg:my-5">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">{t("latestArticles")}</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2 cursor-pointer hover:text-[#1f9065]">{t("latestArticles")}</h1>
       </header>
       <section>
         <div className="relative my-3">
@@ -55,7 +55,7 @@ export default function LatestArticles() {
               />
               <Link
                 href={`/articles/${articles[current].slug}`}
-                className="text-[#1f9065] text-3xl font-semibold p-2"
+                className="text-[#1f9065] text-3xl font-semibold p-2 hover:text-black"
               >
                 {articles[current].title}
               </Link>

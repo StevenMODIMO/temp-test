@@ -64,7 +64,7 @@ export default function BookSales() {
   return (
     <main className="bg-gray-100 rounded-md p-4 mt-3 lg:w-[70%]">
       <header className="border-b-4 border-[#1f9065]">
-        <h1 className="font-bold text-lg text-gray-800 p-2">{t("onSale")}</h1>
+        <h1 className="font-bold text-lg text-gray-800 p-2 cursor-pointer hover:text-[#1f9065]">{t("onSale")}</h1>
       </header>
       <section className="relative">
         <div className="flex overflow-hidden">
@@ -81,10 +81,10 @@ export default function BookSales() {
                     alt={title}
                     className="h-40 w-auto object-cover rounded-md mb-4"
                   />
-                  <h2 className="font-semibold text-lg text-gray-800">
+                  <h2 className="font-semibold text-lg text-gray-800 cursor-pointer hover:text-[#1f9065]">
                     {title}
                   </h2>
-                  <p className="text-gray-600 mb-2">Author: {author}</p>
+                  <p className="text-gray-600 mb-2">{t("author")}: {author}</p>
                   <p className="text-[#1f9065] font-bold">{formatted_price}</p>
                 </div>
               </div>
