@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation"
 
 export default function CreateAccount({ security_key, uemail }) {
   const [first_name, setFirstName] = useState("");
@@ -9,6 +10,7 @@ export default function CreateAccount({ security_key, uemail }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { t } = useTranslation(["registration"]);
+  const router = useRouter()
 
   const createAccount = async (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ export default function CreateAccount({ security_key, uemail }) {
         body: JSON.stringify({
           first_name,
           last_name,
-          uemail,
+          email: uemail,
           password,
           secret_key: security_key,
         }),
@@ -45,6 +47,7 @@ export default function CreateAccount({ security_key, uemail }) {
       setPassword("");
       setError(null);
       setLoading(false);
+      router.push("/")
     }
   };
 
@@ -78,6 +81,9 @@ export default function CreateAccount({ security_key, uemail }) {
           className="bg-white rounded-md p-2 outline-none text-black"
           placeholder={t("doe")}
         />
+        <label htmlFor="lastName" className="font-semibold lg:text-xl">
+          {t("email")}
+        </label>
         <div className="font-semibold lg:text-xl p-2 cursor-pointer rounded-md text-black bg-white">
           {uemail}
         </div>
@@ -86,6 +92,7 @@ export default function CreateAccount({ security_key, uemail }) {
         </label>
         <input
           id="password"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="bg-white rounded-md p-2 outline-none text-black"

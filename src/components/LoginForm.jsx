@@ -14,6 +14,7 @@ import { FaTimes } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
 import ResetPassword from "./ResetPassword";
 import { useTranslation } from "react-i18next";
+import { useSearchParams, useRouter } from "next/navigation";
 
 export default function LoginForm({ setOpenForm }) {
   const [email, setEmail] = useState("");
@@ -23,24 +24,38 @@ export default function LoginForm({ setOpenForm }) {
   const [error, setError] = useState(null);
   const { dispatch } = useAuth();
   const { t } = useTranslation(["login"]);
-
+  const router = useRouter();
   const [openReset, setOpenreset] = useState(false);
+  const params = useSearchParams();
+
+  const access = params.get("access");
+  const refresh = params.get("refresh");
 
   const getUser = async () => {
     try {
+      if (access && refresh) {
+        localStorage.setItem(
+          "user_tokens",
+          JSON.stringify({
+            access_token: access,
+            refresh_token: refresh,
+          })
+        );
+      }
       const tokens = JSON.parse(localStorage.getItem("user_tokens"));
-      const access = tokens?.access_token;
+      const accessToken = tokens?.access_token;
 
-      if (!access) {
+      if (!accessToken) {
         console.error("Access token not found");
         return;
       }
 
+      // Fetch the user profile with the access token
       const response = await fetch(
         "https://backfatvo.salyam.uz/api_v1/user/profile/",
         {
           headers: {
-            Authorization: `Bearer ${access}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );
@@ -48,6 +63,7 @@ export default function LoginForm({ setOpenForm }) {
       const json = await response.json();
 
       if (response.ok) {
+        // Store user data in local storage and dispatch login action
         localStorage.setItem("user", JSON.stringify(json));
         dispatch({ type: "LOGIN", payload: json });
       } else {
@@ -58,6 +74,33 @@ export default function LoginForm({ setOpenForm }) {
         "An error occurred while fetching the user profile:",
         error
       );
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, [access, refresh]);
+
+  const telegramAuth = async () => {
+    const url = window.location.origin + window.location.pathname;
+
+    const response = await fetch(
+      "https://backfatvo.salyam.uz/api_v1/auth/telegram/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ redirect_url: url, debug: true }),
+      }
+    );
+
+    const json = await response.json();
+
+    if (json.url) {
+      router.push(json.url);
+    } else {
+      return;
     }
   };
 
@@ -123,7 +166,10 @@ export default function LoginForm({ setOpenForm }) {
             <FaFacebook className="text-blue-500" />
             <p className="text-gray-500">Facebook</p>
           </div>
-          <div className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-48">
+          <div
+            onClick={telegramAuth}
+            className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-48"
+          >
             <FaTelegram className="text-blue-400" />
             <p className="text-gray-500">Telegram</p>
           </div>

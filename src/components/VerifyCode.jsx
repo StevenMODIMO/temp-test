@@ -19,7 +19,7 @@ export default function VerifyCode({ setSecuritykey, uemail }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ uemail, code }),
+        body: JSON.stringify({ email: uemail, code }),
       }
     );
 
@@ -46,6 +46,9 @@ export default function VerifyCode({ setSecuritykey, uemail }) {
         onSubmit={VerifyCode}
         className="flex flex-col gap-3 mx-auto w-fit my-5 sm:w-96"
       >
+      <label htmlFor="code" className="font-semibold lg:text-xl">
+        {t("email")}
+      </label>
         <div className="font-semibold lg:text-xl p-2 cursor-pointer rounded-md text-gray-500 bg-white">
           {uemail}
         </div>
