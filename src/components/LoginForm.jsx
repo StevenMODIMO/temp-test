@@ -77,10 +77,6 @@ export default function LoginForm({ setOpenForm }) {
     }
   };
 
-  useEffect(() => {
-    getUser();
-  }, [access, refresh]);
-
   const telegramAuth = async () => {
     const url = window.location.origin + window.location.pathname;
 
