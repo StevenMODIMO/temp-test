@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Reset({ secret_key }) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { t } = useTranslation(["login"]);
 
   const createAccount = async (e) => {
     e.preventDefault();
@@ -40,7 +42,7 @@ export default function Reset({ secret_key }) {
   return (
     <main className="bg-[#1f9065] text-white rounded-md p-3 mx-2 md:w-[60%] md:mx-auto">
       <header className="text-center text-lg font-semibold p-3 lg:text-xl">
-        <h1>Complete password recovery</h1>
+        <h1>{t("completeTitle")}</h1>
       </header>
       <form
         onFocus={() => setError(false)}
@@ -48,7 +50,7 @@ export default function Reset({ secret_key }) {
         className="flex flex-col gap-3 mx-auto w-fit my-5 sm:w-96"
       >
         <label htmlFor="password" className="font-semibold lg:text-xl">
-          Password
+          {t("password")}
         </label>
         <input
           id="password"
@@ -62,13 +64,16 @@ export default function Reset({ secret_key }) {
           {loading ? (
             <div className="flex justify-center items-center gap-2">
               <div className="h-5 w-5 animate-spin border-4 border-t-transparent border-[#1f9065] rounded-full"></div>
-              <p>loading</p>
+              <p>{t("loader")}</p>
             </div>
           ) : (
-            <p>Change password</p>
+            <p>{t("changePassword")}</p>
           )}
         </button>
       </form>
+      {error && (
+        <div className="text-red-400 text-center font-smibold">{error}</div>
+      )}
     </main>
   );
 }

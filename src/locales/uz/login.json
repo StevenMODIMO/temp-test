@@ -16,5 +16,16 @@
   "byEmail":"Email va parol orqali",
   "loading": "uklanmoqda…",
   "noAccount": "Shaxsiy hisobingiz bormi?",
-  "terms": " Xizmat shartlari"
+  "terms": " Xizmat shartlari",
+  "resetTitle": "Unutilgan parolni tiklash",
+  "resetEnter": "Kodni olish uchun electron pochtangizni kiriting",
+  "email": "Elektron pochta",
+  "sendCode": "Kodni olish",
+  "code": "Kod",
+  "enterCode": "Kodni kiriting",
+  "resetVerify": "Tasdiqlash",
+  "password": "Parol",
+  "verifyTitle": "Kodni tasdiqlash",
+  "completeTitle": "Parolni tiklash jarayonini yakunlash",
+  "changePassword": "Yangi parol"
 }
