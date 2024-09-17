@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
+import LoginForm from "./LoginForm";
 
 export default function CreateAccount({ security_key, uemail }) {
   const [first_name, setFirstName] = useState("");
@@ -10,7 +11,8 @@ export default function CreateAccount({ security_key, uemail }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { t } = useTranslation(["registration"]);
-  const router = useRouter()
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   const createAccount = async (e) => {
     e.preventDefault();
@@ -47,12 +49,13 @@ export default function CreateAccount({ security_key, uemail }) {
       setPassword("");
       setError(null);
       setLoading(false);
-      router.push("/")
+      setOpen(true);
     }
   };
 
   return (
     <main className="bg-[#1f9065] text-white rounded-md p-3 mx-2 md:w-[60%] md:mx-auto">
+      {open && <LoginForm setOpenForm={setOpen} />}
       <header className="text-center text-lg font-semibold p-3 lg:text-xl">
         <h1>{t("completeAccount")}</h1>
       </header>
