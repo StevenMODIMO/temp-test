@@ -143,10 +143,6 @@ export default function LoginForm({ setOpenForm }) {
             <FcGoogle />
             <p className="text-gray-500">Google</p>
           </div>
-          <div className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-48">
-            <FaFacebook className="text-blue-500" />
-            <p className="text-gray-500">Facebook</p>
-          </div>
           <div
             onClick={telegramAuth}
             className="my-2 rounded-xl cursor-pointer flex gap-1 p-2 items-center justify-center border border-gray-200 hover:bg-gray-100 md:w-48"

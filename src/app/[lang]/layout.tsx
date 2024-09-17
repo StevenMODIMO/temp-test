@@ -46,6 +46,7 @@ export default async function RootLayout({
     <AuthContextProvider>
       <AuthProvider>
         <html lang={lang} dir={dir(lang)}>
+          <Oauth />
           <TranslationsProvider
             namespaces={[
               "layout",

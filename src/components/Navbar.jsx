@@ -17,6 +17,8 @@ import { signOut, useSession } from "next-auth/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import LanguageBlock from "./LanguageBlock";
+import TelegramAuth from "./TelegramAuth";
+import { Suspense } from "react";
 
 export default function Navbar() {
   const [openLinks, setOpenLinks] = useState(false);
@@ -37,7 +39,8 @@ export default function Navbar() {
         "https://backfatvo.salyam.uz/api_v1/categories/",
         {
           headers: {
-            "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
+            "Accept-Language":
+              i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
           },
         }
       );
@@ -64,6 +67,9 @@ export default function Navbar() {
 
   return (
     <main className="bg-[#1f9065]">
+      <Suspense>
+        <TelegramAuth />
+      </Suspense>
       <section className="text-gray-200 flex items-center justify-between p-4 lg:w-[80%] lg:mx-auto">
         <Link href="/">
           <Image src={logo} alt="logo" width={120} height={120} />
@@ -120,7 +126,10 @@ export default function Navbar() {
               {t("media")}
             </Link>
             {user ? (
-              <Link href="/latest-answers" className="font-semibold hover:text-gray-300">
+              <Link
+                href="/latest-answers"
+                className="font-semibold hover:text-gray-300"
+              >
                 {t("latestAnswer")}
               </Link>
             ) : (
