@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import slugify from "slugify";
 
@@ -13,9 +13,30 @@ export default function Categories() {
   const [categories, setCategories] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [checkedCategories, setCheckedCategories] = useState({});
+  
   const router = useRouter();
+  const searchParams = useSearchParams(); // Use this to read the query params
   const { t, i18n } = useTranslation(["categories"]);
 
+  // Update the states from the URL on component mount
+  useEffect(() => {
+    const categoryIdsFromUrl = searchParams.get("category_ids")?.split(",") || [];
+    const searchFromUrl = searchParams.get("search") || "";
+    const pageFromUrl = parseInt(searchParams.get("page"), 10) || 1;
+
+    // Set state based on URL params
+    setSearch(searchFromUrl);
+    setCurrentPage(pageFromUrl);
+    if (categoryIdsFromUrl.length > 0) {
+      const initialCheckedCategories = {};
+      categoryIdsFromUrl.forEach((id) => {
+        initialCheckedCategories[id] = true;
+      });
+      setCheckedCategories(initialCheckedCategories);
+    }
+  }, [searchParams]);
+
+  // Fetch categories
   useEffect(() => {
     const getCategories = async () => {
       const response = await fetch(
@@ -40,6 +61,7 @@ export default function Categories() {
     getCategories();
   }, []);
 
+  // Filter categories based on search input
   useEffect(() => {
     setFilteredCategories(
       categories.filter((category) =>
@@ -48,6 +70,7 @@ export default function Categories() {
     );
   }, [search, categories]);
 
+  // Fetch questions based on filters
   useEffect(() => {
     const getQuestions = async () => {
       const selectedCategoryIds = Object.keys(checkedCategories).filter(
@@ -82,6 +105,7 @@ export default function Categories() {
     getQuestions();
   }, [currentPage, checkedCategories, search]);
 
+  // Update URL whenever filters or pagination changes
   useEffect(() => {
     const selectedCategoryIds = Object.keys(checkedCategories).filter(
       (id) => checkedCategories[id]
@@ -103,17 +127,6 @@ export default function Categories() {
   const handleCheckboxChange = (id) => {
     setCheckedCategories((prevChecked) => {
       const newChecked = { ...prevChecked, [id]: !prevChecked[id] };
-      const selectedCategoryIds = Object.keys(newChecked).filter(
-        (id) => newChecked[id]
-      );
-
-      if (selectedCategoryIds.length === 0) {
-        // If no categories are selected, show all questions
-        setCheckedCategories({});
-      } else {
-        setCheckedCategories(newChecked);
-      }
-
       return newChecked;
     });
   };
@@ -224,12 +237,11 @@ export default function Categories() {
               <div key={category.id} className="flex items-center gap-2 my-1">
                 <input
                   type="checkbox"
-                  id={category.id}
-                  checked={!!checkedCategories[category.id]}
+                  id={`category-${category.id}`}
+                  checked={checkedCategories[category.id] || false}
                   onChange={() => handleCheckboxChange(category.id)}
-                  className="cursor-pointer"
                 />
-                <label htmlFor={category.id} className="cursor-pointer">
+                <label htmlFor={`category-${category.id}`}>
                   {category.name}
                 </label>
               </div>

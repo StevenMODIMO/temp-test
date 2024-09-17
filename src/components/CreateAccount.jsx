@@ -65,7 +65,7 @@ export default function CreateAccount({ security_key, uemail }) {
           id="firstName"
           value={first_name}
           onChange={(e) => setFirstName(e.target.value)}
-          className="bg-white rounded-md p-2 outline-none text-black"
+          className="bg-white rounded-md p-2 outline-none text-gray-500"
           placeholder={t("john")}
         />
         <label htmlFor="lastName" className="font-semibold lg:text-xl">

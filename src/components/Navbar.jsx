@@ -90,6 +90,7 @@ export default function Navbar() {
                       <Link
                         key={id}
                         href={`/categories/?search=&category_ids=${id}&page=1&pageSize=4`}
+                        onClick={() => setShowCategoryLinks(false)}
                       >
                         {name}
                       </Link>

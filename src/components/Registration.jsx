@@ -18,7 +18,7 @@ export default function Register() {
       </header>
       {!code && !security_key ? (
         <SendCode setCode={setCode} updateEmail={updateEmail} />
-      ) : code &&  !security_key ? (
+      ) : code && !security_key ? (
         <VerifyCode setSecuritykey={setSecurityKey} uemail={uemail} />
       ) : security_key ? (
         <CreateAccount uemail={uemail} security_key={security_key} />
