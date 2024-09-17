@@ -149,7 +149,8 @@ export default function PrayerTimes() {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    return `${hours}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    return `${hours}:${String(minutes).padStart(2, "0")}:${String(seconds
+    ).padStart(2, "0")}`;
   };
 
   return (
@@ -163,7 +164,7 @@ export default function PrayerTimes() {
                 : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
-            <p className="font-bold">{times.fajr.slice(0,5)}</p>
+            <p className="font-bold">{times.fajr}</p>
             <p className="text-[15px]">{t("fajr")}</p>
             {times.active === "fajr" && <p className="text-xs">{timeLeft}</p>}
           </div>
@@ -181,7 +182,7 @@ export default function PrayerTimes() {
                 : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
-            <p>{times.sunrise.slice(0,5)}</p>
+            <p>{times.sunrise}</p>
             <p className="text-[15px]">{t("sunrise")}</p>
 
             {times.active === "sunrise" && (
@@ -202,7 +203,7 @@ export default function PrayerTimes() {
                 : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
-            <p>{times.dhuhr.slice(0,5)}</p>
+            <p>{times.dhuhr}</p>
             <p className="text-[15px]">{t("dhuhr")}</p>
 
             {times.active === "dhuhr" && <p className="text-xs">{timeLeft}</p>}
@@ -221,7 +222,7 @@ export default function PrayerTimes() {
                 : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
-            <p>{times.asr.slice(0,5)}</p>
+            <p>{times.asr}</p>
             <p className="text-[15px]">{t("asr")}</p>
 
             {times.active === "asr" && <p className="text-xs">{timeLeft}</p>}
@@ -240,7 +241,7 @@ export default function PrayerTimes() {
                 : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
-            <p>{times.maghrib.slice(0,5)}</p>
+            <p>{times.maghrib}</p>
             <p className="text-[15px]">{t("maghrib")}</p>
 
             {times.active === "maghrib" && (
@@ -261,7 +262,7 @@ export default function PrayerTimes() {
                 : "bg-white border border-[#1f9065] rounded-full h-full w-full flex flex-col items-center justify-center"
             }
           >
-            <p>{times.isha.slice(0,5)}</p>
+            <p>{times.isha}</p>
             <p className="text-[15px]">{t("isha")}</p>
 
             {times.active === "isha" && <p className="text-xs">{timeLeft}</p>}
