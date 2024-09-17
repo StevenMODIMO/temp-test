@@ -66,7 +66,10 @@ export default function Navbar() {
   };
 
   return (
-    <main className="bg-[#1f9065]">
+    <main
+      className="bg-[#1f9065]"
+      onClick={() => showCategoryLinks && setShowCategoryLinks(false)}
+    >
       <Suspense>
         <TelegramAuth />
       </Suspense>
@@ -90,14 +93,14 @@ export default function Navbar() {
                 />
               </header>
               {showCategoryLinks && (
-                <main className="z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-5 lg:gap-2 lg:w-[800px]">
+                <main className="z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-[1fr_1fr_1fr_1fr_1fr] lg:w-[800px] lg:gap-2">
                   {categories.map(({ id, name, slug }) => {
                     return (
                       <Link
                         key={id}
                         href={`/categories/?search=&category_ids=${id}&page=1&pageSize=4`}
                         onClick={() => setShowCategoryLinks(false)}
-                        className="hover:text-[#1f9065]"
+                        className="text-[#105f41] hover:text-[#29c288] text-sm"
                       >
                         {name}
                       </Link>
