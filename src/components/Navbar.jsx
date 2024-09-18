@@ -93,7 +93,13 @@ export default function Navbar() {
                 />
               </header>
               {showCategoryLinks && (
-                <main className="z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-[140px_60px_150px_120px_1fr] lg:w-[600px] lg:gap-2">
+                <main
+                  className={
+                    i18n.language === "uz"
+                      ? "z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-[140px_60px_150px_120px_1fr] lg:w-[600px] lg:gap-2"
+                      : "z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-[140px_60px_170px_120px_1fr] lg:w-[600px] lg:gap-2"
+                  }
+                >
                   {categories.map(({ id, name, slug }) => {
                     return (
                       <Link
