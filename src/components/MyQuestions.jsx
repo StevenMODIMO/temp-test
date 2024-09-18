@@ -15,8 +15,9 @@ export default function MyQuestions() {
     category1: false,
     category2: false,
   });
+  const [categories, setCategories] = useState([]);
   const { user } = useAuth();
-  const { t,i18n } = useTranslation(["latestAnswers"]);
+  const { t, i18n } = useTranslation(["latestAnswers"]);
 
   useEffect(() => {
     const getQuestions = async () => {
@@ -27,8 +28,9 @@ export default function MyQuestions() {
         "https://backfatvo.salyam.uz/api_v1/questions/mine/",
         {
           headers: {
-            "Accept-Language": i18n.language === 'uz-Cyrl' ? "uz-cyr" : i18n.language,
-            Authorization: `Bearer ${access}`
+            "Accept-Language":
+              i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
+            Authorization: `Bearer ${access}`,
           },
         }
       );
@@ -72,6 +74,29 @@ export default function MyQuestions() {
       [name]: checked,
     }));
   };
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const response = await fetch(
+        "https://backfatvo.salyam.uz/api_v1/categories/",
+        {
+          headers: {
+            "Accept-Language":
+              i18n.language === "uz-Cyrl" ? "uz-cyr" : i18n.language,
+          },
+        }
+      );
+      const json = await response.json();
+
+      if (response.ok) {
+        setCategories(json);
+      } else {
+        console.log(json.error);
+      }
+    };
+
+    getCategories();
+  }, []);
 
   return (
     <main className="bg-gray-200">
@@ -168,7 +193,7 @@ export default function MyQuestions() {
                   onChange={handleAnswerCheckbox}
                   className="mr-2"
                 />
-                {t('Answered')}
+                {t("Answered")}
               </label>
               <label className="block">
                 <input
@@ -184,28 +209,14 @@ export default function MyQuestions() {
             <header>
               <h1 className="text-xl font-semibold mb-4">{t("categories")}</h1>
             </header>
-            <form>
-              <label className="block mb-2">
-                <input
-                  type="checkbox"
-                  name="category1"
-                  checked={selectedCategories.category1}
-                  onChange={handleCheckboxChange}
-                  className="mr-2"
-                />
-                Category 1
-              </label>
-              <label className="block">
-                <input
-                  type="checkbox"
-                  name="category2"
-                  checked={selectedCategories.category2}
-                  onChange={handleCheckboxChange}
-                  className="mr-2"
-                />
-                Category 2
-              </label>
-            </form>
+            <div>
+              {categories.map((category) => (
+                <div key={category.id} className="flex items-center gap-2 my-1">
+                  <input type="checkbox" id={category.name} />
+                  <label htmlFor={category.name}>{category.name}</label>
+                </div>
+              ))}
+            </div>
           </section>
         </main>
       </section>
