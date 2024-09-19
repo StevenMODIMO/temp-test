@@ -96,15 +96,15 @@ export default function Navbar() {
                 <main
                   className={
                     i18n.language === "uz"
-                      ? "z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-[140px_60px_150px_120px_1fr] lg:w-[600px] lg:gap-2"
-                      : "z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-[140px_60px_170px_120px_1fr] lg:w-[600px] lg:gap-2"
+                      ? "z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-[150px_130px_105px_100px_1fr] lg:w-[620px] lg:gap-2"
+                      : "z-[999] absolute top-8 bg-white text-black p-1 rounded-md shadow lg:grid lg:grid-cols-[170px_160px_115px_100px_1fr] lg:w-[700px] lg:gap-2"
                   }
                 >
                   {categories.map(({ id, name, slug }) => {
                     return (
                       <Link
                         key={id}
-                        href={`/categories/?search=&category_ids=${id}&page=1&pageSize=4`}
+                        href={`/categories/?include_count=true&search=&category_ids=${id}&page=1&pageSize=4`}
                         onClick={() => setShowCategoryLinks(false)}
                         className="text-[#105f41] hover:text-[#29c288] text-sm"
                       >

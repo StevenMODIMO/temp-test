@@ -16,17 +16,15 @@ export default function Categories() {
   const [checkedCategories, setCheckedCategories] = useState({});
 
   const router = useRouter();
-  const searchParams = useSearchParams(); // Use this to read the query params
+  const searchParams = useSearchParams();
   const { t, i18n } = useTranslation(["categories"]);
 
-  // Update the states from the URL on component mount
   useEffect(() => {
     const categoryIdsFromUrl =
       searchParams.get("category_ids")?.split(",") || [];
     const searchFromUrl = searchParams.get("search") || "";
     const pageFromUrl = parseInt(searchParams.get("page"), 10) || 1;
 
-    // Set state based on URL params
     setSearch(searchFromUrl);
     setCurrentPage(pageFromUrl);
     if (categoryIdsFromUrl.length > 0) {
@@ -38,11 +36,10 @@ export default function Categories() {
     }
   }, [searchParams]);
 
-  // Fetch categories
   useEffect(() => {
     const getCategories = async () => {
       const response = await fetch(
-        "https://backfatvo.salyam.uz/api_v1/categories/",
+        "https://backfatvo.salyam.uz/api_v1/categories/?include_count=true",
         {
           headers: {
             "Accept-Language":
@@ -63,7 +60,6 @@ export default function Categories() {
     getCategories();
   }, []);
 
-  // Filter categories based on search input
   useEffect(() => {
     setFilteredCategories(
       categories.filter((category) =>
@@ -72,7 +68,6 @@ export default function Categories() {
     );
   }, [search, categories]);
 
-  // Fetch questions based on filters
   useEffect(() => {
     const getQuestions = async () => {
       const selectedCategoryIds = Object.keys(checkedCategories).filter(
@@ -83,7 +78,7 @@ export default function Categories() {
           ? `&category_ids=${selectedCategoryIds.join(",")}`
           : "";
       const searchParam = search ? `&search=${encodeURIComponent(search)}` : "";
-      const url = `https://backfatvo.salyam.uz/api_v1/questions/?page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`;
+      const url = `https://backfatvo.salyam.uz/api_v1/questions/?&page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`;
 
       try {
         const response = await fetch(url, {
@@ -107,7 +102,6 @@ export default function Categories() {
     getQuestions();
   }, [currentPage, checkedCategories, search]);
 
-  // Update URL whenever filters or pagination changes
   useEffect(() => {
     const selectedCategoryIds = Object.keys(checkedCategories).filter(
       (id) => checkedCategories[id]
@@ -118,7 +112,7 @@ export default function Categories() {
         : "";
     const searchParam = search ? `&search=${encodeURIComponent(search)}` : "";
     router.push(
-      `/uz/categories?page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`
+      `/categories?page=${currentPage}&pageSize=6${categoryIdsParam}${searchParam}`
     );
   }, [currentPage, checkedCategories, search]);
 
